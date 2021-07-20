@@ -1,0 +1,161 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="55916E9A-6741-9D17-1368-6AB3E776FF57" name="AB_HOUSE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:51:15 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="HOME_ID" id="4FB87856-6FB5-A817-7352-30CEAAC0909B">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:51:22 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE UNIQUE HOME ID]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PURCHASE_DATE" id="9CC66736-FF69-D1B2-045B-74F128674675">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:51:41 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DATE THE HOME WAS PURCHASED.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PURCHASE_VALUE" id="1A14F6CC-CF5B-1CCF-15AB-0E0FCFF0FE76">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:51:57 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE HOMES PURCHASE VALUE.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,9,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="AREA" id="BDC01F27-7AE4-1E00-1AAA-753F283F7246">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:52:24 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE HOMES AREA IN SQUARE FEET.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TYPE" id="21D629E1-473D-764C-C0CD-E885879B7064">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:53:00 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE HOME TYPE. 'S' IS SINGLE FAMILY, 'M' IS MULTI FAMILY, 'C' IS CONDOMINIUM, 'T' IS TOWN HOUSE.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="AUTO_FIRE_NOTIF" id="83763EB3-DCEC-511F-CF77-1785FBF8C86E">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:54:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[WHETHER THE HOUSE HAS AUTOMATIC FIRE NOTIFICATION TO THE FIRE DEPARTMENT.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HOME_SECURITY" id="9ED2969E-3BB7-A769-A205-76EF9127F80E">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:55:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[WHETHER THE HOUSE HAS A SECURITY SYSTEM.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="POOL" id="08A5E711-C039-27AF-E59A-00D22A468D1F">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:55:44 UTC</createdTime>
+<commentInRDBMS><![CDATA[SWIMMING POOL. 'U' IS UNDERGROUND, 'O' IS OVERGROUND, 'I' IS INDOOR, 'M' IS MULTIPLE, NULL IS NO POOL.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="BASEMENT" id="D2CE5712-AD72-09C4-CFE9-1ED101224EA5">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:56:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[WHETHER THE HOUSE HAS A BASEMENT.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4B0EE151-817C-C7A7-4052-EBDC64E9C68E" name="AB_HOME PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 22:51:30 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>4FB87856-6FB5-A817-7352-30CEAAC0909B</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

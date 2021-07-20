@@ -16,7 +16,35 @@
 <objectViews>
 <OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="52930F8C-3CBE-770C-12A0-C88E749CA2DC" otype="Entity" vid="3FD1E55A-791D-4D38-894E-4A66E66734BC">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
-<bounds x="55" y="67" width="183" height="119"/>
+<bounds x="55" y="67" width="183" height="185"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="55916E9A-6741-9D17-1368-6AB3E776FF57" otype="Entity" vid="0B775057-CDDC-9A9E-861E-D57C84987D26">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="509" y="376" width="129" height="146"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="593B21C4-8C6C-23CD-AD0C-3054A9BF77C7" otype="Entity" vid="EA552D6E-78BE-A7FF-3E5D-FDF2EBB6AA24">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="518" y="116" width="282" height="176"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="6208BBCF-5E3E-434F-69EA-3F2E96E60B09" otype="Entity" vid="9644D29B-E470-C510-4DB1-001CAC96705C">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="528" y="213" width="105" height="69"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.logical.TVEntity" oid="9FCD0CCF-69DD-30DE-90CF-A552F0EFAA35" otype="Entity" vid="DA2E4B9E-17EC-7C1D-AE65-4D485E9888BD">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="668" y="212" width="94" height="70"/>
 </OView>
 </objectViews>
+<connectors>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVInheritanceRelation" oid="712723F5-F0F6-0094-7A9A-0B9CE4CFB889" otype="Hierarchy relation" vid_source="EA552D6E-78BE-A7FF-3E5D-FDF2EBB6AA24" vid_target="9644D29B-E470-C510-4DB1-001CAC96705C">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-65536</backgroundColor>
+<lineWidth>1</lineWidth>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.logical.TVInheritanceRelation" oid="9402C160-F1BD-1006-DCD0-ACB99B286B68" otype="Hierarchy relation" vid_source="EA552D6E-78BE-A7FF-3E5D-FDF2EBB6AA24" vid_target="DA2E4B9E-17EC-7C1D-AE65-4D485E9888BD">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-65536</backgroundColor>
+<lineWidth>1</lineWidth>
+</Connector>
+</connectors>
 </Diagram>
