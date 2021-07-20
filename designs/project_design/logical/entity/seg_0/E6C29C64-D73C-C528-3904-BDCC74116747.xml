@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E6C29C64-D73C-C528-3904-BDCC74116747" name="AB_DRIVER_VEHICLE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:11:37 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="LICENSE" id="9B0D42D5-9F5B-F74F-5C01-BDF9F3F8F182">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:11:59 UTC</createdTime>
+<generatorID>48ACE94A-99FA-36D9-6E86-3E0A94B5C175</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<referedAttribute>E716977E-41FE-5D0C-D68F-B220FD7A89A8</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="VIN" id="E52A421C-DFE1-36D7-F5D2-1CA4E57EBA28">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:12:29 UTC</createdTime>
+<generatorID>3B8E6543-32FF-8491-4F67-26535FAEF73D</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<referedAttribute>0BBABE3F-4EBE-6F18-5200-CA8790ADC63C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>17</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>

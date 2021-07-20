@@ -1,0 +1,103 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="54525A1E-79B4-2B11-F95C-0537A0D144DC" name="AB_DRIVER">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:07:01 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="LICENSE" id="E716977E-41FE-5D0C-D68F-B220FD7A89A8">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:07:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DRIVERS LICENSE NUMBER]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>16,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="FNAME" id="A9B2C134-CCA8-B551-4932-C854E220B9BD">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:10:10 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DRIVERS FIRST NAME.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MNAME" id="77748581-50FA-26A4-4D89-88608046738F">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:10:22 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DRIVERS OPTIONAL MIDDLE INITIAL.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="LNAME" id="F71D5923-44C5-94B2-84A6-769E1388DD20">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:10:38 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DRIVERS LAST NAME.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="BIRTHDATE" id="CD665609-ACCF-59CE-2C3C-F9BC48599950">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:11:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DRIVERS BIRTHDATE.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="04658470-5F4C-E909-199D-960708C6162A" name="AB_DRIVER PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:09:47 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>E716977E-41FE-5D0C-D68F-B220FD7A89A8</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,118 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E00AD31B-9F4E-4EAC-7585-296971C92963" name="AB_VEHICLE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:03:07 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="VIN" id="0BBABE3F-4EBE-6F18-5200-CA8790ADC63C">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:03:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE IDENTIFICATION NUMBER]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>17</dataTypeSize>
+<ownDataTypeParameters>17,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MAKE" id="79338FFD-E0A8-85E4-A42A-2402276E5A9E">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:04:33 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE MAKE.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="MODEL" id="02F8F9A3-C234-0545-03C3-FD04CD0EEBE3">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:04:45 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE MODEL.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="YEAR" id="80EB7A97-8309-D109-08DA-2629460F88A2">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:04:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE YEAR.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="STATUS" id="212B1036-B202-D230-6BE2-62D189D4558D">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:05:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[VEHICLE STATUS. 'L' IS LEASED, 'F' IS FINANCED, AND 'O' IS OWNED.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="POLICY_ID" id="708682F5-2BA9-8430-C121-72A24E903A00">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:14:46 UTC</createdTime>
+<generatorID>0651617B-0286-1C6D-8808-9C0ED82563B0</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<referedAttribute>BD0811E2-63C1-27EA-A179-FF054208002C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="01B10932-6E46-A5E1-9B59-1A2A6A9D89D7" name="AB_VEHICLE PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:03:22 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>0BBABE3F-4EBE-6F18-5200-CA8790ADC63C</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

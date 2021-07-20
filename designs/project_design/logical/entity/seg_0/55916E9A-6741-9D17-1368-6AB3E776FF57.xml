@@ -143,6 +143,21 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="POLICY_ID" id="EE4D163E-D4B8-3663-AD4F-61668E6A6FFC">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-20 23:13:52 UTC</createdTime>
+<generatorID>62D17945-ED88-BF6E-C66C-9FF935605127</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<referedAttribute>BD0811E2-63C1-27EA-A179-FF054208002C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="4B0EE151-817C-C7A7-4052-EBDC64E9C68E" name="AB_HOME PK">
