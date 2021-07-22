@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="1CDE3300-A126-450B-D548-BCDEE1E480C6" name="AB_INVOICE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:32:14 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="INVOICE_ID" id="7DEE5AFA-69EC-2386-8084-4C0759E7CF9A">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:32:24 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE INVOICE ID]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="INVOICE_DATE" id="C8B4175A-0BA8-C560-10D9-39D79508A8AB">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:32:41 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DATE GENERATED.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="AMOUNT" id="2FDB6700-B668-B708-B2BD-98A0583F3D83">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:33:13 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE AMOUNT DUE]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,7,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PAYMENT_DATE" id="C7BF9BD8-6A2A-1409-5B3C-0AF77AFADEE4">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:33:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE DATE THE INVOICE IS DUE.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="POLICY_ID" id="5E1643AD-A33B-39A0-E662-2AC96F809B35">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:34:22 UTC</createdTime>
+<generatorID>8B5C8B49-AA29-18D6-3956-0CF18908F1B8</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<referedAttribute>BD0811E2-63C1-27EA-A179-FF054208002C</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TOTAL_PAID" id="16D3D4C9-228E-2EB3-53A1-CD5F5C4C6FD0">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:39:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[The amount that the client has paid so far.]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,9,2</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="5E4225AF-3E80-E8FC-258A-67771606A68F" name="AB_INVOICE PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-22 00:32:34 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7DEE5AFA-69EC-2386-8084-4C0759E7CF9A</attributeRef>
+<attributeRef>C8B4175A-0BA8-C560-10D9-39D79508A8AB</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
