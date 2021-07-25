@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9FEF5535-DEA6-E9D0-21C6-78FF3FDD1522" name="AB_AUTO">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>9FCD0CCF-69DD-30DE-90CF-A552F0EFAA35</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="POLICY_ID" id="9F6049C3-A3F9-E598-8FFD-7DCACA013F05">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE INSURANCE POLICY UNIQUE ID]]></commentInRDBMS>
+<generatorID>BD0811E2-63C1-27EA-A179-FF054208002C</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3C360E78-4402-40BC-9877-268482858118" referredColumn="F0420599-593F-9A67-2B67-C64B885CF6EF"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D31275D5-6817-8F9F-14E0-5365F3D28AB8" name="AB_AUTO_PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>AE0C2030-4DF5-610B-C929-C9446A2F6671</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9F6049C3-A3F9-E598-8FFD-7DCACA013F05"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7D0BF42B-B1C0-1530-49A1-D09AE2DAE055" name="AB_AUTO_AB_POLICY_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>9402C160-F1BD-1006-DCD0-ACB99B286B68</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9F6049C3-A3F9-E598-8FFD-7DCACA013F05"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

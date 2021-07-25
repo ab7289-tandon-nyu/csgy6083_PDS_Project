@@ -1,0 +1,119 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C3F83B4E-2399-0D34-CD44-DFC6F179F2C4" name="AB_VEHICLE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>E00AD31B-9F4E-4EAC-7585-296971C92963</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="VIN" id="FD6CF42F-6CB7-92D3-F16F-433348ED3019">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE IDENTIFICATION NUMBER]]></commentInRDBMS>
+<generatorID>0BBABE3F-4EBE-6F18-5200-CA8790ADC63C</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>17</dataTypeSize>
+<ownDataTypeParameters>17,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MAKE" id="50AD474C-509F-5CB7-ACC0-78A9337C3266">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE MAKE.]]></commentInRDBMS>
+<generatorID>79338FFD-E0A8-85E4-A42A-2402276E5A9E</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MODEL" id="A1A1937E-B94F-E90F-96A6-3BEE77690191">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE MODEL.]]></commentInRDBMS>
+<generatorID>02F8F9A3-C234-0545-03C3-FD04CD0EEBE3</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="YEAR" id="1EB7BF0B-EC09-B2B8-B173-7AB739B0BB5C">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VEHICLE YEAR.]]></commentInRDBMS>
+<generatorID>80EB7A97-8309-D109-08DA-2629460F88A2</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="STATUS" id="4555C13B-B06D-CFB5-21EF-AF1E695C1FA6">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[VEHICLE STATUS. 'L' IS LEASED, 'F' IS FINANCED, AND 'O' IS OWNED.]]></commentInRDBMS>
+<generatorID>212B1036-B202-D230-6BE2-62D189D4558D</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POLICY_ID" id="602B8D6D-00AF-2569-3150-65332B9A3A6C">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE ID OF THE POLICY INSURING THE CAR]]></commentInRDBMS>
+<generatorID>708682F5-2BA9-8430-C121-72A24E903A00</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0B67A6F5-7132-F409-EFFB-F25E71CA2617" referredColumn="9F6049C3-A3F9-E598-8FFD-7DCACA013F05"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1F66F0D3-3545-2245-4CD8-3FD7E01C9E1F" name="AB_VEHICLE_PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>01B10932-6E46-A5E1-9B59-1A2A6A9D89D7</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FD6CF42F-6CB7-92D3-F16F-433348ED3019"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6540D27E-1E2D-A38C-9B4B-57955D4533D6" name="AB_VEHICLE_AB_AUTO_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>0651617B-0286-1C6D-8808-9C0ED82563B0</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="602B8D6D-00AF-2569-3150-65332B9A3A6C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

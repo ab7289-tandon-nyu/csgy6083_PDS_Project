@@ -83,7 +83,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="TOTAL_PAID" id="16D3D4C9-228E-2EB3-53A1-CD5F5C4C6FD0">
 <createdBy>alexbiehl</createdBy>
@@ -126,7 +126,6 @@
 <pk>true</pk>
 <usedAttributes>
 <attributeRef>7DEE5AFA-69EC-2386-8084-4C0759E7CF9A</attributeRef>
-<attributeRef>C8B4175A-0BA8-C560-10D9-39D79508A8AB</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

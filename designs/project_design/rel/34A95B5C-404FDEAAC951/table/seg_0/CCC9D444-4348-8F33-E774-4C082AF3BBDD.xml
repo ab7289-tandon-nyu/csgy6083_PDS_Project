@@ -1,0 +1,82 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CCC9D444-4348-8F33-E774-4C082AF3BBDD" name="AB_DRIVER_VEHICLE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>E6C29C64-D73C-C528-3904-BDCC74116747</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="LICENSE" id="ED7C2771-4A07-C391-EE99-66C225BB6F3C">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE LICENSE OF THE CARS DRIVER]]></commentInRDBMS>
+<generatorID>9B0D42D5-9F5B-F74F-5C01-BDF9F3F8F182</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>16</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C94EB7FC-E2F7-7CAE-7BBD-C4BDB73D9940" referredColumn="C2700C07-0835-964B-7C13-B1353C2B7223"/>
+</associations>
+</Column>
+<Column name="VIN" id="3DC3C521-B614-2463-7239-6EA3BFFCEDE1">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE VIN OF THE INSURED VEHICLE]]></commentInRDBMS>
+<generatorID>E52A421C-DFE1-36D7-F5D2-1CA4E57EBA28</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>17</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="514EC1E8-6E33-7963-9F6E-F7ECD5A68C3D" referredColumn="FD6CF42F-6CB7-92D3-F16F-433348ED3019"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F09E5CE1-969F-6DA8-9283-0864BC29FCF7" name="AB_DRIVER_VEHICLE_PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:10:05 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED7C2771-4A07-C391-EE99-66C225BB6F3C"/>
+<colUsage columnID="3DC3C521-B614-2463-7239-6EA3BFFCEDE1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="29B666A1-789E-82D8-A124-07B4C82282E3" name="AB_DRIVER_VEHICLE_AB_DRIVER_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>48ACE94A-99FA-36D9-6E86-3E0A94B5C175</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED7C2771-4A07-C391-EE99-66C225BB6F3C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="64F002FE-C7C5-847F-9AB3-9FE599E35B02" name="AB_DRIVER_AB_VEHICLE_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<generatorID>3B8E6543-32FF-8491-4F67-26535FAEF73D</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3DC3C521-B614-2463-7239-6EA3BFFCEDE1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
