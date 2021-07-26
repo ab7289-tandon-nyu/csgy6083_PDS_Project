@@ -332,8 +332,25 @@ ALTER TABLE ab_vehicle
 
 -- custom constraints
 
+ALTER TABLE ab_customer
+    ADD CONSTRAINT c_customer_cust_id
+        CHECK (cust_id BETWEEN 0 AND 9999999);
 
+ALTER TABLE ab_policy
+    ADD CONSTRAINT c_policy_policy_id
+        CHECK (policy_id BETWEEN 0 AND 9999999);
 
+ALTER TABLE ab_invoice
+    ADD CONSTRAINT c_invoice_invoice_id
+        CHECK (invoice_id BETWEEN 0 AND 9999999);
+
+ALTER TABLE ab_payment
+    ADD CONSTRAINT c_payment_p_id
+        CHECK (p_id BETWEEN 0 AND 999999999);
+
+ALTER TABLE ab_house
+    ADD CONSTRAINT c_house_home_id
+        CHECK (home_id BETWEEN 0 AND 9999999);
 
 -- end custom constraints
 
