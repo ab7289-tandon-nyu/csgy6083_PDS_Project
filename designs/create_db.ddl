@@ -10,7 +10,7 @@
 -- predefined type, no DDL - XMLTYPE
 
 CREATE TABLE ab_auto (
-    policy_id VARCHAR2(7) NOT NULL
+    policy_id VARCHAR2(7) NOT NULL AUTO_INCREMENT
 );
 
 COMMENT ON COLUMN ab_auto.policy_id IS
@@ -19,7 +19,7 @@ COMMENT ON COLUMN ab_auto.policy_id IS
 ALTER TABLE ab_auto ADD CONSTRAINT ab_auto_pk PRIMARY KEY ( policy_id );
 
 CREATE TABLE ab_customer (
-    cust_id         NUMBER(7) NOT NULL,
+    cust_id         NUMBER(7) NOT NULL AUTO_INCREMENT,
     fname           VARCHAR2(32) NOT NULL,
     mname           VARCHAR2(1),
     lname           VARCHAR2(32) NOT NULL,
@@ -120,7 +120,7 @@ COMMENT ON COLUMN ab_home.policy_id IS
 ALTER TABLE ab_home ADD CONSTRAINT ab_home_pk PRIMARY KEY ( policy_id );
 
 CREATE TABLE ab_house (
-    home_id          NUMBER(7) NOT NULL,
+    home_id          NUMBER(7) NOT NULL AUTO_INCREMENT,
     purchase_date    DATE NOT NULL,
     purchase_value   NUMBER(9, 2) NOT NULL,
     area             NUMBER(7, 2) NOT NULL,
@@ -165,7 +165,7 @@ COMMENT ON COLUMN ab_house.policy_id IS
 ALTER TABLE ab_house ADD CONSTRAINT ab_house_pk PRIMARY KEY ( home_id );
 
 CREATE TABLE ab_invoice (
-    invoice_id    VARCHAR2(7) NOT NULL,
+    invoice_id    VARCHAR2(7) NOT NULL AUTO_INCREMENT,
     invoice_date  DATE NOT NULL,
     amount        NUMBER(7, 2) NOT NULL,
     payment_date  DATE NOT NULL,
@@ -198,7 +198,7 @@ COMMENT ON COLUMN ab_invoice.policy_id IS
 ALTER TABLE ab_invoice ADD CONSTRAINT ab_invoice_pk PRIMARY KEY ( invoice_id );
 
 CREATE TABLE ab_payment (
-    p_id        NUMBER(9) NOT NULL,
+    p_id        NUMBER(9) NOT NULL AUTO_INCREMENT,
     pay_date    DATE NOT NULL,
     amount      NUMBER(7, 2) NOT NULL,
     type        VARCHAR2(6) NOT NULL,
@@ -223,7 +223,7 @@ COMMENT ON COLUMN ab_payment.invoice_id IS
 ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 
 CREATE TABLE ab_policy (
-    policy_id   VARCHAR2(7) NOT NULL,
+    policy_id   VARCHAR2(7) NOT NULL AUTO_INCREMENT,
     type        VARCHAR2(9) NOT NULL,
     start_date  DATE NOT NULL,
     end_date    DATE NOT NULL,
@@ -328,6 +328,21 @@ ALTER TABLE ab_policy
 ALTER TABLE ab_vehicle
     ADD CONSTRAINT ab_vehicle_ab_auto_fk FOREIGN KEY ( policy_id )
         REFERENCES ab_auto ( policy_id );
+
+
+-- my check constraints to the DDL
+
+-- ab_customer constraints
+
+ALTER TABLE ab_customer
+    ADD CONSTRAINT c_cust_cust_id 
+        CHECK (cust_id BETWEEN 0 AND 9999999);
+
+
+
+
+
+-- end 
 
 CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_home BEFORE
     INSERT OR UPDATE OF policy_id ON ab_home
