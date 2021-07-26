@@ -9,14 +9,20 @@
 
 -- predefined type, no DDL - XMLTYPE
 
+CREATE DATABASE IF NOT EXISTS ab_project;
+
+USE ab_project;
+
 CREATE TABLE ab_auto (
-    policy_id NUMBER NOT NULL AUTO_INCREMENT
+    policy_id NUMBER(7) NOT NULL AUTO_INCREMENT
 );
 
 COMMENT ON COLUMN ab_auto.policy_id IS
     'THE INSURANCE POLICY UNIQUE ID';
 
 ALTER TABLE ab_auto ADD CONSTRAINT ab_auto_pk PRIMARY KEY ( policy_id );
+
+USE ab_project;
 
 CREATE TABLE ab_customer (
     cust_id         NUMBER(7) NOT NULL AUTO_INCREMENT,
@@ -71,6 +77,8 @@ COMMENT ON COLUMN ab_customer.zip IS
 
 ALTER TABLE ab_customer ADD CONSTRAINT ab_customer_pk PRIMARY KEY ( cust_id );
 
+USE ab_project;
+
 CREATE TABLE ab_driver (
     license    VARCHAR2(16) NOT NULL,
     fname      VARCHAR2(32) NOT NULL,
@@ -96,6 +104,8 @@ COMMENT ON COLUMN ab_driver.birthdate IS
 
 ALTER TABLE ab_driver ADD CONSTRAINT ab_driver_pk PRIMARY KEY ( license );
 
+USE ab_project;
+
 CREATE TABLE ab_driver_vehicle (
     license  VARCHAR2(16) NOT NULL,
     vin      VARCHAR2(17) NOT NULL
@@ -110,8 +120,10 @@ COMMENT ON COLUMN ab_driver_vehicle.vin IS
 ALTER TABLE ab_driver_vehicle ADD CONSTRAINT ab_driver_vehicle_pk PRIMARY KEY ( license,
                                                                                 vin );
 
+USE ab_project;
+
 CREATE TABLE ab_home (
-    policy_id NUMBER NOT NULL AUTO_INCREMENT
+    policy_id NUMBER(7) NOT NULL AUTO_INCREMENT
 );
 
 COMMENT ON COLUMN ab_home.policy_id IS
@@ -119,17 +131,19 @@ COMMENT ON COLUMN ab_home.policy_id IS
 
 ALTER TABLE ab_home ADD CONSTRAINT ab_home_pk PRIMARY KEY ( policy_id );
 
+USE ab_project;
+
 CREATE TABLE ab_house (
     home_id          NUMBER(7) NOT NULL AUTO_INCREMENT,
     purchase_date    DATE NOT NULL,
     purchase_value   NUMBER(9, 2) NOT NULL,
     area             NUMBER(7, 2) NOT NULL,
     type             VARCHAR2(1) NOT NULL,
-    auto_fire_notif  NUMBER NOT NULL,
-    home_security    NUMBER NOT NULL,
+    auto_fire_notif  NUMBER(1) NOT NULL,
+    home_security    NUMBER(1) NOT NULL,
     pool             VARCHAR2(1),
-    basement         NUMBER NOT NULL,
-    policy_id        NUMBER NOT NULL
+    basement         NUMBER(1) NOT NULL,
+    policy_id        NUMBER(1) NOT NULL
 );
 
 COMMENT ON COLUMN ab_house.home_id IS
@@ -164,14 +178,16 @@ COMMENT ON COLUMN ab_house.policy_id IS
 
 ALTER TABLE ab_house ADD CONSTRAINT ab_house_pk PRIMARY KEY ( home_id );
 
+USE ab_project;
+
 CREATE TABLE ab_invoice (
     invoice_id    NUMBER(7) NOT NULL AUTO_INCREMENT,
     invoice_date  DATE NOT NULL,
     amount        NUMBER(7, 2) NOT NULL,
     payment_date  DATE NOT NULL,
     total_paid    NUMBER(9, 2) NOT NULL,
-    active        NUMBER NOT NULL,
-    policy_id     NUMBER NOT NULL
+    active        NUMBER(1) NOT NULL,
+    policy_id     NUMBER(1) NOT NULL
 );
 
 COMMENT ON COLUMN ab_invoice.invoice_id IS
@@ -197,12 +213,14 @@ COMMENT ON COLUMN ab_invoice.policy_id IS
 
 ALTER TABLE ab_invoice ADD CONSTRAINT ab_invoice_pk PRIMARY KEY ( invoice_id );
 
+USE ab_project;
+
 CREATE TABLE ab_payment (
     p_id        NUMBER(9) NOT NULL AUTO_INCREMENT,
     pay_date    DATE NOT NULL,
     amount      NUMBER(7, 2) NOT NULL,
     type        VARCHAR2(6) NOT NULL,
-    invoice_id  NUMBER NOT NULL
+    invoice_id  NUMBER(1) NOT NULL
 );
 
 COMMENT ON COLUMN ab_payment.p_id IS
@@ -222,6 +240,8 @@ COMMENT ON COLUMN ab_payment.invoice_id IS
 
 ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 
+USE ab_project;
+
 CREATE TABLE ab_policy (
     policy_id   NUMBER(7) NOT NULL AUTO_INCREMENT,
     type        VARCHAR2(9) NOT NULL,
@@ -229,7 +249,7 @@ CREATE TABLE ab_policy (
     end_date    DATE NOT NULL,
     premium     NUMBER(7, 2) NOT NULL,
     status      VARCHAR2(1) NOT NULL,
-    active      NUMBER NOT NULL,
+    active      NUMBER(1) NOT NULL,
     cust_id     NUMBER(7) NOT NULL
 );
 
@@ -262,13 +282,15 @@ COMMENT ON COLUMN ab_policy.cust_id IS
 
 ALTER TABLE ab_policy ADD CONSTRAINT ab_policy_pk PRIMARY KEY ( policy_id );
 
+USE ab_project;
+
 CREATE TABLE ab_vehicle (
     vin        VARCHAR2(17) NOT NULL,
     make       VARCHAR2(32) NOT NULL,
     model      VARCHAR2(32) NOT NULL,
     year       NUMBER(4) NOT NULL,
     status     VARCHAR2(1) NOT NULL,
-    policy_id  NUMBER NOT NULL
+    policy_id  NUMBER(1) NOT NULL
 );
 
 COMMENT ON COLUMN ab_vehicle.vin IS
