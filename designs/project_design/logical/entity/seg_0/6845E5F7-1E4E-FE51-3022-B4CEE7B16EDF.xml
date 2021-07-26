@@ -82,7 +82,7 @@
 <referedAttribute>7DEE5AFA-69EC-2386-8084-4C0759E7CF9A</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypeSize>7</dataTypeSize>
 <ownDataTypeParameters>7,,</ownDataTypeParameters>
 </Attribute>

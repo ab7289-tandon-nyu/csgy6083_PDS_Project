@@ -16,9 +16,9 @@
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="TYPE" id="56A74732-1BB4-D2AC-6BA9-CD18AD813E5C">

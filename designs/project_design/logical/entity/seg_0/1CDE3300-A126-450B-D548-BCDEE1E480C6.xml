@@ -25,9 +25,8 @@
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="INVOICE_DATE" id="C8B4175A-0BA8-C560-10D9-39D79508A8AB">
 <createdBy>alexbiehl</createdBy>
@@ -81,7 +80,8 @@
 <referedAttribute>BD0811E2-63C1-27EA-A179-FF054208002C</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
 <dataTypeSize>7</dataTypeSize>
 <ownDataTypeParameters>7,,</ownDataTypeParameters>
 </Attribute>
