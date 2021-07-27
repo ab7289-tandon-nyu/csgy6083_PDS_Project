@@ -14,7 +14,7 @@ CREATE DATABASE IF NOT EXISTS ab_project;
 USE ab_project;
 
 CREATE TABLE ab_auto (
-    policy_id NUMBER(7) NOT NULL AUTO_INCREMENT
+    policy_id NUMBER(7) NOT NULL
 );
 
 COMMENT ON COLUMN ab_auto.policy_id IS
@@ -25,7 +25,7 @@ ALTER TABLE ab_auto ADD CONSTRAINT ab_auto_pk PRIMARY KEY ( policy_id );
 USE ab_project;
 
 CREATE TABLE ab_customer (
-    cust_id         NUMBER(7) NOT NULL AUTO_INCREMENT,
+    cust_id         NUMBER(7) NOT NULL,
     fname           VARCHAR2(32) NOT NULL,
     mname           VARCHAR2(1),
     lname           VARCHAR2(32) NOT NULL,
@@ -123,7 +123,7 @@ ALTER TABLE ab_driver_vehicle ADD CONSTRAINT ab_driver_vehicle_pk PRIMARY KEY ( 
 USE ab_project;
 
 CREATE TABLE ab_home (
-    policy_id NUMBER(7) NOT NULL AUTO_INCREMENT
+    policy_id NUMBER(7) NOT NULL
 );
 
 COMMENT ON COLUMN ab_home.policy_id IS
@@ -134,7 +134,7 @@ ALTER TABLE ab_home ADD CONSTRAINT ab_home_pk PRIMARY KEY ( policy_id );
 USE ab_project;
 
 CREATE TABLE ab_house (
-    home_id          NUMBER(7) NOT NULL AUTO_INCREMENT,
+    home_id          NUMBER(7) NOT NULL,
     purchase_date    DATE NOT NULL,
     purchase_value   NUMBER(9, 2) NOT NULL,
     area             NUMBER(7, 2) NOT NULL,
@@ -181,7 +181,7 @@ ALTER TABLE ab_house ADD CONSTRAINT ab_house_pk PRIMARY KEY ( home_id );
 USE ab_project;
 
 CREATE TABLE ab_invoice (
-    invoice_id    NUMBER(7) NOT NULL AUTO_INCREMENT,
+    invoice_id    NUMBER(7) NOT NULL,
     invoice_date  DATE NOT NULL,
     amount        NUMBER(7, 2) NOT NULL,
     payment_date  DATE NOT NULL,
@@ -216,7 +216,7 @@ ALTER TABLE ab_invoice ADD CONSTRAINT ab_invoice_pk PRIMARY KEY ( invoice_id );
 USE ab_project;
 
 CREATE TABLE ab_payment (
-    p_id        NUMBER(9) NOT NULL AUTO_INCREMENT,
+    p_id        NUMBER(9) NOT NULL,
     pay_date    DATE NOT NULL,
     amount      NUMBER(7, 2) NOT NULL,
     type        VARCHAR2(6) NOT NULL,
@@ -243,7 +243,7 @@ ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 USE ab_project;
 
 CREATE TABLE ab_policy (
-    policy_id   NUMBER(7) NOT NULL AUTO_INCREMENT,
+    policy_id   NUMBER(7) NOT NULL,
     type        VARCHAR2(9) NOT NULL,
     start_date  DATE NOT NULL,
     end_date    DATE NOT NULL,
