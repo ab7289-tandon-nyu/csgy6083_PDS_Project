@@ -377,7 +377,34 @@ ALTER TABLE ab_house
 -- end custom constraints
 
 CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_home BEFORE
-    INSERT OR UPDATE OF policy_id ON ab_home
+    INSERT OF policy_id ON ab_home
+    FOR EACH ROW
+DECLARE
+    d VARCHAR2(9);
+BEGIN
+    SELECT
+        a.type
+    INTO d
+    FROM
+        ab_policy a
+    WHERE
+        a.policy_id = :new.policy_id;
+
+    IF ( d IS NULL OR d <> 'H' ) THEN
+        raise_application_error(-20223,
+                               'FK AB_HOME_AB_POLICY_FK in Table AB_HOME violates Arc constraint on Table AB_POLICY - discriminator column TYPE doesn''t have value ''H''');
+    END IF;
+
+EXCEPTION
+    WHEN no_data_found THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_home BEFORE
+    UPDATE OF policy_id ON ab_home
     FOR EACH ROW
 DECLARE
     d VARCHAR2(9);
@@ -404,7 +431,34 @@ END;
 /
 
 CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_auto BEFORE
-    INSERT OR UPDATE OF policy_id ON ab_auto
+    INSERT OF policy_id ON ab_auto
+    FOR EACH ROW
+DECLARE
+    d VARCHAR2(9);
+BEGIN
+    SELECT
+        a.type
+    INTO d
+    FROM
+        ab_policy a
+    WHERE
+        a.policy_id = :new.policy_id;
+
+    IF ( d IS NULL OR d <> 'A' ) THEN
+        raise_application_error(-20223,
+                               'FK AB_AUTO_AB_POLICY_FK in Table AB_AUTO violates Arc constraint on Table AB_POLICY - discriminator column TYPE doesn''t have value ''A''');
+    END IF;
+
+EXCEPTION
+    WHEN no_data_found THEN
+        NULL;
+    WHEN OTHERS THEN
+        RAISE;
+END;
+/
+
+CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_auto BEFORE
+    UPDATE OF policy_id ON ab_auto
     FOR EACH ROW
 DECLARE
     d VARCHAR2(9);

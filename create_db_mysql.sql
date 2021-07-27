@@ -443,11 +443,14 @@ ALTER TABLE ab_house
 
 -- SQLINES DEMO *** aints
 
-CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_home BEFORE
-    INSERT OR UPDATE OF policy_id ON ab_home
+delimiter |
+
+DROP TRIGGER IF EXISTS arc_fkarc_2_ab_home |
+CREATE TRIGGER arc_fkarc_2_ab_home BEFORE
+    INSERT ON ab_home
     FOR EACH ROW
-    DECLARE d VARCHAR(9);
 BEGIN
+    DECLARE d VARCHAR(9);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
         a.type
@@ -455,11 +458,44 @@ BEGIN
     FROM
         ab_policy a
     WHERE
-        a.policy_id = :new.policy_id;
+        a.policy_id = new.policy_id;
+
+    IF  d IS NULL OR d <> 'H' THEN
+			-- set msg = 'FK AB_HOME_AB_POLICY_FK in Table AB_HOME violates Arc constraint on Table AB_POLICY - discriminator column TYPE doesn''t have value ''H''';
+			signal sqlstate '45000'
+				SET message_text = 'Cannot associate a home with an insurance policy without type ''H''';
+    END if ;
+
+    DECLARE EXIT HANDLER FOR not found BEGIN
+        NULL;
+    END;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
+        RESIGNAL;
+    END;
+END ;
+|
+delimiter ;
+
+DELIMITER |
+
+DROP TRIGGER IF EXISTS arc_fkarc_2_ab_home |
+CREATE TRIGGER arc_fkarc_2_ab_home BEFORE
+    UPDATE ON ab_home
+    FOR EACH ROW
+BEGIN
+    DECLARE d VARCHAR(9);
+    -- SQLINES LICENSE FOR EVALUATION USE ONLY
+    SELECT
+        a.type
+    INTO d
+    FROM
+        ab_policy a
+    WHERE
+        a.policy_id = new.policy_id;
 
     IF ( d IS NULL OR d <> 'H' ) THEN
-        raise_application_error(-20223,
-                               'FK AB_HOME_AB_POLICY_FK in Table AB_HOME violates Arc constraint on Table AB_POLICY - discriminator column TYPE doesn''t have value ''H''');
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Cannot associate a home with an insurance policy without type ''H''';
     END IF;
 
     DECLARE EXIT HANDLER FOR not found BEGIN
@@ -469,13 +505,17 @@ BEGIN
         RESIGNAL;
     END;
 END;
-/
+|
+DELIMITER ;
 
-CREATE OR REPLACE TRIGGER arc_fkarc_2_ab_auto BEFORE
-    INSERT OR UPDATE OF policy_id ON ab_auto
+DELIMITER |
+
+DROP TRIGGER IF EXISTS arc_fkarc_2_ab_auto |
+CREATE TRIGGER arc_fkarc_2_ab_auto BEFORE
+    INSERT ON ab_auto
     FOR EACH ROW
-    DECLARE d VARCHAR(9);
 BEGIN
+    DECLARE d VARCHAR(9);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
         a.type
@@ -483,11 +523,11 @@ BEGIN
     FROM
         ab_policy a
     WHERE
-        a.policy_id = :new.policy_id;
+        a.policy_id = new.policy_id;
 
     IF ( d IS NULL OR d <> 'A' ) THEN
-        raise_application_error(-20223,
-                               'FK AB_AUTO_AB_POLICY_FK in Table AB_AUTO violates Arc constraint on Table AB_POLICY - discriminator column TYPE doesn''t have value ''A''');
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Cannot associate a vehilce with an insurance policy without type ''A''';
     END IF;
 
     DECLARE EXIT HANDLER FOR not found BEGIN
@@ -497,7 +537,42 @@ BEGIN
         RESIGNAL;
     END;
 END;
-/
+ |
+ 
+ DELIMITER ;
+ 
+ DELIMITER |
+ 
+DROP TRIGGER IF EXISTS arc_fkarc_2_ab_auto |
+CREATE TRIGGER arc_fkarc_2_ab_auto BEFORE
+    UPDATE ON ab_auto
+    FOR EACH ROW
+BEGIN
+    DECLARE d VARCHAR(9);
+    -- SQLINES LICENSE FOR EVALUATION USE ONLY
+    SELECT
+        a.type
+    INTO d
+    FROM
+        ab_policy a
+    WHERE
+        a.policy_id = new.policy_id;
+
+    IF ( d IS NULL OR d <> 'A' ) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'Cannot associate a vehicle with an insurance policy without type ''A''';
+    END IF;
+
+    DECLARE EXIT HANDLER FOR not found BEGIN
+        NULL;
+    END;
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
+        RESIGNAL;
+    END;
+END;
+|
+
+DELIMITER ;
 
 
 
