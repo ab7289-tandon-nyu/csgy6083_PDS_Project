@@ -143,7 +143,7 @@ CREATE TABLE ab_house (
     home_security    NUMBER(1) NOT NULL,
     pool             VARCHAR2(1),
     basement         NUMBER(1) NOT NULL,
-    policy_id        NUMBER(1) NOT NULL
+    policy_id        NUMBER(7) NOT NULL
 );
 
 COMMENT ON COLUMN ab_house.home_id IS
@@ -187,7 +187,7 @@ CREATE TABLE ab_invoice (
     payment_date  DATE NOT NULL,
     total_paid    NUMBER(9, 2) NOT NULL,
     active        NUMBER(1) NOT NULL,
-    policy_id     NUMBER(1) NOT NULL
+    policy_id     NUMBER(7) NOT NULL
 );
 
 COMMENT ON COLUMN ab_invoice.invoice_id IS
@@ -220,7 +220,7 @@ CREATE TABLE ab_payment (
     pay_date    DATE NOT NULL,
     amount      NUMBER(7, 2) NOT NULL,
     type        VARCHAR2(6) NOT NULL,
-    invoice_id  NUMBER(1) NOT NULL
+    invoice_id  NUMBER(7) NOT NULL
 );
 
 COMMENT ON COLUMN ab_payment.p_id IS
@@ -290,7 +290,7 @@ CREATE TABLE ab_vehicle (
     model      VARCHAR2(32) NOT NULL,
     year       NUMBER(4) NOT NULL,
     status     VARCHAR2(1) NOT NULL,
-    policy_id  NUMBER(1) NOT NULL
+    policy_id  NUMBER(7) NOT NULL
 );
 
 COMMENT ON COLUMN ab_vehicle.vin IS
