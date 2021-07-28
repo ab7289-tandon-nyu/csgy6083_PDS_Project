@@ -97,8 +97,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="STREET_1" id="FDA8F891-6588-E716-DACD-62584D9FA8F4">

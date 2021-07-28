@@ -38,7 +38,7 @@ CREATE TABLE ab_customer (
     lname           VARCHAR(32) NOT NULL COMMENT 'THE CUSTOMERS LAST NAME',
     gender          VARCHAR(1) COMMENT 'THE CUSTOMERS GENDER',
     marital_status  VARCHAR(1) NOT NULL COMMENT 'THE CUSTOMERS MARITAL STATUS. EITHER ''M'', ''S'', OR ''W''',
-    cust_type       VARCHAR(1) NOT NULL COMMENT 'THE CUSTOMER TYPE. ''A'' AUTOMOBILE INSURANCE, ''H'' HOME INSURANCE.',
+    cust_type       VARCHAR(2) NOT NULL COMMENT 'THE CUSTOMER TYPE. ''A'' AUTOMOBILE INSURANCE, ''H'' HOME INSURANCE.',
     street_1        VARCHAR(32) NOT NULL COMMENT 'CUSTOMERS STREET ADDRESS',
     street_2        VARCHAR(32) COMMENT 'OPTIONAL CUSTOMER FLOOR/APARTMENT.',
     city            VARCHAR(32) NOT NULL COMMENT 'THE CUSTOMERS ADDRESS CITY.',
@@ -474,6 +474,10 @@ ALTER TABLE ab_customer
 ALTER TABLE ab_customer
 	ADD CONSTRAINT c_customer_marry
 		CHECK (marital_status IN ('M', 'S', 'W'));
+
+ALTER TABLE ab_customer
+	ADD CONSTRAINT c_customer_type
+		CHECK (cust_type IN ('A', 'H', 'AH'));
         
 ALTER TABLE ab_policy
 	ADD CONSTRAINT c_policy_status

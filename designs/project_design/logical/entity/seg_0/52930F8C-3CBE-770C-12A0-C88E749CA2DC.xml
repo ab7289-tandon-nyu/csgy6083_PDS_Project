@@ -112,8 +112,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="STREET_1" id="C5BDC1A4-7160-E162-D351-5AEF97B4FBB8">
 <createdBy>alexbiehl</createdBy>
