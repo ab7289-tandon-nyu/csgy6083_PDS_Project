@@ -14,6 +14,7 @@ CREATE DATABASE IF NOT EXISTS ab_project;
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_auto;
 CREATE TABLE ab_auto (
     policy_id INT NOT NULL COMMENT 'THE INSURANCE POLICY UNIQUE ID'
 );
@@ -24,9 +25,12 @@ COMMENT ON COLUMN ab_auto.policy_id IS
 
 ALTER TABLE ab_auto ADD CONSTRAINT ab_auto_pk PRIMARY KEY ( policy_id );
 
+ALTER TABLE ab_auto MODIFY COLUMN policy_id INT AUTO_INCREMENT UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_customer;
 CREATE TABLE ab_customer (
     cust_id         INT NOT NULL COMMENT 'THE CUSTOMERS UNIQUE ID',
     fname           VARCHAR(32) NOT NULL COMMENT 'THE CUSTOMERS FIRST NAME',
@@ -92,9 +96,12 @@ COMMENT ON COLUMN ab_customer.zip IS
 
 ALTER TABLE ab_customer ADD CONSTRAINT ab_customer_pk PRIMARY KEY ( cust_id );
 
+ALTER TABLE ab_customer MODIFY COLUMN cust_id INT AUTO_INCREMENT UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_driver;
 CREATE TABLE ab_driver (
     license    VARCHAR(16) NOT NULL COMMENT 'THE DRIVERS LICENSE NUMBER',
     fname      VARCHAR(32) NOT NULL COMMENT 'THE DRIVERS FIRST NAME.',
@@ -125,9 +132,12 @@ COMMENT ON COLUMN ab_driver.birthdate IS
 
 ALTER TABLE ab_driver ADD CONSTRAINT ab_driver_pk PRIMARY KEY ( license );
 
+ALTER TABLE ab_driver MODIFY COLUMN license VARCHAR(16) UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_driver_vehicle;
 CREATE TABLE ab_driver_vehicle (
     license  VARCHAR(16) NOT NULL COMMENT 'THE LICENSE OF THE CARS DRIVER',
     vin      VARCHAR(17) NOT NULL COMMENT 'THE VIN OF THE INSURED VEHICLE'
@@ -147,6 +157,7 @@ ALTER TABLE ab_driver_vehicle ADD CONSTRAINT ab_driver_vehicle_pk PRIMARY KEY ( 
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_home;
 CREATE TABLE ab_home (
     policy_id INT NOT NULL COMMENT 'THE INSURANCE POLICY UNIQUE ID'
 );
@@ -160,6 +171,7 @@ ALTER TABLE ab_home ADD CONSTRAINT ab_home_pk PRIMARY KEY ( policy_id );
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_house;
 CREATE TABLE ab_house (
     home_id          INT NOT NULL COMMENT 'THE UNIQUE HOME ID',
     purchase_date    DATETIME NOT NULL COMMENT 'THE DATE THE HOME WAS PURCHASED.',
@@ -215,9 +227,12 @@ COMMENT ON COLUMN ab_house.policy_id IS
 
 ALTER TABLE ab_house ADD CONSTRAINT ab_house_pk PRIMARY KEY ( home_id );
 
+ALTER TABLE ab_house MODIFY COLUMN home_id INT AUTO_INCREMENT UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_invoice;
 CREATE TABLE ab_invoice (
     invoice_id    INT NOT NULL COMMENT 'THE INVOICE ID',
     invoice_date  DATETIME NOT NULL COMMENT 'THE DATE GENERATED.',
@@ -258,9 +273,12 @@ COMMENT ON COLUMN ab_invoice.policy_id IS
 
 ALTER TABLE ab_invoice ADD CONSTRAINT ab_invoice_pk PRIMARY KEY ( invoice_id );
 
+ALTER TABLE ab_invoice MODIFY COLUMN invoice_id INT AUTO_INCREMENT UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_payment;
 CREATE TABLE ab_payment (
     p_id        BIGINT NOT NULL COMMENT 'THE PAYMENT ID',
     pay_date    DATETIME NOT NULL COMMENT 'THE DATE THE PAYMENT WAS MADE',
@@ -291,9 +309,12 @@ COMMENT ON COLUMN ab_payment.invoice_id IS
 
 ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 
+ALTER TABLE ab_payment MODIFY COLUMN P_id BIGINT AUTO_INCREMENT UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_policy;
 CREATE TABLE ab_policy (
     policy_id   INT NOT NULL COMMENT 'THE INSURANCE POLICY UNIQUE ID',
     type        VARCHAR(9) NOT NULL COMMENT 'THE POLICY TYPE. ''A'' FOR AUTO AND ''H'' FOR HOME.',
@@ -306,7 +327,7 @@ CREATE TABLE ab_policy (
 );
 
 ALTER TABLE ab_policy
-    ADD CONSTRAINT ch_inh_ab_policy CHECK ( type IN ( 'A', 'AB_POLICY', 'H' ) );
+    ADD CONSTRAINT ch_inh_ab_policy CHECK ( type IN ( 'A', 'H' ) );
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_policy.policy_id IS
@@ -342,9 +363,12 @@ COMMENT ON COLUMN ab_policy.cust_id IS
 
 ALTER TABLE ab_policy ADD CONSTRAINT ab_policy_pk PRIMARY KEY ( policy_id );
 
+ALTER TABLE ab_policy MODIFY COLUMN policy_id INT AUTO_INCREMENT UNIQUE;
+
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_vehicle;
 CREATE TABLE ab_vehicle (
     vin        VARCHAR(17) NOT NULL COMMENT 'THE VEHICLE IDENTIFICATION NUMBER',
     make       VARCHAR(32) NOT NULL COMMENT 'THE VEHICLE MAKE.',
@@ -379,6 +403,8 @@ COMMENT ON COLUMN ab_vehicle.policy_id IS
     'THE ID OF THE POLICY INSURING THE CAR'; */
 
 ALTER TABLE ab_vehicle ADD CONSTRAINT ab_vehicle_pk PRIMARY KEY ( vin );
+
+ALTER TABLE ab_vehicle MODIFY COLUMN vin VARCHAR(17)  UNIQUE;
 
 ALTER TABLE ab_auto
     ADD CONSTRAINT ab_auto_ab_policy_fk FOREIGN KEY ( policy_id )
@@ -466,13 +492,13 @@ BEGIN
 				SET message_text = 'Cannot associate a home with an insurance policy without type ''H''';
     END if ;
 
-    DECLARE EXIT HANDLER FOR not found BEGIN
-        NULL;
-    END;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
-        RESIGNAL;
-    END;
-END ;
+    -- DECLARE EXIT HANDLER FOR not found BEGIN
+        -- NULL;
+    -- END;
+    -- DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
+        -- RESIGNAL;
+    -- END;
+END 
 |
 delimiter ;
 
@@ -498,13 +524,13 @@ BEGIN
 			SET MESSAGE_TEXT = 'Cannot associate a home with an insurance policy without type ''H''';
     END IF;
 
-    DECLARE EXIT HANDLER FOR not found BEGIN
-        NULL;
-    END;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
-        RESIGNAL;
-    END;
-END;
+    -- DECLARE EXIT HANDLER FOR not found BEGIN
+        -- NULL;
+    -- END;
+    -- DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
+        -- RESIGNAL;
+    -- END;
+END
 |
 DELIMITER ;
 
@@ -530,13 +556,13 @@ BEGIN
 			SET MESSAGE_TEXT = 'Cannot associate a vehilce with an insurance policy without type ''A''';
     END IF;
 
-    DECLARE EXIT HANDLER FOR not found BEGIN
-        NULL;
-    END;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
-        RESIGNAL;
-    END;
-END;
+    -- DECLARE EXIT HANDLER FOR not found BEGIN
+        -- NULL;
+    -- END;
+    -- DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
+        -- RESIGNAL;
+    -- END;
+END
  |
  
  DELIMITER ;
@@ -563,16 +589,20 @@ BEGIN
 			SET MESSAGE_TEXT = 'Cannot associate a vehicle with an insurance policy without type ''A''';
     END IF;
 
-    DECLARE EXIT HANDLER FOR not found BEGIN
-        NULL;
-    END;
-    DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
-        RESIGNAL;
-    END;
-END;
+    -- DECLARE EXIT HANDLER FOR not found BEGIN
+        -- NULL;
+    -- END;
+    -- DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
+        -- RESIGNAL;
+    -- END;
+END
 |
 
 DELIMITER ;
+
+DELIMITER |
+
+-- DROP TRIGGER IF EXISTS 
 
 
 
