@@ -602,8 +602,91 @@ DELIMITER ;
 
 DELIMITER |
 
--- DROP TRIGGER IF EXISTS 
+DROP TRIGGER IF EXISTS tr_policy_insert_end_date |
+CREATE TRIGGER tr_policy_insert_end_date BEFORE
+	INSERT ON ab_policy
+    FOR EACH ROW
+BEGIN
+	DECLARE d DATETIME;
+    SELECT
+		a.start_date
+	INTO d
+    FROM
+		ab_policy a
+	WHERE
+		a.policy_id = NEW.policy_id;
+	
+    IF (d IS NOT NULL AND d > NEW.end_date) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: The end date cannot be before the start date';
+	END IF;
+END
+|
 
+DROP TRIGGER IF EXISTS tr_policy_update_end_date |
+CREATE TRIGGER tr_policy_update_end_date BEFORE
+	UPDATE ON ab_policy
+    FOR EACH ROW
+BEGIN
+	DECLARE d DATETIME;
+    SELECT
+		a.start_date
+	INTO d
+    FROM
+		ab_policy a
+	WHERE
+		a.policy_id = NEW.policy_id;
+	
+    IF (d IS NOT NULL AND d > NEW.end_date) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: The end date cannot be before the start date';
+	END IF;
+END
+|
+
+DROP TRIGGER IF EXISTS tr_policy_insert_start_date |
+CREATE TRIGGER tr_policy_insert_start_date BEFORE
+	INSERT ON ab_policy
+    FOR EACH ROW
+BEGIN
+	DECLARE d DATETIME;
+    SELECT
+		a.end_date
+	INTO d
+    FROM
+		ab_policy a
+	WHERE
+		a.policy_id = NEW.policy_id;
+        
+	IF (d IS NOT NULL AND d < NEW.start_date) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be before the end date';
+	END IF;
+END
+|
+
+DROP TRIGGER IF EXISTS tr_policy_update_start_date |
+CREATE TRIGGER tr_policy_update_start_date BEFORE
+	UPDATE ON ab_policy
+    FOR EACH ROW
+BEGIN
+	DECLARE d DATETIME;
+    SELECT
+		a.end_date
+	INTO d
+    FROM
+		ab_policy a
+	WHERE
+		a.policy_id = NEW.policy_id;
+        
+	IF (d IS NOT NULL AND d < NEW.start_date) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be before the end date';
+	END IF;
+END
+|
+    
+DELIMITER ;
 
 
 -- SQLINES DEMO *** per Data Modeler Summary Report: 
