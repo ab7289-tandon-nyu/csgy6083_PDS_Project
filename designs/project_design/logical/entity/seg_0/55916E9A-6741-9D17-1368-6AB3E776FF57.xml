@@ -72,7 +72,7 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="TYPE" id="21D629E1-473D-764C-C0CD-E885879B7064">
+<Attribute name="HOUSE_TYPE" id="21D629E1-473D-764C-C0CD-E885879B7064">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-20 22:53:00 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE HOME TYPE. 'S' IS SINGLE FAMILY, 'M' IS MULTI FAMILY, 'C' IS CONDOMINIUM, 'T' IS TOWN HOUSE.]]></commentInRDBMS>
@@ -157,7 +157,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
 <dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<ownDataTypeParameters>7,7,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -57,7 +57,7 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="TYPE" id="BCE01490-C172-1981-9423-34780BE62892">
+<Attribute name="PAY_TYPE" id="BCE01490-C172-1981-9423-34780BE62892">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-22 00:38:27 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE METHOD OF PAYMENT; ONE OF 'PayPal', 'Credit', 'Debit', OR 'Check'.]]></commentInRDBMS>

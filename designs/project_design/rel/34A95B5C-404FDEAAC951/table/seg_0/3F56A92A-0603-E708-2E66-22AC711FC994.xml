@@ -47,7 +47,7 @@
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="TYPE" id="BF234BB8-CEE7-F064-89B3-322492D1BDA3">
+<Column name="PAY_TYPE" id="BF234BB8-CEE7-F064-89B3-322492D1BDA3">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-25 21:05:04 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE METHOD OF PAYMENT; ONE OF 'PayPal', 'Credit', 'Debit', OR 'Check'.]]></commentInRDBMS>
@@ -68,9 +68,10 @@
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
 <dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

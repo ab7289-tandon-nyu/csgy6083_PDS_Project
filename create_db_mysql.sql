@@ -8,7 +8,7 @@
 -- SQLINES DEMO *** no DDL - MDSYS.SDO_GEOMETRY
 
 -- SQLINES DEMO *** no DDL - XMLTYPE
-
+DROP DATABASE IF EXISTS ab_project;
 CREATE DATABASE IF NOT EXISTS ab_project;
 
 USE ab_project;
@@ -177,7 +177,7 @@ CREATE TABLE ab_house (
     purchase_date    DATETIME NOT NULL COMMENT 'THE DATE THE HOME WAS PURCHASED.',
     purchase_value   DECIMAL(9, 2) NOT NULL COMMENT 'THE HOMES PURCHASE VALUE.',
     area             DECIMAL(7, 2) NOT NULL COMMENT 'THE HOMES AREA IN SQUARE FEET.',
-    type             VARCHAR(1) NOT NULL COMMENT 'THE HOME TYPE. ''S'' IS SINGLE FAMILY, ''M'' IS MULTI FAMILY, ''C'' IS CONDOMINIUM, ''T'' IS TOWN HOUSE.',
+    house_type             VARCHAR(1) NOT NULL COMMENT 'THE HOME TYPE. ''S'' IS SINGLE FAMILY, ''M'' IS MULTI FAMILY, ''C'' IS CONDOMINIUM, ''T'' IS TOWN HOUSE.',
     auto_fire_notif  TINYINT NOT NULL COMMENT 'WHETHER THE HOUSE HAS AUTOMATIC FIRE NOTIFICATION TO THE FIRE DEPARTMENT.',
     home_security    TINYINT NOT NULL COMMENT 'WHETHER THE HOUSE HAS A SECURITY SYSTEM.',
     pool             VARCHAR(1) COMMENT 'SWIMMING POOL. ''U'' IS UNDERGROUND, ''O'' IS OVERGROUND, ''I'' IS INDOOR, ''M'' IS MULTIPLE, NULL IS NO POOL.',
@@ -283,7 +283,7 @@ CREATE TABLE ab_payment (
     p_id        BIGINT NOT NULL COMMENT 'THE PAYMENT ID',
     pay_date    DATETIME NOT NULL COMMENT 'THE DATE THE PAYMENT WAS MADE',
     amount      DECIMAL(7, 2) NOT NULL COMMENT 'THE PAYMENT INSTALLMENT AMOUNT.',
-    type        VARCHAR(6) NOT NULL COMMENT 'THE METHOD OF PAYMENT; ONE OF ''PayPal'', ''Credit'', ''Debit'', OR ''Check''.',
+    pay_type        VARCHAR(6) NOT NULL COMMENT 'THE METHOD OF PAYMENT; ONE OF ''PayPal'', ''Credit'', ''Debit'', OR ''Check''.',
     invoice_id  INT NOT NULL COMMENT 'THE INVOICE THE PAYMENT IS GOING TOWARDS'
 );
 
@@ -317,11 +317,11 @@ USE ab_project;
 DROP TABLE IF EXISTS ab_policy;
 CREATE TABLE ab_policy (
     policy_id   INT NOT NULL COMMENT 'THE INSURANCE POLICY UNIQUE ID',
-    type        VARCHAR(9) NOT NULL COMMENT 'THE POLICY TYPE. ''A'' FOR AUTO AND ''H'' FOR HOME.',
+    p_type        VARCHAR(9) NOT NULL COMMENT 'THE POLICY TYPE. ''A'' FOR AUTO AND ''H'' FOR HOME.',
     start_date  DATETIME NOT NULL COMMENT 'THE POLICY START DATE',
     end_date    DATETIME NOT NULL COMMENT 'THE POLICY END DATE.',
     premium     DECIMAL(7, 2) NOT NULL COMMENT 'THE PREMIUM AMOUNT.',
-    status      VARCHAR(1) NOT NULL COMMENT 'THE POLICY STATUS. ''C'' FOR CURRENT, ''P'' FOR EXPIRED.',
+    state      VARCHAR(1) NOT NULL COMMENT 'THE POLICY STATUS. ''C'' FOR CURRENT, ''P'' FOR EXPIRED.',
     active      TINYINT NOT NULL COMMENT 'WHETHER THE POLICY IS STILL ACTIVE',
     cust_id     INT NOT NULL COMMENT 'ID OF THE CUSTOMER HOLDING THE POLICY'
 );
@@ -374,7 +374,7 @@ CREATE TABLE ab_vehicle (
     make       VARCHAR(32) NOT NULL COMMENT 'THE VEHICLE MAKE.',
     model      VARCHAR(32) NOT NULL COMMENT 'THE VEHICLE MODEL.',
     year       SMALLINT NOT NULL COMMENT 'THE VEHICLE YEAR.',
-    status     VARCHAR(1) NOT NULL COMMENT 'VEHICLE STATUS. ''L'' IS LEASED, ''F'' IS FINANCED, AND ''O'' IS OWNED.',
+    state     VARCHAR(1) NOT NULL COMMENT 'VEHICLE STATUS. ''L'' IS LEASED, ''F'' IS FINANCED, AND ''O'' IS OWNED.',
     policy_id  INT NOT NULL COMMENT 'THE ID OF THE POLICY INSURING THE CAR'
 );
 
@@ -466,6 +466,50 @@ ALTER TABLE ab_payment
 ALTER TABLE ab_house
     ADD CONSTRAINT c_house_home_id
         CHECK (home_id BETWEEN 0 AND 9999999);
+        
+ALTER TABLE ab_customer
+	ADD CONSTRAINT c_customer_gender
+		CHECK (gender IN ('M', 'F', NULL));
+        
+ALTER TABLE ab_customer
+	ADD CONSTRAINT c_customer_marry
+		CHECK (marital_status IN ('M', 'S', 'W'));
+        
+ALTER TABLE ab_policy
+	ADD CONSTRAINT c_policy_status
+		CHECK (state IN ('C', 'P'));
+        
+ALTER TABLE ab_policy
+	ADD CONSTRAINT c_policy_active
+		CHECK (active IN (1, 0));
+        
+ALTER TABLE ab_house
+	ADD CONSTRAINT c_home_house_type
+		CHECK (house_type IN ('S', 'M', 'C', 'T'));
+        
+ALTER TABLE ab_house
+	ADD CONSTRAINT c_home_fire_notif
+		CHECK (auto_fire_notif IN (0, 1));
+        
+ALTER TABLE ab_house
+	ADD CONSTRAINT c_home_sec_sys
+		CHECK (home_security IN (0, 1));
+        
+ALTER TABLE ab_house
+	ADD CONSTRAINT c_home_pool
+		CHECK (pool IN ('U', 'O', 'I', 'M', NULL));
+        
+ALTER TABLE ab_house
+	ADD CONSTRAINT c_home_basement
+		CHECK (basement IN (0, 1));
+        
+ALTER TABLE ab_payment
+	ADD CONSTRAINT c_payment_type
+		CHECK (pay_type IN ('PayPal', 'Credit', 'Debit', 'Check'));
+        
+ALTER TABLE ab_vehicle
+	ADD CONSTRAINT c_vehicle_status
+		CHECK (state IN ('L', 'F', 'O'));
 
 -- SQLINES DEMO *** aints
 
@@ -479,7 +523,7 @@ BEGIN
     DECLARE d VARCHAR(9);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
-        a.type
+        a.p_type
     INTO d
     FROM
         ab_policy a
@@ -512,7 +556,7 @@ BEGIN
     DECLARE d VARCHAR(9);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
-        a.type
+        a.p_type
     INTO d
     FROM
         ab_policy a
@@ -544,7 +588,7 @@ BEGIN
     DECLARE d VARCHAR(9);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
-        a.type
+        a.p_type
     INTO d
     FROM
         ab_policy a
@@ -685,6 +729,84 @@ BEGIN
 	END IF;
 END
 |
+
+-- trigger to insure that AB_POLICY.PREMIUM is not negative
+
+DROP TRIGGER IF EXISTS tr_policy_ins_prem |
+CREATE TRIGGER tr_policy_ins_prem BEFORE
+	INSERT ON ab_policy
+    FOR EACH ROW
+BEGIN
+	IF (NEW.premium IS NULL OR NEW.premium < 0) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: Cannot create a policy with a negative premium';
+	END IF;
+END
+ |
+ 
+DROP TRIGGER IF EXISTS tr_policy_upd_prem |
+CREATE TRIGGER tr_policy_upd_prem BEFORE
+	UPDATE ON ab_policy
+    FOR EACH ROW
+BEGIN
+	IF (NEW.premium IS NULL OR NEW.premium <= 0) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: Cannot create a policy with a negative premium';
+	END IF;
+END
+ |
+ 
+-- trigger to insure that AB_PAYMENT.AMOUNT is not negative
+
+DROP TRIGGER IF EXISTS tr_pay_ins_amnt |
+CREATE TRIGGER tr_pay_ins_amnt BEFORE
+	INSERT ON ab_payment
+    FOR EACH ROW
+BEGIN
+	IF (NEW.amount IS NULL OR NEW.amount <= 0) THEN
+		SIGNAL SQLSTATE '45000'
+			SET MESSAGE_TEXT = 'DB Error: Cannot create a payment that is 0 or negative';
+	END IF;
+END
+
+|
+
+-- Trigger to deduct a payment from the total owed on an invoice
+
+DROP TRIGGER IF EXISTS tr_pay_ins_updtotal |
+CREATE TRIGGER tr_pay_ins_updtotal BEFORE
+	INSERT ON ab_payment
+    FOR EACH ROW FOLLOWS tr_pay_ins_amnt
+BEGIN
+	UPDATE ab_invoice
+    SET total_paid = total_paid - NEW.amount
+    WHERE invoice_id = NEW.invoice_id;
+END
+
+|
+
+-- Trigger to deactivate an invoice if it has been paid off fully
+
+DROP TRIGGER IF EXISTS tr_invoice_upd_deactivate |
+CREATE TRIGGER tr_invoice_upd_deactivate BEFORE INSERT ON ab_invoice
+FOR EACH ROW
+BEGIN
+	DECLARE d DECIMAL(9,2);
+	SELECT
+		a.total_paid
+	INTO d
+	FROM
+		ab_invoice a
+	WHERE
+		a.invoice_id = NEW.invoice_id;
+		
+	IF (NEW.active <> 0 and d IS NOT NULL AND d <> NEW.total_paid AND NEW.total_paid <= 0) THEN
+		SET NEW.active = 0;
+	END IF;
+END
+
+|
+
     
 DELIMITER ;
 

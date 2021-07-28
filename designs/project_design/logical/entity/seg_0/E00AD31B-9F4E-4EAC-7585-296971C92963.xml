@@ -71,7 +71,7 @@
 <dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="STATUS" id="212B1036-B202-D230-6BE2-62D189D4558D">
+<Attribute name="STATE" id="212B1036-B202-D230-6BE2-62D189D4558D">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-20 23:05:29 UTC</createdTime>
 <commentInRDBMS><![CDATA[VEHICLE STATUS. 'L' IS LEASED, 'F' IS FINANCED, AND 'O' IS OWNED.]]></commentInRDBMS>
@@ -99,7 +99,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
 <dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<ownDataTypeParameters>7,7,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

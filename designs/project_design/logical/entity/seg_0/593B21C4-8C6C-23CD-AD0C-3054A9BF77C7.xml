@@ -31,7 +31,7 @@
 <dataTypePrecision>7</dataTypePrecision>
 <ownDataTypeParameters>,7,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="TYPE" id="FEF2EB8A-886E-5716-7948-9C5670575F5B">
+<Attribute name="P_TYPE" id="FEF2EB8A-886E-5716-7948-9C5670575F5B">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-20 22:39:07 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY TYPE. 'A' FOR AUTO AND 'H' FOR HOME.]]></commentInRDBMS>
@@ -86,7 +86,7 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="STATUS" id="CC34FACD-F2EF-623E-2611-F6FBB9F78C43">
+<Attribute name="STATE" id="CC34FACD-F2EF-623E-2611-F6FBB9F78C43">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-20 22:46:54 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY STATUS. 'C' FOR CURRENT, 'P' FOR EXPIRED.]]></commentInRDBMS>

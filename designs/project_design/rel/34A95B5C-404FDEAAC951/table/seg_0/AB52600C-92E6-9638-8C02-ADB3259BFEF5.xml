@@ -21,7 +21,7 @@
 <ownDataTypeParameters>,7,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="TYPE" id="56A74732-1BB4-D2AC-6BA9-CD18AD813E5C">
+<Column name="P_TYPE" id="56A74732-1BB4-D2AC-6BA9-CD18AD813E5C">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-25 21:05:04 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY TYPE. 'A' FOR AUTO AND 'H' FOR HOME.]]></commentInRDBMS>
@@ -79,7 +79,7 @@
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STATUS" id="F9EDEBF6-E43A-C278-56A6-A5B0C8C5FB1A">
+<Column name="STATE" id="F9EDEBF6-E43A-C278-56A6-A5B0C8C5FB1A">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-25 21:05:04 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY STATUS. 'C' FOR CURRENT, 'P' FOR EXPIRED.]]></commentInRDBMS>

@@ -60,7 +60,7 @@
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STATUS" id="4555C13B-B06D-CFB5-21EF-AF1E695C1FA6">
+<Column name="STATE" id="4555C13B-B06D-CFB5-21EF-AF1E695C1FA6">
 <createdBy>alexbiehl</createdBy>
 <createdTime>2021-07-25 21:05:04 UTC</createdTime>
 <commentInRDBMS><![CDATA[VEHICLE STATUS. 'L' IS LEASED, 'F' IS FINANCED, AND 'O' IS OWNED.]]></commentInRDBMS>
@@ -81,7 +81,8 @@
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
 <dataTypeSize>7</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
