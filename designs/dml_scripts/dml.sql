@@ -483,3 +483,97 @@ VALUES
 	(5877124,"2021-05-20 21:55:13","9118.48","2021-02-25 08:36:53","622.81",0,13);
 
 -- CREATE AB_PAYMENT RECORDS
+
+INSERT INTO ab_payment
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-05-27 06:40:24","7866.05","PayPal",6341841);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id)
+VALUES 
+	("2021-01-28 22:34:18","8130.53","PayPal",5921532);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id)
+VALUES 
+	("2021-03-20 22:18:33","4130.77","Debit",2795747);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-04-24 03:33:12","1535.49","PayPal",1846222);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id)
+VALUES 
+	("2020-10-25 04:58:00","6570.28","Check",1846222);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id)
+VALUES 
+	("2020-12-28 19:12:03","4258.54","Credit",5877124);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-02-01 07:28:50","4473.05","Check",3132230);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-10-26 13:07:34","936.56","PayPal",6238400);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-12-13 23:20:22","7760.62","PayPal",6375949);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-03-10 04:36:05","4781.91","PayPal",435513);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-07-15 18:53:46","1703.17","Credit",4821965);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-01-28 09:49:01","8697.58","Credit",8798943);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-08-18 11:23:53","7820.75","Debit",879003);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-07-14 03:25:05","407.92","Check",3984561);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-08-02 21:45:43","3507.55","PayPal",2932905);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-07-05 05:55:37","361.29","Debit",5918869);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-06-15 13:17:07","2754.62","PayPal",8045261);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-08-29 06:55:23","9276.79","Check",7308349);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-02-11 21:49:15","1289.55","PayPal",6238400);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2021-07-25 13:13:18","5385.38","Debit",183347);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-08-04 14:09:23","5945.09","Check",3132230);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES 
+	("2020-08-26 04:37:02","8912.51","Credit",2515970);
+INSERT INTO ab_payment 
+	(pay_date,amount,pay_type,invoice_id) 
+VALUES ("2021-02-06 02:52:41","7339.07","Credit",1071562);
+
+COMMIT;

@@ -309,7 +309,7 @@ COMMENT ON COLUMN ab_payment.invoice_id IS
 
 ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 
-ALTER TABLE ab_payment MODIFY COLUMN P_id BIGINT AUTO_INCREMENT UNIQUE;
+ALTER TABLE ab_payment MODIFY COLUMN p_id BIGINT AUTO_INCREMENT UNIQUE;
 
 USE ab_project;
 
@@ -327,7 +327,7 @@ CREATE TABLE ab_policy (
 );
 
 ALTER TABLE ab_policy
-    ADD CONSTRAINT ch_inh_ab_policy CHECK ( p_type IN ( 'A', 'H' ) );
+    ADD CONSTRAINT ch_inh_ab_policy CHECK ( p_type IN ( 'A', 'H', 'AH' ) );
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_policy.policy_id IS
