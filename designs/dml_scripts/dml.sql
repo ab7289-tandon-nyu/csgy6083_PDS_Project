@@ -364,7 +364,34 @@ VALUES
 
 -- cfeate AB_DRIVER_VEHILCE records
 
-
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	( 'K3L 4B9', '628047588812090');
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	(  'P4U 5B4', '232743502846810');
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	( 'R2B 3A4', '777460265379710');
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	( 'X9B 0H6', '013385760649101');
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	( 'T0W 3X6', '654499508054630');
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	( 'F1U 5Y6', '496486322739760');
+INSERT INTO ab_driver_vehicle
+	(license, vin)
+VALUES
+	( 'F1U 5Y7', '298326397808910');
 
 -- CREATE AB_INVOICE RECORDS
 
