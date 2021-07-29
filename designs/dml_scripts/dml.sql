@@ -1,5 +1,3 @@
--- ab_customer DML
-
 INSERT INTO ab_customer 
 	(cust_id, fname, mname, lname, gender, marital_status, cust_type, street_1, street_2, city, state, zip) 
 VALUES
@@ -77,4 +75,9 @@ INSERT INTO ab_customer
 VALUES
 	(19, 'Teri', NULL, 'Erlwile', 'F', 'S', 'AH', '126Some Street', NULL, 'Anytown', 'CA', '00000');
 
+-- ab policy inserts
 
+INSERT INTO ab_policy
+	(policy_id, p_type, start_date, end_date, premium, state, active, cust_id)
+VALUES
+	(1, 'AH', SYSDATE-, , , , , ,);
