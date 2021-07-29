@@ -76,6 +76,8 @@ INSERT INTO ab_customer
 	(cust_id, fname, mname, lname, gender, marital_status, cust_type, street_1, street_2, city, state, zip) 
 VALUES
 	(19, 'Teri', NULL, 'Erlwile', 'F', 'S', 'AH', '126Some Street', NULL, 'Anytown', 'CA', '00000');
+    
+COMMIT;
 
 -- ab policy inserts
 
@@ -164,6 +166,8 @@ INSERT INTO ab_policy
 VALUES
 	( 'AH', ADDDATE(SYSDATE(), INTERVAL -7 YEAR), ADDDATE(SYSDATE(), INTERVAL -2 YEAR), 1000.00, 'P', 0, 18);
     
+COMMIT;
+    
 -- insert values into ab_home and ab_auto for their respective policies
 
 INSERT INTO ab_home (policy_id) VALUES (1);
@@ -202,3 +206,80 @@ INSERT INTO ab_auto (policy_id) VALUES (18);
 INSERT INTO ab_auto (policy_id) VALUES (19);
 INSERT INTO ab_auto (policy_id) VALUES (20);
 INSERT INTO ab_auto (policy_id) VALUES (21);
+
+COMMIT;
+
+-- INSERT INTO AB_HOUSE
+
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -1 YEAR), 1000000.00, 2000, 'S', 1, 1, NULL, 0, 1);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -2 YEAR), 2500000.00, 2000, 'M', 1, 1, 'O', 0, 2);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -7 YEAR), 1500000.00, 2000, 'C', 1, 1, NULL, 0, 3);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -3 YEAR), 1000000.00, 2000, 'T', 1, 1, 'U', 0, 5);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -9 YEAR), 1000000.00, 2000, 'S', 1, 1, NULL, 0, 6);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -20 YEAR), 1000000.00, 2000, 'M', 1, 1, NULL, 0, 7);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -40 YEAR), 1000000.00, 2000, 'S', 1, 1, NULL, 0, 9);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -15 YEAR), 1000000.00, 2000, 'S', 1, 1, NULL, 0, 10);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -20 YEAR), 100000.00, 2000, 'S', 1, 1, NULL, 0, 12);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -3 YEAR), 1520000.00, 2000, 'S', 1, 1, NULL, 0, 13);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -8 YEAR), 5000000.00, 2000, 'S', 1, 1, 'I', 0, 14);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -2 YEAR), 1000000.00, 2000, 'S', 1, 1, 'O', 0, 15);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -1 YEAR), 250000.00, 2000, 'S', 1, 1, 'M', 0, 16);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -10 YEAR), 1000000.00, 2000, 'S', 1, 1, NULL, 0, 17);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -13 YEAR), 500000.00, 2000, 'S', 1, 1, 'U', 0, 18);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -1 YEAR), 2000000.00, 2000, 'S', 1, 1, 'M', 0, 20);
+INSERT INTO ab_house
+	(purchase_date, purchase_value, area, house_type, auto_fire_notif, home_security, pool, basement, policy_id)
+VALUES
+	(ADDDATE(SYSDATE(), INTERVAL -1 YEAR), 1000000.00, 2000, 'S', 1, 1, 'O', 0, 21);
+    
+COMMIT;
+
+
