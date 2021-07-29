@@ -327,7 +327,7 @@ CREATE TABLE ab_policy (
 );
 
 ALTER TABLE ab_policy
-    ADD CONSTRAINT ch_inh_ab_policy CHECK ( type IN ( 'A', 'H' ) );
+    ADD CONSTRAINT ch_inh_ab_policy CHECK ( p_type IN ( 'A', 'H' ) );
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_policy.policy_id IS
@@ -447,25 +447,25 @@ ALTER TABLE ab_vehicle
 
 -- custom constraints
 
-ALTER TABLE ab_customer
-    ADD CONSTRAINT c_customer_cust_id
-        CHECK (cust_id BETWEEN 0 AND 9999999);
+-- ALTER TABLE ab_customer
+--    ADD CONSTRAINT c_customer_cust_id
+--        CHECK (cust_id BETWEEN 0 AND 9999999);
 
-ALTER TABLE ab_policy
-    ADD CONSTRAINT c_policy_policy_id
-        CHECK (policy_id BETWEEN 0 AND 9999999);
+-- ALTER TABLE ab_policy
+    -- ADD CONSTRAINT c_policy_policy_id
+        -- CHECK (policy_id BETWEEN 0 AND 9999999);
 
-ALTER TABLE ab_invoice
-    ADD CONSTRAINT c_invoice_invoice_id
-        CHECK (invoice_id BETWEEN 0 AND 9999999);
+-- ALTER TABLE ab_invoice
+    -- ADD CONSTRAINT c_invoice_invoice_id
+        -- CHECK (invoice_id BETWEEN 0 AND 9999999);
 
-ALTER TABLE ab_payment
-    ADD CONSTRAINT c_payment_p_id
-        CHECK (p_id BETWEEN 0 AND 999999999);
+-- ALTER TABLE ab_payment
+    -- ADD CONSTRAINT c_payment_p_id
+        -- CHECK (p_id BETWEEN 0 AND 999999999);
 
-ALTER TABLE ab_house
-    ADD CONSTRAINT c_house_home_id
-        CHECK (home_id BETWEEN 0 AND 9999999);
+-- ALTER TABLE ab_house
+    -- ADD CONSTRAINT c_house_home_id
+        -- CHECK (home_id BETWEEN 0 AND 9999999);
         
 ALTER TABLE ab_customer
 	ADD CONSTRAINT c_customer_gender
@@ -613,9 +613,9 @@ BEGIN
 END
  |
  
- DELIMITER ;
+DELIMITER ;
  
- DELIMITER |
+DELIMITER |
  
 DROP TRIGGER IF EXISTS arc_fkarc_2_ab_auto |
 CREATE TRIGGER arc_fkarc_2_ab_auto BEFORE
@@ -708,7 +708,7 @@ BEGIN
         
 	IF (d IS NOT NULL AND d < NEW.start_date) THEN
 		SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be before the end date';
+			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be after the end date';
 	END IF;
 END
 |
@@ -729,7 +729,7 @@ BEGIN
         
 	IF (d IS NOT NULL AND d < NEW.start_date) THEN
 		SIGNAL SQLSTATE '45000'
-			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be before the end date';
+			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be after the end date';
 	END IF;
 END
 |
