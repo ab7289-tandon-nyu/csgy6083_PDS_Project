@@ -283,3 +283,91 @@ VALUES
 COMMIT;
 
 
+-- Create AB_Driver records
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'K3L 4B9', 'Raphael', NULL, 'Owens', '2021-02-14 15:36:27');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'P4U 5B4', 'Berk', 'D', 'Meadows', '2021-06-25 17:24:48');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'R2B 3A4', 'Jonah', NULL, 'Potts', '2020-08-29 20:25:25');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'X9B 0H6', 'Patience', NULL, 'Nelson', '2020-09-10 02:06:27');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'S0I 2S3', 'Morgan', 'B', 'Brennan', '2020-09-04 11:29:41');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'A9M 4Q6', 'Kristen', NULL, 'Dudley', '1990-11-03 23:32:21');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'Z2D 4D3', 'Randall', 'R', 'Mcbride', '2000-09-14 05:25:04');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'Z2X 2Y1', 'Merrill', NULL, 'Waters', '2001-05-06 04:01:02');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'T0W 3X6', 'Alec', NULL, 'Estrada', '1980-08-30 14:37:30');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'F1U 5Y6', 'Steve', 'M', 'Guy', '1985-09-20 00:00:00');
+INSERT INTO ab_driver
+	(license, fname, mname, lname, birthdate)
+VALUES
+	( 'F1U 5Y7', 'Lucy', 'F', 'Chick', '2000-09-09 06:30:00');
+    
+COMMIT;
+
+-- Create AB_Vehicle records
+
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '628047588812090', 'Honda', 'Civic', 2012, 'O', 1);
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '232743502846810', 'Honda', 'Accord', 2019, 'L', 2);
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '777460265379710', 'Tesla', 'Model 3', 2000, 'F', 3);
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '013385760649101', 'Tesla', 'Model S', 1990, 'O', 4);
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '654499508054630', 'Audi', 'A8', 1995, 'L', 5);
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '496486322739760', 'Audi', 'A6', 2000, 'L', 6);
+INSERT INTO ab_vehicle
+	(vin, make, model, year, state, policy_id)
+VALUES
+	( '298326397808910', 'Mazda', 'Miata', 1980, 'O', 8);
+
+-- cfeate AB_DRIVER_VEHILCE records
+
+
+
+-- CREATE AB_INVOICE RECORDS
+
+
+
+-- CREATE AB_PAYMENT RECORDS
