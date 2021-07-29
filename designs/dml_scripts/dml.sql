@@ -395,6 +395,91 @@ VALUES
 
 -- CREATE AB_INVOICE RECORDS
 
-
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(6341841,"2021-05-11 03:28:43","6466.74","2021-03-25 09:34:57","738.35",0,8);
+INSERT INTO 
+	ab_invoice 
+(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(6375949,"2020-09-04 00:35:36","2089.72","2020-09-11 20:21:11","298.77",1,12);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(435513,"2020-11-19 23:22:12","5572.22","2020-09-13 08:40:27","998.58",0,10);
+INSERT INTO 
+	ab_invoice 
+(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(4821965,"2020-12-13 09:58:36","5247.20","2020-09-13 15:13:12","156.12",1,15);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(8798943,"2021-07-19 20:37:17","5491.30","2021-07-18 23:33:13","891.48",0,19);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(879003,"2020-11-29 01:43:54","1155.29","2021-03-29 21:46:12","631.54",1,12);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(3984561,"2020-09-02 14:45:43","6974.45","2021-02-10 00:50:43","769.10",0,6);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(2932905,"2020-08-06 06:03:11","3130.73","2020-10-16 19:24:14","117.46",0,12);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(5918869,"2021-04-01 00:39:51","2229.73","2021-07-05 08:34:25","785.56",1,17);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(8045261,"2021-02-13 11:17:39","3539.08","2021-06-28 03:40:31","469.49",0,16);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(7308349,"2020-10-18 03:03:01","1333.44","2020-11-01 20:17:20","739.16",0,7);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(6238400,"2020-08-24 16:52:28","1713.31","2020-08-25 22:11:33","119.99",1,9);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(183347,"2021-02-07 00:58:41","4129.73","2020-09-12 04:22:52","836.25",0,15);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(3132230,"2021-04-28 00:49:58","3361.45","2021-01-28 19:56:20","283.68",1,6);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(2515970,"2020-09-20 05:49:50","2691.34","2021-05-16 21:22:17","962.56",1,13);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(1071562,"2021-05-08 22:50:11","9202.28","2021-05-16 08:41:44","170.70",1,5);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(5921532,"2021-04-21 01:31:14","6068.50","2021-04-26 04:20:07","987.32",1,15);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(2795747,"2021-03-18 14:45:16","7546.56","2020-08-25 16:23:48","881.80",0,2);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(9273101,"2021-05-08 11:06:11","6820.46","2021-05-30 09:49:41","471.18",1,1);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(1846222,"2020-07-30 16:32:45","6035.68","2020-10-03 16:46:53","692.43",1,1);
+INSERT INTO ab_invoice 
+	(invoice_id,invoice_date,amount,payment_date,total_paid,active,policy_id) 
+VALUES 
+	(5877124,"2021-05-20 21:55:13","9118.48","2021-02-25 08:36:53","622.81",0,13);
 
 -- CREATE AB_PAYMENT RECORDS
