@@ -466,6 +466,8 @@ ALTER TABLE ab_vehicle
 -- ALTER TABLE ab_house
     -- ADD CONSTRAINT c_house_home_id
         -- CHECK (home_id BETWEEN 0 AND 9999999);
+
+ALTER TABLE ab_invoice ALTER total_paid SET DEFAULT 0;
         
 ALTER TABLE ab_customer
 	ADD CONSTRAINT c_customer_gender
@@ -783,7 +785,7 @@ CREATE TRIGGER tr_pay_ins_updtotal BEFORE
     FOR EACH ROW FOLLOWS tr_pay_ins_amnt
 BEGIN
 	UPDATE ab_invoice
-    SET total_paid = total_paid - NEW.amount
+    SET total_paid = total_paid + NEW.amount
     WHERE invoice_id = NEW.invoice_id;
 END
 
@@ -796,15 +798,16 @@ CREATE TRIGGER tr_invoice_upd_deactivate BEFORE INSERT ON ab_invoice
 FOR EACH ROW
 BEGIN
 	DECLARE d DECIMAL(9,2);
+    DECLARE a DECIMAL(7,2);
 	SELECT
-		a.total_paid
-	INTO d
+		a.total_paid, a.amount
+	INTO d, a
 	FROM
 		ab_invoice a
 	WHERE
 		a.invoice_id = NEW.invoice_id;
 		
-	IF (NEW.active <> 0 and d IS NOT NULL AND d <> NEW.total_paid AND NEW.total_paid <= 0) THEN
+	IF (NEW.active <> 0 and d IS NOT NULL AND d <> NEW.total_paid AND NEW.total_paid >= a) THEN
 		SET NEW.active = 0;
 	END IF;
 END
