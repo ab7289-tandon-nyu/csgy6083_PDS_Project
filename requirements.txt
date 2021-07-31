@@ -4,3 +4,4 @@ coveralls==3.2.0
 environs==9.3.2
 pytest==6.2.4
 tox==3.24.1
+Flask-MySQL==1.5.2
