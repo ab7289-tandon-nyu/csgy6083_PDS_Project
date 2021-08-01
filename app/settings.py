@@ -8,3 +8,7 @@ env.read_env()
 
 ENV = env.str("FLASK_ENV")
 DEBUG = ENV == "dev"
+FLASK_APP = env.str("FLASK_APP")
+SECRET_KEY = env.str("SECRET_KEY")
+
+print(f"flask app: {FLASK_APP}")
