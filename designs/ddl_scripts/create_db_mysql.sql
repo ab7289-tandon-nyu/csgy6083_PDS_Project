@@ -468,11 +468,11 @@ ALTER TABLE ab_vehicle
         -- CHECK (home_id BETWEEN 0 AND 9999999);
 
 ALTER TABLE ab_invoice ALTER total_paid SET DEFAULT 0;
-        
+
 ALTER TABLE ab_customer
 	ADD CONSTRAINT c_customer_gender
 		CHECK (gender IN ('M', 'F', NULL));
-        
+
 ALTER TABLE ab_customer
 	ADD CONSTRAINT c_customer_marry
 		CHECK (marital_status IN ('M', 'S', 'W'));
@@ -480,39 +480,39 @@ ALTER TABLE ab_customer
 ALTER TABLE ab_customer
 	ADD CONSTRAINT c_customer_type
 		CHECK (cust_type IN ('A', 'H', 'AH'));
-        
+
 ALTER TABLE ab_policy
 	ADD CONSTRAINT c_policy_status
 		CHECK (state IN ('C', 'P'));
-        
+
 ALTER TABLE ab_policy
 	ADD CONSTRAINT c_policy_active
 		CHECK (active IN (1, 0));
-        
+
 ALTER TABLE ab_house
 	ADD CONSTRAINT c_home_house_type
 		CHECK (house_type IN ('S', 'M', 'C', 'T'));
-        
+
 ALTER TABLE ab_house
 	ADD CONSTRAINT c_home_fire_notif
 		CHECK (auto_fire_notif IN (0, 1));
-        
+
 ALTER TABLE ab_house
 	ADD CONSTRAINT c_home_sec_sys
 		CHECK (home_security IN (0, 1));
-        
+
 ALTER TABLE ab_house
 	ADD CONSTRAINT c_home_pool
 		CHECK (pool IN ('U', 'O', 'I', 'M', NULL));
-        
+
 ALTER TABLE ab_house
 	ADD CONSTRAINT c_home_basement
 		CHECK (basement IN (0, 1));
-        
+
 ALTER TABLE ab_payment
 	ADD CONSTRAINT c_payment_type
 		CHECK (pay_type IN ('PayPal', 'Credit', 'Debit', 'Check'));
-        
+
 ALTER TABLE ab_vehicle
 	ADD CONSTRAINT c_vehicle_status
 		CHECK (state IN ('L', 'F', 'O'));
@@ -548,7 +548,7 @@ BEGIN
     -- DECLARE EXIT HANDLER FOR SQLEXCEPTION BEGIN
         -- RESIGNAL;
     -- END;
-END 
+END
 |
 delimiter ;
 
@@ -614,11 +614,11 @@ BEGIN
     -- END;
 END
  |
- 
+
 DELIMITER ;
- 
+
 DELIMITER |
- 
+
 DROP TRIGGER IF EXISTS arc_fkarc_2_ab_auto |
 CREATE TRIGGER arc_fkarc_2_ab_auto BEFORE
     UPDATE ON ab_auto
@@ -665,7 +665,7 @@ BEGIN
 		ab_policy a
 	WHERE
 		a.policy_id = NEW.policy_id;
-	
+
     IF (d IS NOT NULL AND d > NEW.end_date) THEN
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'DB Error: The end date cannot be before the start date';
@@ -686,7 +686,7 @@ BEGIN
 		ab_policy a
 	WHERE
 		a.policy_id = NEW.policy_id;
-	
+
     IF (d IS NOT NULL AND d > NEW.end_date) THEN
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'DB Error: The end date cannot be before the start date';
@@ -707,7 +707,7 @@ BEGIN
 		ab_policy a
 	WHERE
 		a.policy_id = NEW.policy_id;
-        
+
 	IF (d IS NOT NULL AND d < NEW.start_date) THEN
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be after the end date';
@@ -728,7 +728,7 @@ BEGIN
 		ab_policy a
 	WHERE
 		a.policy_id = NEW.policy_id;
-        
+
 	IF (d IS NOT NULL AND d < NEW.start_date) THEN
 		SIGNAL SQLSTATE '45000'
 			SET MESSAGE_TEXT = 'DB Error: The Start date cannot be after the end date';
@@ -749,7 +749,7 @@ BEGIN
 	END IF;
 END
  |
- 
+
 DROP TRIGGER IF EXISTS tr_policy_upd_prem |
 CREATE TRIGGER tr_policy_upd_prem BEFORE
 	UPDATE ON ab_policy
@@ -761,7 +761,7 @@ BEGIN
 	END IF;
 END
  |
- 
+
 -- trigger to insure that AB_PAYMENT.AMOUNT is not negative
 
 DROP TRIGGER IF EXISTS tr_pay_ins_amnt |
@@ -806,7 +806,7 @@ BEGIN
 		ab_invoice a
 	WHERE
 		a.invoice_id = NEW.invoice_id;
-		
+
 	IF (NEW.active <> 0 and d IS NOT NULL AND d <> NEW.total_paid AND NEW.total_paid >= a) THEN
 		SET NEW.active = 0;
 	END IF;
@@ -814,12 +814,12 @@ END
 
 |
 
-    
+
 DELIMITER ;
 
 
--- SQLINES DEMO *** per Data Modeler Summary Report: 
--- 
+-- SQLINES DEMO *** per Data Modeler Summary Report:
+--
 -- SQLINES DEMO ***                        10
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                        20
@@ -848,15 +848,15 @@ DELIMITER ;
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                         0
--- 
+--
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                         0
--- 
+--
 -- SQLINES DEMO ***                         0
--- 
+--
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO *** A                       0
 -- SQLINES DEMO *** T                       0
--- 
+--
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                         0
