@@ -6,7 +6,7 @@ import mysql.connector
 class DBManager:
     def __init__(
         self,
-        database="pds",
+        database="ab_project",
         host="db",
         user="root",
         password_file=None,
