@@ -1,10 +1,6 @@
 from setuptools import find_packages, setup
 
-dependencies = [
-    "Flask==2.0.1"
-    "environs==9.3.2"
-    "Flask-MySQL==1.5.2"
-]
+dependencies = ["Flask==2.0.1" "environs==9.3.2" "Flask-MySQL==1.5.2"]
 
 test_dependencies = [
     "black==21.7b0",
@@ -13,7 +9,7 @@ test_dependencies = [
     "tox==3.24.1",
     "isort==5.9.3",
     "pytest-cov==2.12.1",
-    "flake8==3.9.2"
+    "flake8==3.9.2",
 ]
 
 setup(
@@ -24,7 +20,8 @@ setup(
     author="Alex Biehl",
     license="MIT",
     install_requires=dependencies,
+    setup_requires=["isort", "seed-isort-config==2.2.0"],
     include_package_data=True,
     tests_requires=test_dependencies,
-    test_suite="tests"
+    test_suite="tests",
 )
