@@ -6,5 +6,5 @@ from environs import Env
 env = Env()
 env.read_env()
 
-ENV = env.str("ENV")
+ENV = env.str("FLASK_ENV")
 DEBUG = ENV == "dev"
