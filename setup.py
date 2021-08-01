@@ -1,6 +1,9 @@
 from setuptools import find_packages, setup
 
-dependencies = ["Flask==2.0.1" "environs==9.3.2" "Flask-MySQL==1.5.2"]
+dependencies = [
+    "Flask==2.0.1" "environs==9.3.2" "Flask-MySQL==1.5.2",
+    "mysql-connector==2.2.9",
+]
 
 test_dependencies = [
     "black==21.7b0",

@@ -5,6 +5,7 @@ flake8==3.9.2
 Flask==2.0.1
 Flask-MySQL==1.5.2
 isort==5.9.3
+mysql-connector-2.2.9
 pre-commit==2.13.0
 pytest==6.2.4
 pytest-cov==2.12.1
