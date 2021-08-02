@@ -16,7 +16,6 @@ services:
             - app-net
         volumes:
             - db-data:/var/lib/mysql
-            # - ./db/conf:/etc/mysql/conf.d
         environment:
             - MYSQL_DATABASE=ab_project
             # - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password#
@@ -42,14 +41,6 @@ services:
         depends_on:
             db:
                 condition: service_healthy
-
-    adminer:
-        image: adminer
-        restart: always
-        ports:
-            - 8080:8080
-        networks:
-            - app-net
 
 networks:
     app-net:
