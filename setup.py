@@ -5,6 +5,7 @@ dependencies = [
     "environs==9.3.2",
     "Flask-MySQL==1.5.2",
     "mysql-connector==2.2.9",
+    "cryptography==3.4.7",
 ]
 
 test_dependencies = [
