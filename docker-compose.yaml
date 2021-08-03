@@ -10,16 +10,16 @@ services:
             interval: 3s
             retries: 5
             start_period: 30s
-        # secrets:
-            # - db-password
+        secrets:
+            - db-password
         networks:
             - app-net
         volumes:
             - db-data:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=ab_project
-            # - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password#
-            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+            # - MYSQL_ROOT_PASSWORD=password
             - MYSQL_ROOT_HOST=host.docker.internal
             - MYSQL_ROOT_HOST=%
         ports:
@@ -48,6 +48,6 @@ networks:
 
 volumes:
     db-data:
-# secrets:
-    # db-password:
-        # file: designs/db_password.txt
+secrets:
+    db-password:
+        file: db/db_password.txt
