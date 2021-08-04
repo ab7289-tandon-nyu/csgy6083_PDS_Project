@@ -5,4 +5,12 @@ from app.app import create_app
 
 @pytest.fixture
 def app():
-    app = create_app({"DEBUG": True, "TESTING": True})  # noqa : F841
+    """Create application for the tests."""
+    _app = create_app("tests.settings")
+    # _app.logger.setLevel(logging.CRITICAL)
+    ctx = _app.test_request_context()
+    ctx.push()
+
+    yield _app
+
+    ctx.pop()
