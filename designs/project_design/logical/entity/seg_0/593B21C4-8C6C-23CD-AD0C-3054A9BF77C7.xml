@@ -114,20 +114,20 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="CUST_ID" id="017E6760-581A-ADF3-EC69-0E8D393CDE0A">
+<Attribute name="USER_ID" id="F37541BE-AFCB-B100-AA53-017E8D5C4D16">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 20:54:10 UTC</createdTime>
+<createdTime>2021-08-04 22:03:11 UTC</createdTime>
 <generatorID>410E7772-1A8C-D524-57D8-53708EE4A01D</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <engineerTo>
 <item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
 </engineerTo>
-<referedAttribute>BED4659B-7705-8DE1-5B8C-BD198BDEFD26</referedAttribute>
+<referedAttribute>7F90B6DE-35FF-3DE4-EA18-B4344FDDE960</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
-<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

@@ -1,0 +1,97 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="97FD631F-84D9-79B2-5B1B-AEA5F2EB992A" name="AB_USER">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>673D393B-4CFD-275A-8130-C83DB455729A</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="USER_ID" id="8255641A-84FE-1E39-D7F5-E9AE22616569">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER UNIQUE IDENTIFIER]]></commentInRDBMS>
+<generatorID>7F90B6DE-35FF-3DE4-EA18-B4344FDDE960</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_NAME" id="2605E27C-9159-6386-E545-2765439F611E">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER LOGIN NAME]]></commentInRDBMS>
+<generatorID>ECB75FF2-A758-4CEF-7922-3F57348E2461</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="BC39A845-7D0C-0AB3-EFA7-4CD29A5B3859">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER EMAIL ADDRESS]]></commentInRDBMS>
+<generatorID>0108BBA6-FEB9-210A-F9A5-98AB58B9546E</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="PASSWORD" id="0561BA33-E67E-1338-0BCB-4A260D10E32F">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER PASSWORD]]></commentInRDBMS>
+<generatorID>A6A8B865-C365-AD2B-E9CE-DD912C9CAF8D</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="TYPE" id="965D4043-A57D-F505-3093-9243089D8277">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER TYPE]]></commentInRDBMS>
+<generatorID>96577A33-A28B-5586-5EA8-152A1A23C792</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<constraintName>CH_INH_AB_USER</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<listOfValues>
+<valueDef value="AB_USER" description="entity AB_USER"/>
+<valueDef value="C" description="entity AB_CUSTOMER"/>
+</listOfValues>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isDiscriminatorColumn>true</isDiscriminatorColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1320285A-4A34-E2FB-82B2-6CF0DF5459EA" name="AB_USER_PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>B6A67D62-CBD7-C61D-8F8D-88C20C1CEA24</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8255641A-84FE-1E39-D7F5-E9AE22616569"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

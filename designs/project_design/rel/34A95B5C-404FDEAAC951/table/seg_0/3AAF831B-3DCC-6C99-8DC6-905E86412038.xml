@@ -1,29 +1,32 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="41E4791C-7BC6-A84D-E40A-1C5571AFCB70" name="AB_CUSTOMER">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3AAF831B-3DCC-6C99-8DC6-905E86412038" name="AB_CUSTOMER">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>52930F8C-3CBE-770C-12A0-C88E749CA2DC</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="CUST_ID" id="BBF27783-2C46-8B55-0D46-B7220A2CFBCA">
+<Column name="USER_ID" id="B2217165-FBD7-F3C8-304E-643615B5C451">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[THE CUSTOMERS UNIQUE ID]]></commentInRDBMS>
-<generatorID>BED4659B-7705-8DE1-5B8C-BD198BDEFD26</generatorID>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER UNIQUE IDENTIFIER]]></commentInRDBMS>
+<generatorID>7F90B6DE-35FF-3DE4-EA18-B4344FDDE960</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
-<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DA66C444-B418-F7B4-5AD1-BBB5F154430F" referredColumn="8255641A-84FE-1E39-D7F5-E9AE22616569"/>
+</associations>
 </Column>
-<Column name="FNAME" id="091491CC-1864-4A68-F73C-C6BC69197EFA">
+<Column name="FNAME" id="2FD41718-6BCB-524A-E239-1338464E9143">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS FIRST NAME]]></commentInRDBMS>
 <generatorID>ADDEECD2-3112-A043-3CC5-344A9C53E756</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -34,9 +37,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="MNAME" id="7FD4F254-76A2-26E2-E9A7-593AD8FFD32D">
+<Column name="MNAME" id="09C545CD-7982-C445-A38B-01CCEEBD0E73">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS MIDDLE INITIAL]]></commentInRDBMS>
 <generatorID>C1C258B4-F1DA-66CC-FFCE-03ADCFF78B1A</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -48,9 +51,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="LNAME" id="3C39CC4F-0E0E-D03E-1B25-15CBEE3CA037">
+<Column name="LNAME" id="9F1C10F6-4C69-4D30-34D7-5A977BCDD856">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS LAST NAME]]></commentInRDBMS>
 <generatorID>332038AA-DC78-8974-E22F-FC86E134F060</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -61,9 +64,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="GENDER" id="B8661C94-C512-BDF5-7F46-62A0FB800D13">
+<Column name="GENDER" id="FE619D59-4582-5EE3-4213-B4B2C0085A31">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS GENDER]]></commentInRDBMS>
 <generatorID>A7EE94D8-979C-8F3E-55DA-D13F18D160D3</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -75,9 +78,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="MARITAL_STATUS" id="CF287CA8-5331-3977-7D69-20B5FB3F4387">
+<Column name="MARITAL_STATUS" id="ACE338C9-293C-CFCA-D614-6218321EE2B4">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS MARITAL STATUS. EITHER 'M', 'S', OR 'W']]></commentInRDBMS>
 <generatorID>4166E924-8EF1-BB62-C962-1F8CD1652313</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -88,9 +91,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="CUST_TYPE" id="4A60EDFD-8385-AA54-C46F-86D45621029E">
+<Column name="CUST_TYPE" id="A15BED76-5DA4-F6C5-C3FA-3DAF06004272">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMER TYPE. 'A' AUTOMOBILE INSURANCE, 'H' HOME INSURANCE.]]></commentInRDBMS>
 <generatorID>52C57A39-E489-8B73-6AD7-701AE2E89E70</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -101,9 +104,9 @@
 <ownDataTypeParameters>2,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STREET_1" id="FDA8F891-6588-E716-DACD-62584D9FA8F4">
+<Column name="STREET_1" id="320A1DBC-245E-0E4D-4028-A397E448A4B4">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[CUSTOMERS STREET ADDRESS]]></commentInRDBMS>
 <generatorID>C5BDC1A4-7160-E162-D351-5AEF97B4FBB8</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -114,9 +117,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STREET_2" id="A9317D9E-1593-64FB-5ECA-BAC80005D0ED">
+<Column name="STREET_2" id="19A481B6-106F-C40C-5E20-A1A21FAB4407">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[OPTIONAL CUSTOMER FLOOR/APARTMENT.]]></commentInRDBMS>
 <generatorID>0A677F8F-8EC8-7985-A527-1F3A4AC26BDD</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -128,9 +131,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="CITY" id="F2C9757B-B876-C66E-45D9-953B3E7F9461">
+<Column name="CITY" id="657EF074-01AD-8E50-401C-0CF8E6C4AC18">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS ADDRESS CITY.]]></commentInRDBMS>
 <generatorID>714A3F7F-05CC-58D5-46E6-43753932FA1A</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -141,9 +144,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STATE" id="0EF0FBAC-20EC-85A6-55C3-36F71F13D23C">
+<Column name="STATE" id="37572A04-92B2-F37F-8359-FA6E5568D516">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS HOME ADDRESS STATE CODE]]></commentInRDBMS>
 <generatorID>7D2D8C70-AC72-60BE-55D4-EEE4F077C748</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -154,9 +157,9 @@
 <ownDataTypeParameters>2,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ZIP" id="FCAA8C65-31DA-0787-3CBF-2D30AA3C1CE4">
+<Column name="ZIP" id="CAF9F37E-8B34-94D4-BD6F-FA7F93CAB629">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE CUSTOMERS HOME ADDRESS ZIPCODE.]]></commentInRDBMS>
 <generatorID>BAEEDE3D-C069-7B71-9F8E-27BAB75795D0</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -169,16 +172,27 @@
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="646D4A31-32EF-CCC5-E9F0-4B3E00DDC44B" name="AB_CUSTOMER_PK">
+<ind_PK_UK id="8E2CE9D7-7116-254C-CFD7-1964AF8807AB" name="AB_CUSTOMER_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<generatorID>D289411D-A313-42A8-6B03-9553F17B7D16</generatorID>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>B6A67D62-CBD7-C61D-8F8D-88C20C1CEA24</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="BBF27783-2C46-8B55-0D46-B7220A2CFBCA"/>
+<colUsage columnID="B2217165-FBD7-F3C8-304E-643615B5C451"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6B93B606-6136-5523-6183-A848953F4617" name="AB_CUSTOMER_AB_USER_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>47B7DAC6-B234-E395-54A8-6B458E5055A1</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B2217165-FBD7-F3C8-304E-643615B5C451"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

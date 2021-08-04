@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_ROLE_MTOM_USER" directorySegmentName="seg_0" id="A85AC578-4E2D-BD91-7CA5-F6646CC1FC8E">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:38:06 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<sourcePk>72F5E9B3-C825-2DDC-4CDE-45B00E219679</sourcePk>
+<identifying>true</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>E3FB2963-1AE3-3407-D756-CEBBF25FB4A4</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>083CFDA0-2BBD-8B1C-B437-AC25E4809867</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

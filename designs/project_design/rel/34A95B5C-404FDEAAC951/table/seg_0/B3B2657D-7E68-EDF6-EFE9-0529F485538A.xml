@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A1ABBBCC-91A3-634E-3868-ED6CFF205596" name="AB_HOUSE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B3B2657D-7E68-EDF6-EFE9-0529F485538A" name="AB_HOUSE">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>55916E9A-6741-9D17-1368-6AB3E776FF57</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="HOME_ID" id="61389D15-16F1-52CF-5649-5B008F1069B3">
+<Column name="HOME_ID" id="DF3E2438-363F-676D-9478-77FF408B96CA">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE UNIQUE HOME ID]]></commentInRDBMS>
 <generatorID>4FB87856-6FB5-A817-7352-30CEAAC0909B</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -21,9 +21,9 @@
 <ownDataTypeParameters>,7,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="PURCHASE_DATE" id="6B959EED-9B3C-25FD-FA42-7E8F8876D460">
+<Column name="PURCHASE_DATE" id="FF5AF51D-FE46-11E0-CD14-9ACD22652630">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE DATE THE HOME WAS PURCHASED.]]></commentInRDBMS>
 <generatorID>9CC66736-FF69-D1B2-045B-74F128674675</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -33,9 +33,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="PURCHASE_VALUE" id="8E9A1D32-CD41-B9D0-5936-22512FC8BCED">
+<Column name="PURCHASE_VALUE" id="9D1CBCE6-1485-4F30-AB4A-E3D55717A04B">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE HOMES PURCHASE VALUE.]]></commentInRDBMS>
 <generatorID>1A14F6CC-CF5B-1CCF-15AB-0E0FCFF0FE76</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -47,9 +47,9 @@
 <ownDataTypeParameters>,9,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="AREA" id="F7872C5C-61BC-28EC-F6E6-4228420D2F35">
+<Column name="AREA" id="A3B5190C-BECB-A77B-A73B-48D7A5E0A080">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE HOMES AREA IN SQUARE FEET.]]></commentInRDBMS>
 <generatorID>BDC01F27-7AE4-1E00-1AAA-753F283F7246</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -61,9 +61,9 @@
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="HOUSE_TYPE" id="3CBD8988-CF09-A8E8-83DA-2308F2C273FE">
+<Column name="HOUSE_TYPE" id="42000632-D822-BA29-D808-AB7B5B022F52">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE HOME TYPE. 'S' IS SINGLE FAMILY, 'M' IS MULTI FAMILY, 'C' IS CONDOMINIUM, 'T' IS TOWN HOUSE.]]></commentInRDBMS>
 <generatorID>21D629E1-473D-764C-C0CD-E885879B7064</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -74,9 +74,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="AUTO_FIRE_NOTIF" id="4BC664B2-CAEA-2A48-5A4B-E01BC1078560">
+<Column name="AUTO_FIRE_NOTIF" id="B2748393-D0CB-AFFF-6135-7C3033D470F5">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[WHETHER THE HOUSE HAS AUTOMATIC FIRE NOTIFICATION TO THE FIRE DEPARTMENT.]]></commentInRDBMS>
 <generatorID>83763EB3-DCEC-511F-CF77-1785FBF8C86E</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -87,9 +87,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="HOME_SECURITY" id="7848D824-B67B-F1B3-CB3A-316A64BA279D">
+<Column name="HOME_SECURITY" id="FF8167F0-3889-5D73-9F18-20B276402074">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[WHETHER THE HOUSE HAS A SECURITY SYSTEM.]]></commentInRDBMS>
 <generatorID>9ED2969E-3BB7-A769-A205-76EF9127F80E</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -100,9 +100,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="POOL" id="F64B5C02-15CC-D291-E6F7-ED22BDD51EB9">
+<Column name="POOL" id="F25F09D5-2C07-960B-AC02-89BE44EE7185">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[SWIMMING POOL. 'U' IS UNDERGROUND, 'O' IS OVERGROUND, 'I' IS INDOOR, 'M' IS MULTIPLE, NULL IS NO POOL.]]></commentInRDBMS>
 <generatorID>08A5E711-C039-27AF-E59A-00D22A468D1F</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -114,9 +114,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="BASEMENT" id="BE4468ED-73EC-626E-F93E-0602565FE3F6">
+<Column name="BASEMENT" id="FD26C1CF-2BE7-A604-3FAE-81AF3AAEE8AB">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[WHETHER THE HOUSE HAS A BASEMENT.]]></commentInRDBMS>
 <generatorID>D2CE5712-AD72-09C4-CFE9-1ED101224EA5</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -127,47 +127,46 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="POLICY_ID" id="5A5A8398-3C31-47F2-CDA9-28AD35FE51AD">
+<Column name="POLICY_ID" id="894522FE-577D-FD3C-085F-C65C4C16F3CB">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[THE ID OF THE POLICY INSURING THE HOUSE]]></commentInRDBMS>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE POLICY THAT THIS HOME IS ATTACHED TO]]></commentInRDBMS>
 <generatorID>EE4D163E-D4B8-3663-AD4F-61668E6A6FFC</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
-<dataTypeSize>7</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="B0928D5F-339E-39D1-9770-0F32D161CA7D" referredColumn="1F864EB0-5FE0-5E56-7878-5DEFFDCA855C"/>
+<colAssociation fkAssociation="0FE5D56A-B3AC-5D23-3F28-DB73E7FCF405" referredColumn="B013212A-8723-98EA-EE9E-314374841240"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="7397ECDE-A111-C4DE-784F-EFB2C8B39380" name="AB_HOUSE_PK">
+<ind_PK_UK id="47027C4A-249B-0DB8-25A9-29ED4981B9B9" name="AB_HOUSE_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>4B0EE151-817C-C7A7-4052-EBDC64E9C68E</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="61389D15-16F1-52CF-5649-5B008F1069B3"/>
+<colUsage columnID="DF3E2438-363F-676D-9478-77FF408B96CA"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="88B5FA91-9661-F786-FA36-14B0024817A0" name="AB_HOUSE_AB_HOME_FK">
+<ind_PK_UK id="228B7EA9-279E-CAD5-AB96-790E03BB276E" name="AB_HOUSE_AB_HOME_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>62D17945-ED88-BF6E-C66C-9FF935605127</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="5A5A8398-3C31-47F2-CDA9-28AD35FE51AD"/>
+<colUsage columnID="894522FE-577D-FD3C-085F-C65C4C16F3CB"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3F56A92A-0603-E708-2E66-22AC711FC994" name="AB_PAYMENT">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="80CEBCB4-ED79-A4C2-147D-520A6777BA10" name="AB_PAYMENT">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>6845E5F7-1E4E-FE51-3022-B4CEE7B16EDF</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="P_ID" id="C40620CE-0455-7FED-575C-1283B8BDD419">
+<Column name="P_ID" id="6749DB81-C2AF-4B2D-4947-8B571EFC5139">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE PAYMENT ID]]></commentInRDBMS>
 <generatorID>EFDD66F1-DECA-153B-5361-7B8C54A91C51</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -21,9 +21,9 @@
 <ownDataTypeParameters>,9,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="PAY_DATE" id="042B7C19-678D-0F91-9A42-3707844E4029">
+<Column name="PAY_DATE" id="7B820308-AF96-59C8-EB5C-F9BB604CE4D3">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE DATE THE PAYMENT WAS MADE]]></commentInRDBMS>
 <generatorID>998AA06C-6914-ECEF-10D7-57DC2478BC32</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -33,9 +33,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="AMOUNT" id="761DCF68-6CB2-2439-77FA-B228057B3345">
+<Column name="AMOUNT" id="5514CBD6-46EB-1EDD-BC9F-68743EFD25DF">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE PAYMENT INSTALLMENT AMOUNT.]]></commentInRDBMS>
 <generatorID>28F36581-0071-0B2E-F9A9-0706F04EDB53</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -47,9 +47,9 @@
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="PAY_TYPE" id="BF234BB8-CEE7-F064-89B3-322492D1BDA3">
+<Column name="PAY_TYPE" id="DB20FD3B-1C72-2A6D-1F6E-B0622FA10934">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE METHOD OF PAYMENT; ONE OF 'PayPal', 'Credit', 'Debit', OR 'Check'.]]></commentInRDBMS>
 <generatorID>BCE01490-C172-1981-9423-34780BE62892</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -60,47 +60,46 @@
 <ownDataTypeParameters>6,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="INVOICE_ID" id="F58940BD-25B6-B32A-48ED-B1824CCAD8AA">
+<Column name="INVOICE_ID" id="36D31255-08D4-5B78-A054-AA749B9A9E76">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[THE INVOICE THE PAYMENT IS GOING TOWARDS]]></commentInRDBMS>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE INVOICE THIS PAYMENT BELONGS TO]]></commentInRDBMS>
 <generatorID>F2988DFF-046D-650A-2ACE-A98839338165</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
-<dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="079A77F5-6C54-DEC2-A820-9C4679BFE728" referredColumn="082CADCB-8DDE-AD30-2B4F-3EBADA689A0F"/>
+<colAssociation fkAssociation="86319E74-F44C-2632-E21B-7118FACBFBFA" referredColumn="3204F466-BA7A-ACD2-2425-9BAB24A33618"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="81D7D868-A6C2-A2A6-DB98-9ED48B835F4A" name="AB_PAYMENT_PK">
+<ind_PK_UK id="8662E211-7019-BB18-ABC7-B04A569D9332" name="AB_PAYMENT_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>DB2C4F53-0ADE-9F5C-EF65-17A58128A18B</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C40620CE-0455-7FED-575C-1283B8BDD419"/>
+<colUsage columnID="6749DB81-C2AF-4B2D-4947-8B571EFC5139"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="A5B4FC64-02F5-F073-6DD5-2342EEC69C32" name="AB_PAYMENT_AB_INVOICE_FK">
+<ind_PK_UK id="C10ACA93-7A76-4615-8E89-46EF271F5274" name="AB_PAYMENT_AB_INVOICE_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>46D5BB92-1A26-93B9-C2CA-C69D27AF4B17</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F58940BD-25B6-B32A-48ED-B1824CCAD8AA"/>
+<colUsage columnID="36D31255-08D4-5B78-A054-AA749B9A9E76"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

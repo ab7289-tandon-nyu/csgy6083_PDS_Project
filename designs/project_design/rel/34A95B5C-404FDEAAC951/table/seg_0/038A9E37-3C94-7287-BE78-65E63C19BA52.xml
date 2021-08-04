@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AB52600C-92E6-9638-8C02-ADB3259BFEF5" name="AB_POLICY">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="038A9E37-3C94-7287-BE78-65E63C19BA52" name="AB_POLICY">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>593B21C4-8C6C-23CD-AD0C-3054A9BF77C7</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="POLICY_ID" id="F0420599-593F-9A67-2B67-C64B885CF6EF">
+<Column name="POLICY_ID" id="74DE7B8A-7019-4A60-F03F-A85C887692C3">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE INSURANCE POLICY UNIQUE ID]]></commentInRDBMS>
 <generatorID>BD0811E2-63C1-27EA-A179-FF054208002C</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -21,9 +21,9 @@
 <ownDataTypeParameters>,7,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="P_TYPE" id="56A74732-1BB4-D2AC-6BA9-CD18AD813E5C">
+<Column name="P_TYPE" id="EA387D7A-7A88-FC3A-0172-926253AC13BA">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY TYPE. 'A' FOR AUTO AND 'H' FOR HOME.]]></commentInRDBMS>
 <generatorID>FEF2EB8A-886E-5716-7948-9C5670575F5B</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -41,9 +41,9 @@
 <autoIncrementCycle>false</autoIncrementCycle>
 <isDiscriminatorColumn>true</isDiscriminatorColumn>
 </Column>
-<Column name="START_DATE" id="892FA286-B165-103C-7FB1-6154850D5548">
+<Column name="START_DATE" id="453ACB8B-6ED2-E84E-A2D5-B30C41E726A8">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY START DATE]]></commentInRDBMS>
 <generatorID>C4EE6C23-2DF8-9D81-9DA0-A7723F522148</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -53,9 +53,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="END_DATE" id="5B4FDDAF-D813-1605-3777-0409DA3A3D19">
+<Column name="END_DATE" id="B9BF46A1-93B8-1219-2AD2-A6D6648DB693">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY END DATE.]]></commentInRDBMS>
 <generatorID>504B17F7-F79C-BCED-640A-7592C09FC248</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -65,9 +65,9 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="PREMIUM" id="3FBA633D-6083-CCAF-205E-25422A1B32A5">
+<Column name="PREMIUM" id="E53A3946-4695-64D2-8A7C-25F5149FD917">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE PREMIUM AMOUNT.]]></commentInRDBMS>
 <generatorID>AF134151-83DF-AA93-7818-55030A8CB266</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -79,9 +79,9 @@
 <ownDataTypeParameters>,7,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STATE" id="F9EDEBF6-E43A-C278-56A6-A5B0C8C5FB1A">
+<Column name="STATE" id="86E8507E-233E-2D3E-6382-DDB05AA0964F">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE POLICY STATUS. 'C' FOR CURRENT, 'P' FOR EXPIRED.]]></commentInRDBMS>
 <generatorID>CC34FACD-F2EF-623E-2611-F6FBB9F78C43</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -92,9 +92,9 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="ACTIVE" id="19E7A26B-B07E-787D-C8A2-EC408DB0EEC8">
+<Column name="ACTIVE" id="A320E296-B742-71B0-8137-A2D15A9CA933">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[WHETHER THE POLICY IS STILL ACTIVE]]></commentInRDBMS>
 <generatorID>406DE1DD-437E-CBDA-9902-D81925801AB9</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -105,11 +105,11 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="CUST_ID" id="609D2165-74F5-FA4B-B09D-0827091F637E">
+<Column name="USER_ID" id="7A12A698-70E2-3CC1-FB21-5D41ABC5A06B">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[ID OF THE CUSTOMER HOLDING THE POLICY]]></commentInRDBMS>
-<generatorID>017E6760-581A-ADF3-EC69-0E8D393CDE0A</generatorID>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE ID OF THE USER WHO OWNS THE POLICY]]></commentInRDBMS>
+<generatorID>F37541BE-AFCB-B100-AA53-017E8D5C4D16</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -119,32 +119,32 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="1BE955D1-3343-D050-68F2-86455481E722" referredColumn="BBF27783-2C46-8B55-0D46-B7220A2CFBCA"/>
+<colAssociation fkAssociation="93EEBAE1-7E3A-8F6C-77E7-ABFAC7E53E08" referredColumn="B2217165-FBD7-F3C8-304E-643615B5C451"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="D08E4731-67B0-0F45-33A8-17B45FDCAC5F" name="AB_POLICY_PK">
+<ind_PK_UK id="6FE92A2B-6BAE-06A7-1656-1869685DCEA5" name="AB_POLICY_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>AE0C2030-4DF5-610B-C929-C9446A2F6671</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="F0420599-593F-9A67-2B67-C64B885CF6EF"/>
+<colUsage columnID="74DE7B8A-7019-4A60-F03F-A85C887692C3"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="07DEDF6E-4A1A-2636-9680-EF9387744000" name="AB_POLICY_AB_CUSTOMER_FK">
+<ind_PK_UK id="F7B805BF-E8A1-2DD0-53D9-7430E4C1ABD6" name="AB_POLICY_AB_CUSTOMER_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>410E7772-1A8C-D524-57D8-53708EE4A01D</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="609D2165-74F5-FA4B-B09D-0827091F637E"/>
+<colUsage columnID="7A12A698-70E2-3CC1-FB21-5D41ABC5A06B"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

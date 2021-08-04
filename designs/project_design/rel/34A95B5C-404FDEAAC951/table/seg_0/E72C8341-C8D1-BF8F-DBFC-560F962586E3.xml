@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C3F83B4E-2399-0D34-CD44-DFC6F179F2C4" name="AB_VEHICLE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E72C8341-C8D1-BF8F-DBFC-560F962586E3" name="AB_VEHICLE">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>E00AD31B-9F4E-4EAC-7585-296971C92963</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="VIN" id="FD6CF42F-6CB7-92D3-F16F-433348ED3019">
+<Column name="VIN" id="53B98F97-907E-B005-69DF-ED026CA84EBC">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE VEHICLE IDENTIFICATION NUMBER]]></commentInRDBMS>
 <generatorID>0BBABE3F-4EBE-6F18-5200-CA8790ADC63C</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -21,9 +21,9 @@
 <ownDataTypeParameters>17,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="MAKE" id="50AD474C-509F-5CB7-ACC0-78A9337C3266">
+<Column name="MAKE" id="9C55D152-4A0E-80CC-7076-14E992BAC415">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE VEHICLE MAKE.]]></commentInRDBMS>
 <generatorID>79338FFD-E0A8-85E4-A42A-2402276E5A9E</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -34,9 +34,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="MODEL" id="A1A1937E-B94F-E90F-96A6-3BEE77690191">
+<Column name="MODEL" id="0778A4C5-DB07-5238-73C9-6E6305174895">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE VEHICLE MODEL.]]></commentInRDBMS>
 <generatorID>02F8F9A3-C234-0545-03C3-FD04CD0EEBE3</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -47,9 +47,9 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="YEAR" id="1EB7BF0B-EC09-B2B8-B173-7AB739B0BB5C">
+<Column name="YEAR" id="9A76A656-797F-25B2-0264-1FE819221056">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE VEHICLE YEAR.]]></commentInRDBMS>
 <generatorID>80EB7A97-8309-D109-08DA-2629460F88A2</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -60,9 +60,9 @@
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="STATE" id="4555C13B-B06D-CFB5-21EF-AF1E695C1FA6">
+<Column name="STATE" id="EF910125-5017-5E24-A9DC-4E1A53892AD9">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[VEHICLE STATUS. 'L' IS LEASED, 'F' IS FINANCED, AND 'O' IS OWNED.]]></commentInRDBMS>
 <generatorID>212B1036-B202-D230-6BE2-62D189D4558D</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
@@ -73,47 +73,46 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="POLICY_ID" id="602B8D6D-00AF-2569-3150-65332B9A3A6C">
+<Column name="POLICY_ID" id="4267E525-B3C2-18A5-0E10-324D0E71967E">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[THE ID OF THE POLICY INSURING THE CAR]]></commentInRDBMS>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE POLICY THAT THIS CAR IS ATTACHED TO]]></commentInRDBMS>
 <generatorID>708682F5-2BA9-8430-C121-72A24E903A00</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
-<dataTypeSize>7</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="0B67A6F5-7132-F409-EFFB-F25E71CA2617" referredColumn="9F6049C3-A3F9-E598-8FFD-7DCACA013F05"/>
+<colAssociation fkAssociation="C888D3E9-67F5-DC80-39FB-C245A25CC3AC" referredColumn="7E55D9AB-E089-9214-C522-D3D42DFBFF00"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="1F66F0D3-3545-2245-4CD8-3FD7E01C9E1F" name="AB_VEHICLE_PK">
+<ind_PK_UK id="A47F6F6D-7E91-78A7-9465-AF3C66C43711" name="AB_VEHICLE_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>01B10932-6E46-A5E1-9B59-1A2A6A9D89D7</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="FD6CF42F-6CB7-92D3-F16F-433348ED3019"/>
+<colUsage columnID="53B98F97-907E-B005-69DF-ED026CA84EBC"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="6540D27E-1E2D-A38C-9B4B-57955D4533D6" name="AB_VEHICLE_AB_AUTO_FK">
+<ind_PK_UK id="F2FC4590-5ED0-AE8A-A386-35FD93812B35" name="AB_VEHICLE_AB_AUTO_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>0651617B-0286-1C6D-8808-9C0ED82563B0</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="602B8D6D-00AF-2569-3150-65332B9A3A6C"/>
+<colUsage columnID="4267E525-B3C2-18A5-0E10-324D0E71967E"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

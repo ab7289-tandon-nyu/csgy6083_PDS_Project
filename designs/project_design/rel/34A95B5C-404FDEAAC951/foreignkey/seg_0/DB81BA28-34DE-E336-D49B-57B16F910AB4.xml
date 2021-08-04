@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="DB81BA28-34DE-E336-D49B-57B16F910AB4" containerWithKeyObject="7D850A7F-525F-F4FF-A32A-4A4747B6FAA8" localFKIndex="0E573A3D-65E7-A6E1-B241-97EEA0B973F3" name="AB_AUTO_AB_POLICY_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>9402C160-F1BD-1006-DCD0-ACB99B286B68</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<referredTableLongName>AB_POLICY</referredTableLongName>
+<arc>CA75E497-D1E2-0FDE-A33A-EE63B35DE015</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>038A9E37-3C94-7287-BE78-65E63C19BA52</referredTableID>
+<keyObject>6FE92A2B-6BAE-06A7-1656-1869685DCEA5</keyObject>
+<referredKeyID>6FE92A2B-6BAE-06A7-1656-1869685DCEA5</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>POLICY_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>A</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

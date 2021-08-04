@@ -1,17 +1,17 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="CCC9D444-4348-8F33-E774-4C082AF3BBDD" name="AB_DRIVER_VEHICLE">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="27EDE80D-76C2-44DA-66E7-9ECC04CBD7DC" name="AB_DRIVER_VEHICLE">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>E6C29C64-D73C-C528-3904-BDCC74116747</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="LICENSE" id="ED7C2771-4A07-C391-EE99-66C225BB6F3C">
+<Column name="LICENSE" id="A4E2393C-7399-81EB-EEFA-595BD554BD6F">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[THE LICENSE OF THE CARS DRIVER]]></commentInRDBMS>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[LICENSE OF THE DRIVER OF THE CAR]]></commentInRDBMS>
 <generatorID>9B0D42D5-9F5B-F74F-5C01-BDF9F3F8F182</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -22,13 +22,13 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="C94EB7FC-E2F7-7CAE-7BBD-C4BDB73D9940" referredColumn="C2700C07-0835-964B-7C13-B1353C2B7223"/>
+<colAssociation fkAssociation="F21F2F99-834E-B2CF-CC13-63F2743D4FCD" referredColumn="17D42672-2929-23BB-DB31-F50F32019D9F"/>
 </associations>
 </Column>
-<Column name="VIN" id="3DC3C521-B614-2463-7239-6EA3BFFCEDE1">
+<Column name="VIN" id="094CECD9-62A7-0257-BE41-58005364E1BF">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[THE VIN OF THE INSURED VEHICLE]]></commentInRDBMS>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[VEHICLE IDENTIFICATION NUMBER OF THE DRIVEN CAR]]></commentInRDBMS>
 <generatorID>E52A421C-DFE1-36D7-F5D2-1CA4E57EBA28</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
@@ -39,43 +39,43 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="514EC1E8-6E33-7963-9F6E-F7ECD5A68C3D" referredColumn="FD6CF42F-6CB7-92D3-F16F-433348ED3019"/>
+<colAssociation fkAssociation="B61FE602-D0D8-10B9-C129-980859B5DCC9" referredColumn="53B98F97-907E-B005-69DF-ED026CA84EBC"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="F09E5CE1-969F-6DA8-9283-0864BC29FCF7" name="AB_DRIVER_VEHICLE_PK">
+<ind_PK_UK id="598E7B1D-8091-D476-444A-276256AEA3DC" name="AB_DRIVER_VEHICLE_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:10:05 UTC</createdTime>
+<createdTime>2021-08-04 22:07:37 UTC</createdTime>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="ED7C2771-4A07-C391-EE99-66C225BB6F3C"/>
-<colUsage columnID="3DC3C521-B614-2463-7239-6EA3BFFCEDE1"/>
+<colUsage columnID="A4E2393C-7399-81EB-EEFA-595BD554BD6F"/>
+<colUsage columnID="094CECD9-62A7-0257-BE41-58005364E1BF"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="29B666A1-789E-82D8-A124-07B4C82282E3" name="AB_DRIVER_VEHICLE_AB_DRIVER_FK">
+<ind_PK_UK id="351AE3A6-F229-C574-17CC-23667C57CDA2" name="AB_VEHICLE_DRIVER_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>48ACE94A-99FA-36D9-6E86-3E0A94B5C175</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="ED7C2771-4A07-C391-EE99-66C225BB6F3C"/>
+<colUsage columnID="A4E2393C-7399-81EB-EEFA-595BD554BD6F"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="64F002FE-C7C5-847F-9AB3-9FE599E35B02" name="AB_DRIVER_AB_VEHICLE_FK">
+<ind_PK_UK id="622348F0-3D23-A718-8C66-8B02A9CE1999" name="AB_DRIVER_VEHICLE_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>3B8E6543-32FF-8491-4F67-26535FAEF73D</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="3DC3C521-B614-2463-7239-6EA3BFFCEDE1"/>
+<colUsage columnID="094CECD9-62A7-0257-BE41-58005364E1BF"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

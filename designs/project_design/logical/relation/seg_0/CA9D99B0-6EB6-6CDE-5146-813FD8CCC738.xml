@@ -1,19 +1,19 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_CUST_POLICY" directorySegmentName="seg_0" id="410E7772-1A8C-D524-57D8-53708EE4A01D">
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="FK_USER_MTOM_ROLE" directorySegmentName="seg_0" id="CA9D99B0-6EB6-6CDE-5146-813FD8CCC738">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 20:54:10 UTC</createdTime>
+<createdTime>2021-08-04 21:38:24 UTC</createdTime>
 <ownerDesignName>project_design</ownerDesignName>
 <engineerTo>
 <item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
 </engineerTo>
 <sourcePk>B6A67D62-CBD7-C61D-8F8D-88C20C1CEA24</sourcePk>
-<targetPk>AE0C2030-4DF5-610B-C929-C9446A2F6671</targetPk>
-<identifying>false</identifying>
+<identifying>true</identifying>
 <optionalSource>false</optionalSource>
 <optionalTarget>false</optionalTarget>
 <sourceCardinality>1</sourceCardinality>
-<sourceEntity>52930F8C-3CBE-770C-12A0-C88E749CA2DC</sourceEntity>
+<sourceEntity>673D393B-4CFD-275A-8130-C83DB455729A</sourceEntity>
 <targetCardinalityString>*</targetCardinalityString>
-<targetEntity>593B21C4-8C6C-23CD-AD0C-3054A9BF77C7</targetEntity>
+<targetEntity>083CFDA0-2BBD-8B1C-B437-AC25E4809867</targetEntity>
 <transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
 </Relation>

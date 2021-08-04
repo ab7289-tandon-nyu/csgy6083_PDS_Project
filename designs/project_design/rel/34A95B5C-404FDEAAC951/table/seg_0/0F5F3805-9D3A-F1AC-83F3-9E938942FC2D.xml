@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0F5F3805-9D3A-F1AC-83F3-9E938942FC2D" name="AB_USER_ROLE_MTOM">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>083CFDA0-2BBD-8B1C-B437-AC25E4809867</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ROLE_ID" id="4E3A5577-5C80-91C3-3566-8669D7439E83">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE ROLE THE USER HAS BEEN GIVEN]]></commentInRDBMS>
+<generatorID>6A509EC5-64F1-70CB-259A-F6469756178E</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C7FC4DAF-D05E-2B66-F2A7-34385D19EB53" referredColumn="4148B0BB-87A7-91AC-D511-65F2E9C702DE"/>
+</associations>
+</Column>
+<Column name="USER_ID" id="2E35E00C-88B9-8E30-99F8-AD7E1E70216A">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER THAT HAS THE ROLE]]></commentInRDBMS>
+<generatorID>F7841AD0-BBBC-E9AE-1092-62B60E1DA512</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="C7FEF8EB-41E2-0883-162F-95B9FD0937BE" referredColumn="8255641A-84FE-1E39-D7F5-E9AE22616569"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="883AD432-C4EB-D56F-2036-F3919F8D74AF" name="AB_USER_ROLE_MTOM_PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>4BA0A54A-E33A-36BC-23F7-B03BE8008EA2</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E3A5577-5C80-91C3-3566-8669D7439E83"/>
+<colUsage columnID="2E35E00C-88B9-8E30-99F8-AD7E1E70216A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E225BA85-B7F2-8CEC-5DFC-CED90524DF2D" name="AB_USER_MTOM_ROLE_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>A85AC578-4E2D-BD91-7CA5-F6646CC1FC8E</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E3A5577-5C80-91C3-3566-8669D7439E83"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A43A5F20-6772-8EEC-A33B-720E9B6DF62B" name="AB_ROLE_MTOM_USER_FK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>CA9D99B0-6EB6-6CDE-5146-813FD8CCC738</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2E35E00C-88B9-8E30-99F8-AD7E1E70216A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

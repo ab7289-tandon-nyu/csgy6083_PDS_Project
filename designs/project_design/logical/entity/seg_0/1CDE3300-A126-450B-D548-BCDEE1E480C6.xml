@@ -26,7 +26,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="INVOICE_DATE" id="C8B4175A-0BA8-C560-10D9-39D79508A8AB">
 <createdBy>alexbiehl</createdBy>
@@ -83,7 +84,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>7</dataTypePrecision>
 <dataTypeSize>7</dataTypeSize>
-<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<ownDataTypeParameters>7,7,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="TOTAL_PAID" id="16D3D4C9-228E-2EB3-53A1-CD5F5C4C6FD0">
 <createdBy>alexbiehl</createdBy>

@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="673D393B-4CFD-275A-8130-C83DB455729A" name="AB_USER">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:29:12 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<generateDiscrimColumn>true</generateDiscrimColumn>
+<discriminatorAttributeID>96577A33-A28B-5586-5EA8-152A1A23C792</discriminatorAttributeID>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="USER_ID" id="7F90B6DE-35FF-3DE4-EA18-B4344FDDE960">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:29:20 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER UNIQUE IDENTIFIER]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="USER_NAME" id="ECB75FF2-A758-4CEF-7922-3F57348E2461">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:31:56 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER LOGIN NAME]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="EMAIL" id="0108BBA6-FEB9-210A-F9A5-98AB58B9546E">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:32:16 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER EMAIL ADDRESS]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PASSWORD" id="A6A8B865-C365-AD2B-E9CE-DD912C9CAF8D">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:34:16 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER PASSWORD]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TYPE" id="96577A33-A28B-5586-5EA8-152A1A23C792">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:35:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE USER TYPE]]></commentInRDBMS>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B6A67D62-CBD7-C61D-8F8D-88C20C1CEA24" name="AB_USER PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 21:31:45 UTC</createdTime>
+<ownerDesignName>project_design</ownerDesignName>
+<engineerTo>
+<item key="34A95B5C-6DF5-515C-CC1A-404FDEAAC951" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>7F90B6DE-35FF-3DE4-EA18-B4344FDDE960</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

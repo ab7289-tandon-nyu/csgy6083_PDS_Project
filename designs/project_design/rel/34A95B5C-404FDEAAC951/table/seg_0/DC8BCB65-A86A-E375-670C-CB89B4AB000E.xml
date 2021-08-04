@@ -1,52 +1,52 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9FEF5535-DEA6-E9D0-21C6-78FF3FDD1522" name="AB_AUTO">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DC8BCB65-A86A-E375-670C-CB89B4AB000E" name="AB_HOME">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<generatorID>9FCD0CCF-69DD-30DE-90CF-A552F0EFAA35</generatorID>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>6208BBCF-5E3E-434F-69EA-3F2E96E60B09</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="POLICY_ID" id="9F6049C3-A3F9-E598-8FFD-7DCACA013F05">
+<Column name="POLICY_ID" id="B013212A-8723-98EA-EE9E-314374841240">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <commentInRDBMS><![CDATA[THE INSURANCE POLICY UNIQUE ID]]></commentInRDBMS>
 <generatorID>BD0811E2-63C1-27EA-A179-FF054208002C</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>7</dataTypeSize>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="3C360E78-4402-40BC-9877-268482858118" referredColumn="F0420599-593F-9A67-2B67-C64B885CF6EF"/>
+<colAssociation fkAssociation="458281EB-4C25-31AD-A6B8-D6212E56230A" referredColumn="74DE7B8A-7019-4A60-F03F-A85C887692C3"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="D31275D5-6817-8F9F-14E0-5365F3D28AB8" name="AB_AUTO_PK">
+<ind_PK_UK id="B4A4CA29-D4DF-A707-E3BD-3EE0A5B8BDDA" name="AB_HOME_PK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
 <generatorID>AE0C2030-4DF5-610B-C929-C9446A2F6671</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="9F6049C3-A3F9-E598-8FFD-7DCACA013F05"/>
+<colUsage columnID="B013212A-8723-98EA-EE9E-314374841240"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="7D0BF42B-B1C0-1530-49A1-D09AE2DAE055" name="AB_AUTO_AB_POLICY_FK">
+<ind_PK_UK id="6AD7EB4E-3DE4-F2D4-3714-7DD5D01E545A" name="AB_HOME_AB_POLICY_FK">
 <createdBy>alexbiehl</createdBy>
-<createdTime>2021-07-25 21:05:04 UTC</createdTime>
-<generatorID>9402C160-F1BD-1006-DCD0-ACB99B286B68</generatorID>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>712723F5-F0F6-0094-7A9A-0B9CE4CFB889</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="9F6049C3-A3F9-E598-8FFD-7DCACA013F05"/>
+<colUsage columnID="B013212A-8723-98EA-EE9E-314374841240"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

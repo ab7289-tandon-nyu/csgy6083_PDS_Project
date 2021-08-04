@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="986C5C65-60DB-F32F-83FD-795479B3BB73" name="AB_ROLE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>E3FB2963-1AE3-3407-D756-CEBBF25FB4A4</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ROLE_ID" id="4148B0BB-87A7-91AC-D511-65F2E9C702DE">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE UNIQUE ROLE ID]]></commentInRDBMS>
+<generatorID>236FCE9B-6193-EF1D-0937-D9F327A8A970</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NAME" id="4FF168EE-2D1D-3D3D-85AE-A9617BF7525A">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE ROLE NAME]]></commentInRDBMS>
+<generatorID>762C1FA6-0CE4-D357-BF73-9E0BCB565BDD</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DESC" id="0D521FFC-36D3-B0AB-59A2-20140832A1DA">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[THE OPTIONAL ROLE DESCRIPTION]]></commentInRDBMS>
+<generatorID>BBEB91D3-3373-495B-D738-D3B7ABB29ED8</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400</dataTypeSize>
+<ownDataTypeParameters>400,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7F16F12E-FF5D-6F6E-95BB-86100121F488" name="AB_ROLE_PK">
+<createdBy>alexbiehl</createdBy>
+<createdTime>2021-08-04 22:04:14 UTC</createdTime>
+<generatorID>72F5E9B3-C825-2DDC-4CDE-45B00E219679</generatorID>
+<ownerDesignName>project_design</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4148B0BB-87A7-91AC-D511-65F2E9C702DE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
