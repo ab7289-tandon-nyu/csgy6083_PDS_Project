@@ -1,6 +1,6 @@
-from flask import Flask
+from flask import Flask, render_template
 
-from .extensions import mysql
+from .extensions import csrf, login_manager, mysql, principal
 
 # from app.extensions import TODO
 # from app.models import TODO
@@ -22,6 +22,9 @@ def create_app(config_object="app.settings"):
 def configure_extensions(app):
 
     mysql.init_app(app)
+    csrf.init_app(app)
+    login_manager.session_protection = "strong"
+    principal.init_app(app)
 
     return None
 
@@ -31,6 +34,18 @@ def configure_bp(app):
     from . import index
 
     app.register_blueprint(index.bp)
+
+    return None
+
+
+def register_error_handlers(app):
+    def render_error(error):
+        """Renders the template corresponding to the error"""
+        error_code = getattr(error, "code", 500)
+        return render_template(f"{error_code}.html"), error_code
+
+    for error_code in [401, 404, 500]:
+        app.errorhandler(error_code)(render_error)
 
     return None
 

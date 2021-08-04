@@ -6,6 +6,9 @@ dependencies = [
     "Flask-MySQL==1.5.2",
     "mysql-connector==2.2.9",
     "cryptography==3.4.7",
+    "flask-wtf==0.15.1",
+    "flask-login==0.5.0",
+    "flask-principal==0.4.0",
 ]
 
 test_dependencies = [
