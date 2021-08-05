@@ -1,5 +1,5 @@
 -- SQLINES DEMO *** le SQL Developer Data Modeler 21.1.0.092.1221
--- SQLINES DEMO *** -07-26 17:34:54 EDT
+-- SQLINES DEMO *** -08-04 18:11:42 EDT
 -- SQLINES DEMO *** le Database 21c
 -- SQLINES DEMO *** le Database 21c
 
@@ -32,7 +32,7 @@ USE ab_project;
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_customer;
 CREATE TABLE ab_customer (
-    cust_id         INT NOT NULL COMMENT 'THE CUSTOMERS UNIQUE ID',
+    user_id         INT NOT NULL COMMENT 'THE USER UNIQUE IDENTIFIER',
     fname           VARCHAR(32) NOT NULL COMMENT 'THE CUSTOMERS FIRST NAME',
     mname           VARCHAR(1) COMMENT 'THE CUSTOMERS MIDDLE INITIAL',
     lname           VARCHAR(32) NOT NULL COMMENT 'THE CUSTOMERS LAST NAME',
@@ -47,8 +47,8 @@ CREATE TABLE ab_customer (
 );
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_customer.cust_id IS
-    'THE CUSTOMERS UNIQUE ID'; */
+COMMENT ON COLUMN ab_customer.user_id IS
+    'THE USER UNIQUE IDENTIFIER'; */
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_customer.fname IS
@@ -94,9 +94,7 @@ COMMENT ON COLUMN ab_customer.state IS
 COMMENT ON COLUMN ab_customer.zip IS
     'THE CUSTOMERS HOME ADDRESS ZIPCODE.'; */
 
-ALTER TABLE ab_customer ADD CONSTRAINT ab_customer_pk PRIMARY KEY ( cust_id );
-
-ALTER TABLE ab_customer MODIFY COLUMN cust_id INT AUTO_INCREMENT UNIQUE;
+ALTER TABLE ab_customer ADD CONSTRAINT ab_customer_pk PRIMARY KEY ( user_id );
 
 USE ab_project;
 
@@ -139,17 +137,17 @@ USE ab_project;
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_driver_vehicle;
 CREATE TABLE ab_driver_vehicle (
-    license  VARCHAR(16) NOT NULL COMMENT 'THE LICENSE OF THE CARS DRIVER',
-    vin      VARCHAR(17) NOT NULL COMMENT 'THE VIN OF THE INSURED VEHICLE'
+    license  VARCHAR(16) NOT NULL COMMENT 'LICENSE OF THE DRIVER OF THE CAR',
+    vin      VARCHAR(17) NOT NULL COMMENT 'VEHICLE IDENTIFICATION NUMBER OF THE DRIVEN CAR'
 );
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_driver_vehicle.license IS
-    'THE LICENSE OF THE CARS DRIVER'; */
+    'LICENSE OF THE DRIVER OF THE CAR'; */
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_driver_vehicle.vin IS
-    'THE VIN OF THE INSURED VEHICLE'; */
+    'VEHICLE IDENTIFICATION NUMBER OF THE DRIVEN CAR'; */
 
 ALTER TABLE ab_driver_vehicle ADD CONSTRAINT ab_driver_vehicle_pk PRIMARY KEY ( license,
                                                                                 vin );
@@ -169,7 +167,6 @@ COMMENT ON COLUMN ab_home.policy_id IS
 ALTER TABLE ab_home ADD CONSTRAINT ab_home_pk PRIMARY KEY ( policy_id );
 
 USE ab_project;
-
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_house;
 CREATE TABLE ab_house (
@@ -177,12 +174,12 @@ CREATE TABLE ab_house (
     purchase_date    DATETIME NOT NULL COMMENT 'THE DATE THE HOME WAS PURCHASED.',
     purchase_value   DECIMAL(9, 2) NOT NULL COMMENT 'THE HOMES PURCHASE VALUE.',
     area             DECIMAL(7, 2) NOT NULL COMMENT 'THE HOMES AREA IN SQUARE FEET.',
-    house_type             VARCHAR(1) NOT NULL COMMENT 'THE HOME TYPE. ''S'' IS SINGLE FAMILY, ''M'' IS MULTI FAMILY, ''C'' IS CONDOMINIUM, ''T'' IS TOWN HOUSE.',
+    house_type       VARCHAR(1) NOT NULL COMMENT 'THE HOME TYPE. ''S'' IS SINGLE FAMILY, ''M'' IS MULTI FAMILY, ''C'' IS CONDOMINIUM, ''T'' IS TOWN HOUSE.',
     auto_fire_notif  TINYINT NOT NULL COMMENT 'WHETHER THE HOUSE HAS AUTOMATIC FIRE NOTIFICATION TO THE FIRE DEPARTMENT.',
     home_security    TINYINT NOT NULL COMMENT 'WHETHER THE HOUSE HAS A SECURITY SYSTEM.',
     pool             VARCHAR(1) COMMENT 'SWIMMING POOL. ''U'' IS UNDERGROUND, ''O'' IS OVERGROUND, ''I'' IS INDOOR, ''M'' IS MULTIPLE, NULL IS NO POOL.',
     basement         TINYINT NOT NULL COMMENT 'WHETHER THE HOUSE HAS A BASEMENT.',
-    policy_id        INT NOT NULL COMMENT 'THE ID OF THE POLICY INSURING THE HOUSE'
+    policy_id        INT NOT NULL COMMENT 'THE POLICY THAT THIS HOME IS ATTACHED TO'
 );
 
 /* Moved to CREATE TABLE
@@ -202,7 +199,7 @@ COMMENT ON COLUMN ab_house.area IS
     'THE HOMES AREA IN SQUARE FEET.'; */
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_house.type IS
+COMMENT ON COLUMN ab_house.house_type IS
     'THE HOME TYPE. ''S'' IS SINGLE FAMILY, ''M'' IS MULTI FAMILY, ''C'' IS CONDOMINIUM, ''T'' IS TOWN HOUSE.'; */
 
 /* Moved to CREATE TABLE
@@ -223,7 +220,7 @@ COMMENT ON COLUMN ab_house.basement IS
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_house.policy_id IS
-    'THE ID OF THE POLICY INSURING THE HOUSE'; */
+    'THE POLICY THAT THIS HOME IS ATTACHED TO'; */
 
 ALTER TABLE ab_house ADD CONSTRAINT ab_house_pk PRIMARY KEY ( home_id );
 
@@ -240,7 +237,7 @@ CREATE TABLE ab_invoice (
     payment_date  DATETIME NOT NULL COMMENT 'THE DATE THE INVOICE IS DUE.',
     total_paid    DECIMAL(9, 2) NOT NULL COMMENT 'The amount that the client has paid so far.',
     active        TINYINT NOT NULL COMMENT 'WHETHER THE INVOICE IS ACTIVE',
-    policy_id     INT NOT NULL COMMENT 'ID OF THE POLICY THAT THE INVOICE BELONGS TO'
+    policy_id     INT NOT NULL COMMENT 'THE POLICY THIS INVOICE BELONGS TO'
 );
 
 /* Moved to CREATE TABLE
@@ -269,7 +266,7 @@ COMMENT ON COLUMN ab_invoice.active IS
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_invoice.policy_id IS
-    'ID OF THE POLICY THAT THE INVOICE BELONGS TO'; */
+    'THE POLICY THIS INVOICE BELONGS TO'; */
 
 ALTER TABLE ab_invoice ADD CONSTRAINT ab_invoice_pk PRIMARY KEY ( invoice_id );
 
@@ -283,8 +280,8 @@ CREATE TABLE ab_payment (
     p_id        BIGINT NOT NULL COMMENT 'THE PAYMENT ID',
     pay_date    DATETIME NOT NULL COMMENT 'THE DATE THE PAYMENT WAS MADE',
     amount      DECIMAL(7, 2) NOT NULL COMMENT 'THE PAYMENT INSTALLMENT AMOUNT.',
-    pay_type        VARCHAR(6) NOT NULL COMMENT 'THE METHOD OF PAYMENT; ONE OF ''PayPal'', ''Credit'', ''Debit'', OR ''Check''.',
-    invoice_id  INT NOT NULL COMMENT 'THE INVOICE THE PAYMENT IS GOING TOWARDS'
+    pay_type    VARCHAR(6) NOT NULL COMMENT 'THE METHOD OF PAYMENT; ONE OF ''PayPal'', ''Credit'', ''Debit'', OR ''Check''.',
+    invoice_id  INT NOT NULL COMMENT 'THE INVOICE THIS PAYMENT BELONGS TO'
 );
 
 /* Moved to CREATE TABLE
@@ -300,12 +297,12 @@ COMMENT ON COLUMN ab_payment.amount IS
     'THE PAYMENT INSTALLMENT AMOUNT.'; */
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_payment.type IS
+COMMENT ON COLUMN ab_payment.pay_type IS
     'THE METHOD OF PAYMENT; ONE OF ''PayPal'', ''Credit'', ''Debit'', OR ''Check''.'; */
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_payment.invoice_id IS
-    'THE INVOICE THE PAYMENT IS GOING TOWARDS'; */
+    'THE INVOICE THIS PAYMENT BELONGS TO'; */
 
 ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 
@@ -317,13 +314,13 @@ USE ab_project;
 DROP TABLE IF EXISTS ab_policy;
 CREATE TABLE ab_policy (
     policy_id   INT NOT NULL COMMENT 'THE INSURANCE POLICY UNIQUE ID',
-    p_type        VARCHAR(9) NOT NULL COMMENT 'THE POLICY TYPE. ''A'' FOR AUTO AND ''H'' FOR HOME.',
+    p_type      VARCHAR(9) NOT NULL COMMENT 'THE POLICY TYPE. ''A'' FOR AUTO AND ''H'' FOR HOME.',
     start_date  DATETIME NOT NULL COMMENT 'THE POLICY START DATE',
     end_date    DATETIME NOT NULL COMMENT 'THE POLICY END DATE.',
     premium     DECIMAL(7, 2) NOT NULL COMMENT 'THE PREMIUM AMOUNT.',
-    state      VARCHAR(1) NOT NULL COMMENT 'THE POLICY STATUS. ''C'' FOR CURRENT, ''P'' FOR EXPIRED.',
+    state       VARCHAR(1) NOT NULL COMMENT 'THE POLICY STATUS. ''C'' FOR CURRENT, ''P'' FOR EXPIRED.',
     active      TINYINT NOT NULL COMMENT 'WHETHER THE POLICY IS STILL ACTIVE',
-    cust_id     INT NOT NULL COMMENT 'ID OF THE CUSTOMER HOLDING THE POLICY'
+    user_id     INT NOT NULL COMMENT 'THE ID OF THE USER WHO OWNS THE POLICY'
 );
 
 ALTER TABLE ab_policy
@@ -334,7 +331,7 @@ COMMENT ON COLUMN ab_policy.policy_id IS
     'THE INSURANCE POLICY UNIQUE ID'; */
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_policy.type IS
+COMMENT ON COLUMN ab_policy.p_type IS
     'THE POLICY TYPE. ''A'' FOR AUTO AND ''H'' FOR HOME.'; */
 
 /* Moved to CREATE TABLE
@@ -350,7 +347,7 @@ COMMENT ON COLUMN ab_policy.premium IS
     'THE PREMIUM AMOUNT.'; */
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_policy.status IS
+COMMENT ON COLUMN ab_policy.state IS
     'THE POLICY STATUS. ''C'' FOR CURRENT, ''P'' FOR EXPIRED.'; */
 
 /* Moved to CREATE TABLE
@@ -358,8 +355,8 @@ COMMENT ON COLUMN ab_policy.active IS
     'WHETHER THE POLICY IS STILL ACTIVE'; */
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_policy.cust_id IS
-    'ID OF THE CUSTOMER HOLDING THE POLICY'; */
+COMMENT ON COLUMN ab_policy.user_id IS
+    'THE ID OF THE USER WHO OWNS THE POLICY'; */
 
 ALTER TABLE ab_policy ADD CONSTRAINT ab_policy_pk PRIMARY KEY ( policy_id );
 
@@ -368,14 +365,93 @@ ALTER TABLE ab_policy MODIFY COLUMN policy_id INT AUTO_INCREMENT UNIQUE;
 USE ab_project;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_role;
+CREATE TABLE ab_role (
+    role_id  INT NOT NULL COMMENT 'THE UNIQUE ROLE ID',
+    name     VARCHAR(32) NOT NULL COMMENT 'THE ROLE NAME',
+    `DESC`   VARCHAR(400) COMMENT 'THE OPTIONAL ROLE DESCRIPTION'
+);
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_role.role_id IS
+    'THE UNIQUE ROLE ID'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_role.name IS
+    'THE ROLE NAME'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_role."DESC" IS
+    'THE OPTIONAL ROLE DESCRIPTION'; */
+
+ALTER TABLE ab_role ADD CONSTRAINT ab_role_pk PRIMARY KEY ( role_id );
+
+ALTER TABLE ab_role MODIFY COLUMN role_id INT AUTO_INCREMENT UNIQUE;
+
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_user;
+CREATE TABLE ab_user (
+    user_id    INT NOT NULL COMMENT 'THE USER UNIQUE IDENTIFIER',
+    user_name  VARCHAR(32) NOT NULL COMMENT 'THE USER LOGIN NAME',
+    email      VARCHAR(32) NOT NULL COMMENT 'THE USER EMAIL ADDRESS',
+    password   VARCHAR(128) NOT NULL COMMENT 'THE USER PASSWORD',
+    type       VARCHAR(7) NOT NULL COMMENT 'THE USER TYPE'
+);
+
+ALTER TABLE ab_user
+    ADD CONSTRAINT ch_inh_ab_user CHECK ( type IN ( 'E', 'C' ) );
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user.user_id IS
+    'THE USER UNIQUE IDENTIFIER'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user.user_name IS
+    'THE USER LOGIN NAME'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user.email IS
+    'THE USER EMAIL ADDRESS'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user.password IS
+    'THE USER PASSWORD'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user.type IS
+    'THE USER TYPE'; */
+
+ALTER TABLE ab_user ADD CONSTRAINT ab_user_pk PRIMARY KEY ( user_id );
+
+ALTER TABLE ab_user MODIFY COLUMN user_id INT AUTO_INCREMENT UNIQUE;
+
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
+DROP TABLE IF EXISTS ab_user_role_mtom;
+CREATE TABLE ab_user_role_mtom (
+    role_id  INT NOT NULL COMMENT 'THE ROLE THE USER HAS BEEN GIVEN',
+    user_id  INT NOT NULL COMMENT 'THE USER THAT HAS THE ROLE'
+);
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user_role_mtom.role_id IS
+    'THE ROLE THE USER HAS BEEN GIVEN'; */
+
+/* Moved to CREATE TABLE
+COMMENT ON COLUMN ab_user_role_mtom.user_id IS
+    'THE USER THAT HAS THE ROLE'; */
+
+ALTER TABLE ab_user_role_mtom ADD CONSTRAINT ab_user_role_mtom_pk PRIMARY KEY ( role_id,
+                                                                                user_id );
+
+-- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_vehicle;
 CREATE TABLE ab_vehicle (
     vin        VARCHAR(17) NOT NULL COMMENT 'THE VEHICLE IDENTIFICATION NUMBER',
     make       VARCHAR(32) NOT NULL COMMENT 'THE VEHICLE MAKE.',
     model      VARCHAR(32) NOT NULL COMMENT 'THE VEHICLE MODEL.',
     year       SMALLINT NOT NULL COMMENT 'THE VEHICLE YEAR.',
-    state     VARCHAR(1) NOT NULL COMMENT 'VEHICLE STATUS. ''L'' IS LEASED, ''F'' IS FINANCED, AND ''O'' IS OWNED.',
-    policy_id  INT NOT NULL COMMENT 'THE ID OF THE POLICY INSURING THE CAR'
+    state      VARCHAR(1) NOT NULL COMMENT 'VEHICLE STATUS. ''L'' IS LEASED, ''F'' IS FINANCED, AND ''O'' IS OWNED.',
+    policy_id  INT NOT NULL COMMENT 'THE POLICY THAT THIS CAR IS ATTACHED TO'
 );
 
 /* Moved to CREATE TABLE
@@ -395,23 +471,25 @@ COMMENT ON COLUMN ab_vehicle.year IS
     'THE VEHICLE YEAR.'; */
 
 /* Moved to CREATE TABLE
-COMMENT ON COLUMN ab_vehicle.status IS
+COMMENT ON COLUMN ab_vehicle.state IS
     'VEHICLE STATUS. ''L'' IS LEASED, ''F'' IS FINANCED, AND ''O'' IS OWNED.'; */
 
 /* Moved to CREATE TABLE
 COMMENT ON COLUMN ab_vehicle.policy_id IS
-    'THE ID OF THE POLICY INSURING THE CAR'; */
+    'THE POLICY THAT THIS CAR IS ATTACHED TO'; */
 
 ALTER TABLE ab_vehicle ADD CONSTRAINT ab_vehicle_pk PRIMARY KEY ( vin );
-
-ALTER TABLE ab_vehicle MODIFY COLUMN vin VARCHAR(17)  UNIQUE;
 
 ALTER TABLE ab_auto
     ADD CONSTRAINT ab_auto_ab_policy_fk FOREIGN KEY ( policy_id )
         REFERENCES ab_policy ( policy_id );
 
+ALTER TABLE ab_customer
+    ADD CONSTRAINT ab_customer_ab_user_fk FOREIGN KEY ( user_id )
+        REFERENCES ab_user ( user_id );
+
 ALTER TABLE ab_driver_vehicle
-    ADD CONSTRAINT ab_driver_ab_vehicle_fk FOREIGN KEY ( vin )
+    ADD CONSTRAINT ab_driver_vehicle_fk FOREIGN KEY ( vin )
         REFERENCES ab_vehicle ( vin )
             ON DELETE CASCADE;
 
@@ -437,35 +515,30 @@ ALTER TABLE ab_payment
         REFERENCES ab_invoice ( invoice_id );
 
 ALTER TABLE ab_policy
-    ADD CONSTRAINT ab_policy_ab_customer_fk FOREIGN KEY ( cust_id )
-        REFERENCES ab_customer ( cust_id );
+    ADD CONSTRAINT ab_policy_ab_customer_fk FOREIGN KEY ( user_id )
+        REFERENCES ab_customer ( user_id );
+
+ALTER TABLE ab_user_role_mtom
+    ADD CONSTRAINT ab_role_mtom_user_fk FOREIGN KEY ( user_id )
+        REFERENCES ab_user ( user_id )
+            ON DELETE CASCADE;
+
+ALTER TABLE ab_user_role_mtom
+    ADD CONSTRAINT ab_user_mtom_role_fk FOREIGN KEY ( role_id )
+        REFERENCES ab_role ( role_id )
+            ON DELETE CASCADE;
 
 ALTER TABLE ab_vehicle
     ADD CONSTRAINT ab_vehicle_ab_auto_fk FOREIGN KEY ( policy_id )
         REFERENCES ab_auto ( policy_id );
 
+ALTER TABLE ab_driver_vehicle
+    ADD CONSTRAINT ab_vehicle_driver_fk FOREIGN KEY ( license )
+        REFERENCES ab_driver ( license )
+            ON DELETE CASCADE;
+
 
 -- custom constraints
-
--- ALTER TABLE ab_customer
---    ADD CONSTRAINT c_customer_cust_id
---        CHECK (cust_id BETWEEN 0 AND 9999999);
-
--- ALTER TABLE ab_policy
-    -- ADD CONSTRAINT c_policy_policy_id
-        -- CHECK (policy_id BETWEEN 0 AND 9999999);
-
--- ALTER TABLE ab_invoice
-    -- ADD CONSTRAINT c_invoice_invoice_id
-        -- CHECK (invoice_id BETWEEN 0 AND 9999999);
-
--- ALTER TABLE ab_payment
-    -- ADD CONSTRAINT c_payment_p_id
-        -- CHECK (p_id BETWEEN 0 AND 999999999);
-
--- ALTER TABLE ab_house
-    -- ADD CONSTRAINT c_house_home_id
-        -- CHECK (home_id BETWEEN 0 AND 9999999);
 
 ALTER TABLE ab_invoice ALTER total_paid SET DEFAULT 0;
 
@@ -627,7 +700,7 @@ BEGIN
     DECLARE d VARCHAR(9);
     -- SQLINES LICENSE FOR EVALUATION USE ONLY
     SELECT
-        a.type
+        a.p_type
     INTO d
     FROM
         ab_policy a
@@ -814,15 +887,15 @@ END
 
 |
 
-
 DELIMITER ;
+
 
 
 -- SQLINES DEMO *** per Data Modeler Summary Report:
 --
--- SQLINES DEMO ***                        10
+-- SQLINES DEMO ***                        13
 -- SQLINES DEMO ***                         0
--- SQLINES DEMO ***                        20
+-- SQLINES DEMO ***                        27
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                         0
 -- SQLINES DEMO ***                         0

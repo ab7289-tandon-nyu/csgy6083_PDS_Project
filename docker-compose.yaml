@@ -42,6 +42,14 @@ services:
             db:
                 condition: service_healthy
 
+    adminer:
+        image: adminer
+        restart: always
+        ports:
+            - 8080:8080
+        networks:
+            - app-net
+
 networks:
     app-net:
         driver: bridge
