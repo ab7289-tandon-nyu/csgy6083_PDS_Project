@@ -4,52 +4,36 @@
         <!-- let browser know website is optimized for mobile -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
         <title>{% block title %}{% endblock %}</title>
-        {% block css %}
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/materialize.min.css') }}"  media="screen,projection"/>
         <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen,projection"/>
-        {% endblock %}
+
+        {% block css %}{% endblock %}
     </head>
     <body>
-        <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="/" class="brand-logo">We Do Secure</a>
-                <ul class="right hide-on-med-and-down">
-                    <li>Register</li>
-                    <li>Log in</li>
-                </ul>
-                <ul id="nav-mobile" class="sidenave">
-                    <li>Register</li>
-                    <li>Log in</li>
-                </ul>
-                <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-        <main class="container">
-            <header>
-                {% block header %}{% endblock %}
-            </header>
+        {% block body %} {% include "nav.html"%}
+
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+
+        <main class="container" role="main">
             {% for category, message in get_flashed_messages(with_categories=True) %}
                 <div class="flash {{ category }}" id="{{ category }}">{{ message }}</div>
             {% endfor %}
             {% block content %}
             {% endblock %}
         </main>
-        <footer class="page-footer orange">
-            <div class="footer-copywrite">
-                <div class="container">
-                    Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-                </div>
-            </div>
-        </footer>
+        {% include 'footer.html' %}
 
-        {% block javascript %}
-            <!--JavaScript at end of body for optimized loading-->
-            <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-            <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
-            <!-- <script src="{{ url_for('static', filename='js/init.js') }}"></script> -->
-        {% endblock %}
+        <!--JavaScript at end of body for optimized loading-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/materialize.min.js') }}"></script>
+        <!-- <script src="{{ url_for('static', filename='js/init.js') }}"></script> -->
+
+        {% block javascript %}{% endblock %}
+        {% endblock %} <!-- endblock body -->
     </body>
 </html>

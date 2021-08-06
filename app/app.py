@@ -31,9 +31,13 @@ def configure_extensions(app):
 
 def configure_bp(app):
 
-    from . import index
+    # from . import index
 
-    app.register_blueprint(index.bp)
+    # app.register_blueprint(index.bp)
+
+    from .public import views
+
+    app.register_blueprint(views.bp)
 
     return None
 

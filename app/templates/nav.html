@@ -1,0 +1,26 @@
+<nav class="light-blue lighten-1" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="/" class="brand-logo">We Do Secure</a>
+        <ul class="right hide-on-med-and-down">
+            {% if current_user and curren_user.is_authenticated %}
+                <!-- TODO add other menu items -->
+                <li><span>Welcome, {{ current_user.user_name }}</span></li>
+                <li><a href="/">Log out</a></li>
+            {% else %}
+                <li>Register</li>
+                <li>Log In
+            {% endif %}
+        </ul>
+        <ul id="nav-mobile" class="sidenave">
+            {% if current_user and curren_user.is_authenticated %}
+                <!-- TODO add other menu items -->
+                <li><span>Welcome, {{ current_user.user_name }}</span></li>
+                <li><a href="/">Log out</a></li>
+            {% else %}
+                <li>Register</li>
+                <li>Log In
+            {% endif %}
+        </ul>
+        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
