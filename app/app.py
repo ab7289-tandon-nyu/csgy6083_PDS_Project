@@ -2,9 +2,6 @@ from flask import Flask, render_template
 
 from .extensions import csrf, login_manager, mysql, principal
 
-# from app.extensions import TODO
-# from app.models import TODO
-
 
 def create_app(config_object="app.settings"):
 
@@ -30,10 +27,6 @@ def configure_extensions(app):
 
 
 def configure_bp(app):
-
-    # from . import index
-
-    # app.register_blueprint(index.bp)
 
     from .public import views
 

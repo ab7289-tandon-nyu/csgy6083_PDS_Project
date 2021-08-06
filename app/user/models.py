@@ -18,7 +18,7 @@ class UserManager(DBManager):
             "FROM `ab_user` WHERE `user_id`=%s"
         )
         try:
-            result = cursor.execut(sql, (user_name,)).fetchone()
+            result = cursor.execute(sql, (user_name,)).fetchone()
         except Exception as ex:
             print(f"And exception was thrown: {ex}")
             return None
