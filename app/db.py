@@ -1,27 +1,5 @@
-# import os
-# from flask import Flask
-# import mysql.connector
-
-# class DBManager:
-#     def __init__(
-#         self,
-#         database="ab_project",
-#         host="db",
-#         user="root",
-#         password_file=None,
-#         password="password",
-#     ):
-#         self.connection = mysql.connector.connect(
-#             user=user,
-#             password=password,
-#             host=host,  # name of the mysql service as set in the docker-compose file
-#             database=database,
-#             auth_plugin="mysql_native_password",
-#         )
-#         self.cursor = self.connection.cursor()
-
-#     def populate_db(self):
-#         pass
+import pymysql
+import pymysql.cursors
 
 
 class DBManager:
@@ -33,3 +11,22 @@ class DBManager:
         from .extensions import mysql
 
         self.mysql = mysql
+
+    def get_connection(self, autocommit=False):
+        """initiates the connection with the database"""
+        with self.mysql.connect(
+            autocommit=autocommit, cursorclass=pymysql.cursors.DictCursor
+        ) as conn:
+            yield conn
+
+    def get_cursor(self, autocommit=False, commit=False):
+        """yields a cursor from the connection"""
+        # self.conn = self.mysql.connect()
+        # self.cursor = self.conn.cursor()
+
+        conn = self.get_connection(autocommit=autocommit)
+        with conn.cursor() as cursor:
+            yield cursor
+
+        if commit:
+            conn.commit()
