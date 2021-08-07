@@ -19,13 +19,13 @@ class DBManager:
         ) as conn:
             yield conn
 
-    def get_cursor(self, autocommit=False, commit=False):
+    def get_cursor(self, autocommit=False, commit=False, prepared=False):
         """yields a cursor from the connection"""
         # self.conn = self.mysql.connect()
         # self.cursor = self.conn.cursor()
 
         conn = self.get_connection(autocommit=autocommit)
-        with conn.cursor() as cursor:
+        with conn.cursor(prepared=prepared) as cursor:
             yield cursor
 
         if commit:

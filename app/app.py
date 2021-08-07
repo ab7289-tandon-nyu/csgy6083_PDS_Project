@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-from .extensions import csrf, login_manager, mysql, principal
+from app.extensions import csrf, login_manager, mysql, principal
 
 
 def create_app(config_object="app.settings"):
