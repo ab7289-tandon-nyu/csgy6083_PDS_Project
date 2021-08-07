@@ -1,3 +1,6 @@
+import logging
+import sys
+
 from flask import Flask, render_template
 
 from app.extensions import csrf, login_manager, mysql, principal
@@ -10,6 +13,7 @@ def create_app(config_object="app.settings"):
 
     configure_extensions(app)
     configure_bp(app)
+    configure_logger(app)
 
     app.add_url_rule("/", endpoint="index")
 
@@ -20,6 +24,7 @@ def configure_extensions(app):
 
     mysql.init_app(app)
     csrf.init_app(app)
+    login_manager.init_app(app)
     login_manager.session_protection = "strong"
     principal.init_app(app)
 
@@ -45,6 +50,13 @@ def register_error_handlers(app):
         app.errorhandler(error_code)(render_error)
 
     return None
+
+
+def configure_logger(app):
+    """configure logger"""
+    handler = logging.StreamHandler(sys.stdout)
+    if not app.logger.handlers:
+        app.logger.addHandler(handler)
 
 
 if __name__ == "__main__":

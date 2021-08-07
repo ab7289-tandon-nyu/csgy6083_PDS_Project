@@ -1,7 +1,3 @@
-import pymysql
-import pymysql.cursors
-
-
 class DBManager:
     def __init__(self):
         """
@@ -12,21 +8,24 @@ class DBManager:
 
         self.mysql = mysql
 
-    def get_connection(self, autocommit=False):
+    def get_connection(self):
         """initiates the connection with the database"""
-        with self.mysql.connect(
-            autocommit=autocommit, cursorclass=pymysql.cursors.DictCursor
-        ) as conn:
-            yield conn
+        # with self.mysql.connect() as conn:
+        #     yield conn
+        return self.mysql.connect()
 
-    def get_cursor(self, autocommit=False, commit=False, prepared=False):
+    def get_cursor(self, commit=False):
         """yields a cursor from the connection"""
         # self.conn = self.mysql.connect()
         # self.cursor = self.conn.cursor()
 
-        conn = self.get_connection(autocommit=autocommit)
-        with conn.cursor(prepared=prepared) as cursor:
-            yield cursor
+        # conn = next(self.get_connection())
+        conn = self.get_connection()
+        return conn.cursor()
 
-        if commit:
-            conn.commit()
+        # conn = next(self.get_connection())
+        # with conn.cursor() as cursor:
+        #     yield cursor
+
+        #     if commit:
+        #         conn.commit()

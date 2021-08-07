@@ -7,7 +7,7 @@ env = Env()
 env.read_env()
 
 ENV = env.str("FLASK_ENV")
-DEBUG = ENV == "dev"
+DEBUG = ENV == "devevelopment"
 FLASK_APP = env.str("FLASK_APP")
 SECRET_KEY = env.str("SECRET_KEY")
 

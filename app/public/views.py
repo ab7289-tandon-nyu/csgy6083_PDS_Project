@@ -1,13 +1,10 @@
-from flask import Blueprint, redirect, render_template, url_for  # flash,; request,
+from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask_login import login_required, login_user, logout_user
 
 from app.extensions import login_manager
-
-# from app.public.forms import LoginForm
-from app.user.models import UserManager  # , User
-
-# from flask_login import login_required, login_user, logout_user
-
-# from app.utils import flash_errors
+from app.public.forms import LoginForm, RegisterForm
+from app.user.models import User, UserManager
+from app.utils import flash_errors
 
 bp = Blueprint("public", __name__, static_folder="../static")
 
@@ -31,3 +28,52 @@ def unauthorized_callback():
 def home():
     """public home page"""
     return render_template("public/index.html")
+
+
+@bp.route("/register", methods=["GET", "POST"])
+def register():
+    """route for the RegisterForm, allows new users to register"""
+    form = RegisterForm(request.form)
+    if form.validate_on_submit():
+        new_user = User(
+            form.username.data, form.email.data, password=form.password.data
+        )
+        result = UserManager().create_user(new_user)
+        if result:
+            flash("Thank you for registering, you may now log in", "success")
+            return redirect(url_for("public.home"))
+        else:
+            flash("There was an error persisting the user")
+    else:
+        flash_errors(form)
+    return render_template("public/register.html", form=form)
+
+
+@bp.route("/login", methods=["GET", "POST"])
+def login():
+    """route to allow an existing user to log in"""
+    form = LoginForm(request.form)
+    if request.method == "POST":
+        if form.validate_on_submit():
+            login_user(form.user)
+            flash("Your are logged in.", "success")
+            redirect_url = request.args.get("next") or url_for("public.home")
+            return redirect(redirect_url)
+        else:
+            flash_errors(form)
+    return render_template("public/login.html", form=form)
+
+
+@bp.route("/logout")
+@login_required
+def logout():
+    """logs the current user out"""
+    logout_user()
+
+    # for key in ("identity.id", "identity.auth_type"):
+    # session.pop(key, None)
+
+    # identity_changed.send(
+    # current_app._get_current_object(), identity=AnonymousIdentity()
+    # )
+    return redirect(url_for("public.login"))
