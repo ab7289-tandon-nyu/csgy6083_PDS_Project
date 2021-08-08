@@ -97,6 +97,7 @@
 <commentInRDBMS><![CDATA[THE CUSTOMER TYPE. 'A' AUTOMOBILE INSURANCE, 'H' HOME INSURANCE.]]></commentInRDBMS>
 <generatorID>52C57A39-E489-8B73-6AD7-701AE2E89E70</generatorID>
 <ownerDesignName>project_design</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>

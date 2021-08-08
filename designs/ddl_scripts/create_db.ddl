@@ -25,7 +25,7 @@ CREATE TABLE ab_customer (
     lname           VARCHAR2(32) NOT NULL,
     gender          VARCHAR2(1),
     marital_status  VARCHAR2(1) NOT NULL,
-    cust_type       VARCHAR2(2) NOT NULL,
+    cust_type       VARCHAR2(2),
     street_1        VARCHAR2(32) NOT NULL,
     street_2        VARCHAR2(32),
     city            VARCHAR2(32) NOT NULL,
