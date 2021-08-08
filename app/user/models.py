@@ -15,6 +15,10 @@ class User(UserMixin):
         self.type = type
         self.password = password
 
+    def get_id(self):
+        """override the flask-login provided get_id function since we dont have an `id` field"""
+        return str(self.user_id)
+
     def set_password(self, password):
         """Convenience method to generate hashed and salted password"""
         self.password = generate_password_hash(password)
@@ -53,6 +57,24 @@ class UserManager(DBManager):
     def __init__(self):
         super(UserManager, self).__init__()
 
+    def get_by_id(self, id):
+        """Retrieves a user record from the database by its id"""
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = (
+                    "SELECT `user_id`, `user_name`, `email`, `type`"
+                    "FROM `ab_user` WHERE `user_id`=%s"
+                )
+                try:
+                    cursor.execute(sql, (id,))
+                    result = cursor.fetchone()
+                except Exception as ex:
+                    print(f"Exception was thrown while retrieving user by id {id}. EX: {ex}")
+                    return None
+                if not result:
+                    return None
+                return User(**result)
+
     def get_by_username(self, user_name):
         """Retrieves a User record from the dabatase or returns None"""
         with self.get_connection() as conn:
@@ -68,14 +90,14 @@ class UserManager(DBManager):
                 except Exception as ex:
                     print(f"An exception was thrown: {ex}", flush=True)
                     return None
-                # finally:
-                #     cursor.close()
                 current_app.logger.info(f"result: {result}")
+                if not result:
+                    return None
                 return User(**result)
 
     def create_user(self, new_user):
         """persists a new user record"""
-        # cursor = self.get_cursor(prepared=True, commit=True)
+        
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
 

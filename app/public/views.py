@@ -1,5 +1,5 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user
+from flask import Blueprint, flash, redirect, render_template, request, url_for, _request_ctx_stack
+from flask_login import login_required, login_user, logout_user, current_user
 
 from app.extensions import login_manager
 from app.public.forms import LoginForm, RegisterForm
@@ -12,22 +12,27 @@ bp = Blueprint("public", __name__, static_folder="../static")
 @login_manager.user_loader
 def load_user(user_id):
     """login_manager hook to load user by ID"""
-    return UserManager().get_by_username(user_id)
+    return UserManager().get_by_id(user_id)
 
 
-@login_manager.unauthorized_handler
-def unauthorized_callback():
+# @login_manager.unauthorized_handler
+# def unauthorized_callback():
     """callback method required to redirect the user to the login page
     if they are unauthorized or if their session has become invalidated.
     without this the user just gets a 401 Unauthorized error, which isn't
     very helpful"""
-    return redirect(url_for("public.home"))
+    # return redirect(url_for("public.home"))
 
 
 @bp.route("/", methods=["GET", "POST"])
 def home():
     """public home page"""
-    return render_template("public/index.html")
+    # print(f"context user: {_request_ctx_stack.top.user}")
+    if not current_user:
+        print("no current user detected", flush=True)
+    else:
+        print(f"current user detected: {current_user}", flush=True)
+    return render_template("public/index.html", current_user=current_user)
 
 
 @bp.route("/register", methods=["GET", "POST"])
@@ -36,12 +41,13 @@ def register():
     form = RegisterForm(request.form)
     if form.validate_on_submit():
         new_user = User(
-            form.username.data, form.email.data, password=form.password.data
+            form.username.data, form.email.data
         )
+        new_user.set_password(form.password.data)
         result = UserManager().create_user(new_user)
         if result:
             flash("Thank you for registering, you may now log in", "success")
-            return redirect(url_for("public.home"))
+            return redirect(url_for("public.login"))
         else:
             flash("There was an error persisting the user")
     else:
@@ -56,7 +62,9 @@ def login():
     if request.method == "POST":
         if form.validate_on_submit():
             login_user(form.user)
+            # print(f"Session: {session}", flush=True)
             flash("Your are logged in.", "success")
+            print(f"context user: {_request_ctx_stack.top.user}")
             redirect_url = request.args.get("next") or url_for("public.home")
             return redirect(redirect_url)
         else:
