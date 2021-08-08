@@ -35,6 +35,7 @@ class LoginForm(FlaskForm):
 
         manager = UserManager()
         self.user = manager.get_by_username(self.username.data)
+        print(f"self.user: {self.user}", flush=True)
         if not self.user:
             self.username.errors.append("Unknown username")
             return False

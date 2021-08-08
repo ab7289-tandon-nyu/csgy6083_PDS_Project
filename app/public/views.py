@@ -1,5 +1,13 @@
-from flask import Blueprint, flash, redirect, render_template, request, url_for, _request_ctx_stack
-from flask_login import login_required, login_user, logout_user, current_user
+from flask import (
+    Blueprint,
+    _request_ctx_stack,
+    flash,
+    redirect,
+    render_template,
+    request,
+    url_for,
+)
+from flask_login import current_user, login_required, login_user, logout_user
 
 from app.extensions import login_manager
 from app.public.forms import LoginForm, RegisterForm
@@ -14,9 +22,8 @@ def load_user(user_id):
     """login_manager hook to load user by ID"""
     return UserManager().get_by_id(user_id)
 
-
-# @login_manager.unauthorized_handler
-# def unauthorized_callback():
+    # @login_manager.unauthorized_handler
+    # def unauthorized_callback():
     """callback method required to redirect the user to the login page
     if they are unauthorized or if their session has become invalidated.
     without this the user just gets a 401 Unauthorized error, which isn't
@@ -40,9 +47,7 @@ def register():
     """route for the RegisterForm, allows new users to register"""
     form = RegisterForm(request.form)
     if form.validate_on_submit():
-        new_user = User(
-            form.username.data, form.email.data
-        )
+        new_user = User(form.username.data, form.email.data)
         new_user.set_password(form.password.data)
         result = UserManager().create_user(new_user)
         if result:
