@@ -1,17 +1,9 @@
-from flask import (
-    Blueprint,
-    _request_ctx_stack,
-    flash,
-    redirect,
-    render_template,
-    request,
-    url_for,
-)
-from flask_login import current_user, login_required, login_user, logout_user
+from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask_login import login_required, login_user, logout_user
 
 from app.extensions import login_manager
-from app.public.forms import LoginForm, RegisterForm
-from app.user.models import User, UserManager
+from app.public.forms import CustomerRegisterForm, LoginForm, RegisterForm
+from app.user.models import Customer, CustomerManager, User, UserManager
 from app.utils import flash_errors
 
 bp = Blueprint("public", __name__, static_folder="../static")
@@ -34,12 +26,8 @@ def load_user(user_id):
 @bp.route("/", methods=["GET", "POST"])
 def home():
     """public home page"""
-    # print(f"context user: {_request_ctx_stack.top.user}")
-    if not current_user:
-        print("no current user detected", flush=True)
-    else:
-        print(f"current user detected: {current_user}", flush=True)
-    return render_template("public/index.html", current_user=current_user)
+
+    return render_template("public/index.html")
 
 
 @bp.route("/register", methods=["GET", "POST"])
@@ -60,6 +48,36 @@ def register():
     return render_template("public/register.html", form=form)
 
 
+@bp.route("/customer_register", methods=["GET", "POST"])
+def customer_register():
+    form = CustomerRegisterForm(request.form)
+    if form.validate_on_submit():
+        customer = Customer(
+            form.username.data,
+            form.email.data,
+            form.fname.data,
+            form.mname.data,
+            form.lname.data,
+            form.gender.data,
+            form.marital_status.data,
+            form.street_1.data,
+            form.street_2.data,
+            form.city.data,
+            form.state.data,
+            form.zip.data,
+            password=form.password.data,
+        )
+        result = CustomerManager().create_customer(customer)
+        if result:
+            flash("Thank you for registering, you may now log in", "success")
+            return redirect(url_for("public.login"))
+        else:
+            flash("There was an error persisting the user.")
+    else:
+        flash_errors(form)
+    return render_template("public/customer_register.html", form=form)
+
+
 @bp.route("/login", methods=["GET", "POST"])
 def login():
     """route to allow an existing user to log in"""
@@ -69,7 +87,6 @@ def login():
             login_user(form.user)
             # print(f"Session: {session}", flush=True)
             flash("Your are logged in.", "success")
-            print(f"context user: {_request_ctx_stack.top.user}")
             redirect_url = request.args.get("next") or url_for("public.home")
             return redirect(redirect_url)
         else:

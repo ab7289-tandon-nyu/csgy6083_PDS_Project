@@ -1,4 +1,4 @@
-from typing import Any, Optional
+from typing import Any, Optional, Tuple
 
 # from flask import current_app
 from flask_login import UserMixin
@@ -192,6 +192,22 @@ class UserManager(DBManager):
                     # return False
                 return True
 
+    def delete_user(self, user_id: int) -> bool:
+        """deletes a user with the specified ID"""
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "DELETE FROM `ab_user` WHERE `user_id`=%s"
+                try:
+                    cursor.execute(sql, (user_id,))
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There wasn an error deleted user {user_id}. EX {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
+
 
 class CustomerManager(UserManager):
     """Convenience clas to encapsulate Database operations on Customers"""
@@ -199,8 +215,45 @@ class CustomerManager(UserManager):
     def __init__(self):
         super(CustomerManager, self).__init__()
 
-    def get_by_id(self, user_id: int):
-        if not super().get_by_id(user_id):
+    def get_by_username(self, user_name: str) -> Optional[Tuple[Customer, User]]:
+        user = super().get_by_username(user_name)
+        if not user:
+            print(
+                f"CustomerManager.get_by_username - No User found with name {user_name}",
+                flush=True,
+            )
+            return None
+        else:
+            with self.get_connection() as conn:
+                with conn.cursor() as cursor:
+                    sql = (
+                        "SELECT `u`.`user_name`, `u`.`email`, `c`.`fname`, `c`.`mname`, `c`.`lname`, "
+                        "`c`.`gender`, `c`.`marital_status`, `c`.`street_1`, `c`.`street_2`, `c`.`city`,"
+                        " `c`.`state`, `c`.`zip`, `u`.`type`, `u`.`user_id`, `u`.`password`"
+                        "FROM `ab_user` `u`"
+                        "JOIN `ab_customer` `c`"
+                        "ON `u`.`user_id`=`c`.`user_id`"
+                        "WHERE `c`.`user_id`=%s"
+                    )
+                    try:
+                        cursor.execute(sql, (user.user_id,))
+                        result = cursor.fetchone()
+                    except Exception as ex:
+                        print(
+                            f"An error was thrown retrieving Customer {user_name}. EX: {ex}",
+                            flush=True,
+                        )
+                        return None
+                    if not result:
+                        print(
+                            f"No customer found with user_name {user_name}", flush=True
+                        )
+                        return None
+                    return Customer(**result), user
+
+    def get_by_id(self, user_id: int) -> Optional[Tuple[Customer, User]]:
+        user = super().get_by_id(user_id)
+        if not user:
             print(
                 f"CustomerManager.get_by_id - No User found with ID {user_id}",
                 flush=True,
@@ -230,12 +283,16 @@ class CustomerManager(UserManager):
                     if not result:
                         print(f"No customer found with id: {user_id}", flush=True)
                         return None
-                    return Customer(**result)
+                    return Customer(**result), user
 
     def create_customer(self, new_customer: Customer) -> bool:
         """Creates a new User and Customer instance in the database"""
         new_user = User(new_customer.user_name, new_customer.email, type="C")
         new_user.set_password(new_customer.password)
+        print(
+            f"customer password: {new_customer.password}\nuser password: {new_user.password}",
+            flush=True,
+        )
         inserted = super().create_user(new_user)
         if not inserted:
             print(
@@ -257,7 +314,7 @@ class CustomerManager(UserManager):
             with conn.cursor() as cursor:
                 sql = (
                     "INSERT INTO `ab_customer` (`user_id`, `fname`, `mname`, `lname`, `gender`, "
-                    "`marital_status`, `street_1`, `street_2`, `city`, `state`, `zip`"
+                    "`marital_status`, `street_1`, `street_2`, `city`, `state`, `zip`)"
                     "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
                 )
                 try:
@@ -283,5 +340,6 @@ class CustomerManager(UserManager):
                         f"There was an exception inserting customer {new_customer} in DB. EX: {ex}",
                         flush=True,
                     )
+                    self.delete_user(user_id)
                     return False
                 return True

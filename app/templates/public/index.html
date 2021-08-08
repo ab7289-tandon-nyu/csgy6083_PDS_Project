@@ -9,9 +9,16 @@ PDS
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row center-align">
         <div class="col s12">
             <p>Hello, World!</p>
         </div>
-    </dvi>
+    </dv>
+    {% if not current_user or not current_user.is_authenticated %}
+        <div class="row">
+            <div class="col s12 center-align">
+                <span>New Customer? Register <a href="{{ url_for('public.customer_register') }}" class="waves-effect waves-light btn">here</a></span>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
