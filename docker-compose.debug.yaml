@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+    db:
+        build: ./db
+        command: '--default-authentication-plugin=mysql_native_password'
+        restart: always
+        container_name: pds_db
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "--silent"]
+            interval: 3s
+            retries: 5
+            start_period: 30s
+        secrets:
+            - db-password
+        networks:
+            - app-net
+        volumes:
+            - db-data:/var/lib/mysql
+        environment:
+            - MYSQL_DATABASE=ab_project
+            - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
+            # - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_ROOT_HOST=host.docker.internal
+            - MYSQL_ROOT_HOST=%
+        ports:
+            - 3306:3306
+            - 33060:33060
+        expose:
+            - 3306
+            - 33060
+    app:
+        build: ./app
+        image: pds-app:latest
+        container_name: pds_app
+        command: ["sh", "-c", "pip install debugpy -t /tmp && python /tmp/debugpy --wait-for-client --listen 0.0.0.0:5678 app.py -h 0.0.0.0 -p 5000 --without-threads --debugger"]
+        ports:
+            - 5000:5000
+            - 5678:5678
+        volumes:
+            - ./app/:/app
+        networks:
+            - app-net
+        depends_on:
+            db:
+                condition: service_healthy
+
+    adminer:
+        image: adminer
+        container_name: pds_adminer
+        restart: always
+        ports:
+            - 8080:8080
+        networks:
+            - app-net
+
+networks:
+    app-net:
+        driver: bridge
+
+volumes:
+    db-data:
+secrets:
+    db-password:
+        file: db/db_password.txt
