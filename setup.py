@@ -9,7 +9,7 @@ dependencies = [
     "flask-wtf==0.15.1",
     "flask-login==0.5.0",
     "flask-principal==0.4.0",
-    "email-validator==1.1.3"
+    "email-validator==1.1.3",
 ]
 
 test_dependencies = [

@@ -3,7 +3,8 @@ from flask_login import login_required, login_user, logout_user
 
 from app.extensions import login_manager
 from app.public.forms import CustomerRegisterForm, LoginForm, RegisterForm
-from app.user.models import Customer, CustomerManager, User, UserManager
+from app.user.managers import CustomerManager, UserManager
+from app.user.models import Customer, User
 from app.utils import flash_errors
 
 bp = Blueprint("public", __name__, static_folder="../static")
