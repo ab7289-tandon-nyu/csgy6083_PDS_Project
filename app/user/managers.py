@@ -193,7 +193,7 @@ class CustomerManager(UserManager):
         """Creates a new User and Customer instance in the database"""
         new_user = User(new_customer.user_name, new_customer.email, type="C")
         new_user.set_password(new_customer.password)
-        
+
         inserted = super().create_user(new_user)
         if not inserted:
             print(
