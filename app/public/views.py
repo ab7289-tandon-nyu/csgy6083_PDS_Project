@@ -15,19 +15,21 @@ def load_user(user_id):
     """login_manager hook to load user by ID"""
     return UserManager().get_by_id(user_id)
 
-    # @login_manager.unauthorized_handler
-    # def unauthorized_callback():
+
+@login_manager.unauthorized_handler
+def unauthorized_callback():
     """callback method required to redirect the user to the login page
     if they are unauthorized or if their session has become invalidated.
     without this the user just gets a 401 Unauthorized error, which isn't
     very helpful"""
-    # return redirect(url_for("public.home"))
+    return redirect(url_for("public.home"))
 
 
 @bp.route("/", methods=["GET", "POST"])
 def home():
     """public home page"""
-
+    # TODO fill in details about customer based on type
+    # such ash showing links to car / home policies
     return render_template("public/index.html")
 
 
