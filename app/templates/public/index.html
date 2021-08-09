@@ -20,5 +20,22 @@ PDS
                 <span>New Customer? Register <a href="{{ url_for('public.customer_register') }}" class="waves-effect waves-light btn">here</a></span>
             </div>
         </div>
+    {% elif current_user and current_user.is_authenticated and current_user.type == 'C'%}
+        <div class="row">
+            <div class="col s12 center-align">
+                <span>Welcome customer!</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <span>user type is : {{current_user.type }}</span>
+            </div>
+        </div>
+    {% elif current_user and current_user.is_authenticated and current_user.type == 'E'%}
+        <div class="row">
+            <div class="col s12 center-align">
+                <span>Welcome employee!</span>
+            </div>
+        </row>
     {% endif %}
 {% endblock %}
