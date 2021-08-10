@@ -1,4 +1,6 @@
 class Policy:
+    """DTO Class for Insurance Policy records"""
+
     def __init__(
         self,
         start_date: str,
@@ -19,6 +21,8 @@ class Policy:
 
 
 class AutoPolicy(Policy):
+    """DTO class for Auto Insurance Policy records"""
+
     def __init__(self, *args, **kwargs):
         super(AutoPolicy, self).__init__(*args, **kwargs)
         self.p_type = "A"
@@ -28,6 +32,8 @@ class AutoPolicy(Policy):
 
 
 class HomePolicy(Policy):
+    """DTO class for Home Insurance Policy records"""
+
     def __init__(self, *args, **kwargs):
         super(HomePolicy, self).__init__(*args, **kwargs)
         self.p_type = "H"

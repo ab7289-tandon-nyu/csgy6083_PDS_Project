@@ -2,6 +2,8 @@ from typing import List, Optional
 
 
 class Payment:
+    """DTO class for Payment records"""
+
     def __init__(
         self,
         pay_date: str,
@@ -18,6 +20,8 @@ class Payment:
 
 
 class Invoice:
+    """DTO class for invoice records"""
+
     def __init__(
         self,
         invoice_date: str,
