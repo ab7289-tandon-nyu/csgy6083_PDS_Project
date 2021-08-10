@@ -31,13 +31,13 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>9</dataTypeSize>
+<dataTypeSize>1</dataTypeSize>
 <listOfValues>
 <valueDef value="A" description="entity AB_AUTO"/>
 <valueDef value="AB_POLICY" description="entity AB_POLICY"/>
 <valueDef value="H" description="entity AB_HOME"/>
 </listOfValues>
-<ownDataTypeParameters>9,,</ownDataTypeParameters>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <isDiscriminatorColumn>true</isDiscriminatorColumn>
 </Column>
