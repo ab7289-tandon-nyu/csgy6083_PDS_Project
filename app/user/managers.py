@@ -51,7 +51,7 @@ class UserManager(DBManager):
                     result = cursor.fetchone()
                 except Exception as ex:
                     print(
-                        f"Exception was thrown while retrieving user by id {id}. EX: {ex}",
+                        f"Exception was thrown while retrieving user by id {value}. EX: {ex}",
                         flush=True,
                     )
                     return None
