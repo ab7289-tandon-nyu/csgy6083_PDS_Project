@@ -27,6 +27,20 @@ class AutoPolicy(Policy):
         super(AutoPolicy, self).__init__(*args, **kwargs)
         self.p_type = "A"
 
+    @classmethod
+    def from_parent(cls, parent: Policy):
+        """Returns an instance of an AutoPolicy from a Policy object"""
+
+        return cls(
+            parent.start_date,
+            parent.end_date,
+            parent.premium,
+            state=parent.state,
+            active=parent.active,
+            policy_id=parent.policy_id,
+            user_id=parent.user_id,
+        )
+
     def __repr__(self):
         return f"<AutoPolicy({self.policy_id})>"
 
@@ -37,6 +51,20 @@ class HomePolicy(Policy):
     def __init__(self, *args, **kwargs):
         super(HomePolicy, self).__init__(*args, **kwargs)
         self.p_type = "H"
+
+    @classmethod
+    def from_parent(cls, parent: Policy):
+        """Returns an instance of an Home Policy from a Policy object"""
+
+        return cls(
+            parent.start_date,
+            parent.end_date,
+            parent.premium,
+            state=parent.state,
+            active=parent.active,
+            policy_id=parent.policy_id,
+            user_id=parent.user_id,
+        )
 
     def __repr__(self):
         return f"<HomePolicy({self.policy_id})>"
