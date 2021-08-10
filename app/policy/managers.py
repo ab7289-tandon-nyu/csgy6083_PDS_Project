@@ -9,10 +9,12 @@ class PolicyManager(DBManager):
         super(PolicyManager, self).__init__()
 
     def get_by_id(self, policy_id: int) -> Optional[Policy]:
+        """Retrieves an insurace Policy record with the specified ID or returns None"""
+
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = (
-                    "SELECT `start_date`, `end_date`, `premium`, `state`, "
+                    "SELECT `start_date`, `end_date`, `premium`, `type`, `state`, "
                     "`active`, `policy_id`, `user_id`"
                     "FROM `ab_policy`"
                     "WHERE `policy_id=%s"
@@ -31,15 +33,56 @@ class PolicyManager(DBManager):
                     return None
                 return Policy(**result)
 
-    def get_policies_for_user(self, user_id: int) -> Optional[List[Policy]]:
+    def delete(self, policy_id: int) -> bool:
+        """Deletes a policy record with the specified ID"""
+
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = (
-                    "SELECT `start_date`, `end_date`, `premium`, `state`, "
-                    "`active`, `policy_id`, `user_id`"
-                    "FROM `ab_policy`"
-                    "WHERE `user_id=%s"
-                )
+                sql = "DELETE FROM `ab_policy` WHERE `policy_id`=%s"
+                try:
+                    cursor.execute(sql, (policy_id,))
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was an error deleting the ab_policy record for id {policy_id}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
+
+    def get_policies_for_user(
+        self, user_id: int, type: str = None
+    ) -> Optional[List[Policy]]:
+        """Retrieves the list of policies associated with a specified user for the specified type"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = ""
+                if type == "A":
+                    sql = (
+                        "SELECT `start_date`, `end_date`, `premium`, `state`, "
+                        "`active`, `policy_id`, `user_id`"
+                        "FROM `ab_policy`"
+                        "WHERE `user_id=%s AND `p_type`='A'"
+                    )
+                elif type == "H":
+                    sql = (
+                        "SELECT `start_date`, `end_date`, `premium`, `state`, "
+                        "`active`, `policy_id`, `user_id`"
+                        "FROM `ab_policy`"
+                        "WHERE `user_id=%s AND `p_type`='H'"
+                    )
+                else:
+                    print(
+                        f"WARNING! not type was specified when requesting policies for user {user_id}",
+                        flush=True,
+                    )
+                    sql = (
+                        "SELECT `start_date`, `end_date`, `premium`, `state`, "
+                        "`active`, `policy_id`, `user_id`"
+                        "FROM `ab_policy`"
+                        "WHERE `user_id=%s"
+                    )
                 try:
                     cursor.execute(sql, (user_id,))
                     results = cursor.fetchmany()
@@ -118,7 +161,7 @@ class APolicyManager(PolicyManager):
                     return False
                 return True
 
-    def get_by_id(self, policy_id: int):
+    def get_by_id(self, policy_id: int) -> Optional[AutoPolicy]:
         """Returns an AutoPolicy record associated with the specified ID, or None"""
 
         if self.check_id_valid(policy_id):

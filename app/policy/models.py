@@ -6,6 +6,7 @@ class Policy:
         start_date: str,
         end_date: str,
         premium: float,
+        type: str = None,
         state: str = "C",
         active: bool = True,
         policy_id: int = -1,
@@ -14,6 +15,7 @@ class Policy:
         self.start_date = start_date
         self.end_date = end_date
         self.premium = premium
+        self.type = type
         self.state = state
         self.active = active
         self.policy_id = policy_id
@@ -35,6 +37,7 @@ class AutoPolicy(Policy):
             parent.start_date,
             parent.end_date,
             parent.premium,
+            type="A",
             state=parent.state,
             active=parent.active,
             policy_id=parent.policy_id,
@@ -60,6 +63,7 @@ class HomePolicy(Policy):
             parent.start_date,
             parent.end_date,
             parent.premium,
+            type="H",
             state=parent.state,
             active=parent.active,
             policy_id=parent.policy_id,
