@@ -1,5 +1,7 @@
 from typing import List, Optional
 
+from jinjasql import JinjaSql
+
 from app.db import DBManager
 from app.policy.models import AutoPolicy, HomePolicy, Policy
 
@@ -52,41 +54,27 @@ class PolicyManager(DBManager):
                 return True
 
     def get_policies_for_user(
-        self, user_id: int, type: str = None
+        self, user_id: int, p_type: str = None
     ) -> Optional[List[Policy]]:
         """Retrieves the list of policies associated with a specified user for the specified type"""
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = ""
                 results = None
-                if type == "A":
-                    sql = (
-                        "SELECT `start_date`, `end_date`, `premium`, `state`, "
-                        "`active`, `policy_id`, `user_id`"
-                        "FROM `ab_policy`"
-                        "WHERE `user_id=%s AND `p_type`='A'"
-                    )
-                elif type == "H":
-                    sql = (
-                        "SELECT `start_date`, `end_date`, `premium`, `state`, "
-                        "`active`, `policy_id`, `user_id`"
-                        "FROM `ab_policy`"
-                        "WHERE `user_id=%s AND `p_type`='H'"
-                    )
-                else:
-                    print(
-                        f"WARNING! not type was specified when requesting policies for user {user_id}",
-                        flush=True,
-                    )
-                    sql = (
-                        "SELECT `start_date`, `end_date`, `premium`, `state`, "
-                        "`active`, `policy_id`, `user_id`"
-                        "FROM `ab_policy`"
-                        "WHERE `user_id=%s"
-                    )
+                sql_template = """
+                    SELECT `start_date`, `end_date`, `premium`, `p_type`
+                    `state`, `active`, `policy_id`
+                    FROM `ab_policy`
+                    WHERE `user_id`={{ user_id }}
+                    {% if type %}
+                    AND `p_type`={{ type }}
+                    {% endif %}
+                """
+                data = {"user_id": user_id, "type": p_type}
+                query, bind_params = JinjaSql().prepare_query(sql_template, data)
+
                 try:
-                    cursor.execute(sql, (user_id,))
+                    cursor.execute(query, bind_params)
                     results = cursor.fetchmany()
                 except Exception as ex:
                     print(
