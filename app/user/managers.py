@@ -1,7 +1,9 @@
-from typing import Any, Optional, Tuple
+from typing import Any, List, Optional, Tuple
+
+from jinjasql import JinjaSql
 
 from app.db import DBManager
-from app.user.models import Customer, User
+from app.user.models import Customer, Role, User
 
 
 class UserManager(DBManager):
@@ -35,19 +37,20 @@ class UserManager(DBManager):
         """internal definition of the get_by_id method"""
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = None
-                if field_name == "user_id":
-                    sql = (
-                        "SELECT `user_id`, `user_name`, `email`, `type`, `password`"
-                        "FROM `ab_user` WHERE `user_id`=%s"
-                    )
-                elif field_name == "user_name":
-                    sql = (
-                        "SELECT `user_id`, `user_name`, `email`, `type`, `password`"
-                        "FROM `ab_user` WHERE `user_name`=%s"
-                    )
+                # need the {{ value | sqlsafe }} for column or table names
+                # otherwise JinjaSQL quotes them as if they were user input data
+                sql_template = """
+                    SELECT `user_id`, `user_name`, `email`, `type`, `password`
+                    FROM `ab_user`
+                    WHERE {{ field_name | sqlsafe }} = {{ field_value }}
+                """
+                data = {"field_name": field_name, "field_value": value}
+                # use JinjaSQL to generate dynamic SQL queries while allowing us to still
+                # take advantage of parameterized statements in pymysql
+                query, bind_params = JinjaSql().prepare_query(sql_template, data)
+
                 try:
-                    cursor.execute(sql, (value,))
+                    cursor.execute(query, bind_params)
                     result = cursor.fetchone()
                 except Exception as ex:
                     print(
@@ -244,3 +247,45 @@ class CustomerManager(UserManager):
                     self.delete_user(user_id)
                     return False
                 return True
+
+
+class RoleManager(DBManager):
+    def __init__(self):
+        super(RoleManager, self).__init__()
+
+    def get_by_id(self, role_id: int) -> Optional[Role]:
+        """Retrieves a role record for the specified ID"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = (
+                    "SELECT `name`, `desc`, `role_id`"
+                    "FROM `ab_role`"
+                    "WHERE `role_id`=%s"
+                )
+                result = None
+                try:
+                    cursor.execute(sql, (role_id,))
+                    result = cursor.fetchone()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to fetch role for id: {role_id}. EX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                if not result:
+                    print(f"No role found for role_id= {role_id}", flush=True)
+                    return None
+                return Role(**result)
+
+
+class UserRoleManager(DBManager):
+    def __init__(self):
+        super(UserRoleManager, self).__init__()
+        self.userManager = UserManager()
+        self.roleManager = RoleManager()
+
+    def get_roles_for_user(self, user_id: int) -> Optional[List[Role]]:
+        """Retrieves the list of roles for the specified user"""
+        pass
+        # user = self.userManager.get_by_id(user_id)

@@ -82,7 +82,7 @@ class Customer(User):
 class Role:
     """DTO Object for the Role Model"""
 
-    def __init__(self, role_id: int, name: str, desc: str):
+    def __init__(self, name: str, desc: str, role_id: int = -1):
         self.role_id = role_id
         self.name = name
         self.desc = desc

@@ -10,6 +10,7 @@ dependencies = [
     "flask-login==0.5.0",
     "flask-principal==0.4.0",
     "email-validator==1.1.3",
+    "jinjasql==0.1.8",
 ]
 
 test_dependencies = [
