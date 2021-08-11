@@ -315,6 +315,27 @@ class RoleManager(DBManager):
                     return None
                 return [Role(**result) for result in results]
 
+    def get_id_for_name(self, role_name: str) -> Optional[int]:
+        """retrieves the role_id for the specified name"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "SELECT DISTINCT `role_id` FROM `ab_role` WHERE `name`=%s"
+                result = None
+                try:
+                    cursor.execute(sql, (role_name,))
+                    result = cursor.fetchone()
+                except Exception as ex:
+                    print(
+                        f"There was a DB Error when trying to fetch the ID for role= {role_name}. EX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                if not result:
+                    print(f"No role found for name= {role_name}", flush=True)
+                    return None
+                return int(result)
+
 
 class UserRoleManager(DBManager):
     def __init__(self):
