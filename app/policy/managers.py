@@ -19,6 +19,7 @@ class PolicyManager(DBManager):
                     "FROM `ab_policy`"
                     "WHERE `policy_id=%s"
                 )
+                result = None
                 try:
                     cursor.execute(sql, (policy_id,))
                     result = cursor.fetchone()
@@ -58,6 +59,7 @@ class PolicyManager(DBManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = ""
+                results = None
                 if type == "A":
                     sql = (
                         "SELECT `start_date`, `end_date`, `premium`, `state`, "
@@ -106,6 +108,7 @@ class HPolicyManager(PolicyManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = "SELECT `policy_id` FROM `ab_home` WHERE `policy_id`=%s"
+                result = None
                 try:
                     cursor.execute(sql, (policy_id,))
                     result = cursor.fetchone()
@@ -143,6 +146,7 @@ class APolicyManager(PolicyManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = "SELECT `policy_id` FROM `ab_auto` WHERE `policy_id`=%s"
+                result = None
                 try:
                     cursor.execute(sql, (policy_id,))
                     result = cursor.fetchone()

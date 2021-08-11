@@ -114,7 +114,7 @@ class UserManager(DBManager):
 
 
 class CustomerManager(UserManager):
-    """Convenience clas to encapsulate Database operations on Customers"""
+    """Convenience class to encapsulate Database operations on Customers"""
 
     def __init__(self):
         super(CustomerManager, self).__init__()
