@@ -278,6 +278,43 @@ class RoleManager(DBManager):
                     return None
                 return Role(**result)
 
+    def get_by_ids(self, id_list: List[int]) -> Optional[List[Role]]:
+        """Returns a list of Role records associated with the list of distinct role ids"""
+        if not id_list or len(id_list) < 1:
+            print("RoleManager.get_by_ids - please specify a list of IDs", flush=True)
+            return None
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                # use jinjasql inclause filter to generate the correct list of bind expressions
+                sql_template = """
+                    SELECT `name`, `desc`, `role_id`
+                    FROM `ab_role`
+                    WHERE role_id IN {{ role_ids | inclause}}
+                """
+                data = {"role_ids": id_list}
+                query, bind_params = JinjaSql().prepare_query(sql_template, data)
+                results = None
+                try:
+                    query = cursor.execute(query, bind_params)
+                    results = query.fetchmany()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to retrieve the roles in id_list: {id_list}."
+                        f"\nJinjaSQL Query: {query}"
+                        f"\nJinjaSQL bind_params: {bind_params}"
+                        f"\nException: {ex}",
+                        flush=True,
+                    )
+                    return None
+                if not results:
+                    print(
+                        f"Did not find any roles associated with id_list: {id_list}",
+                        flush=True,
+                    )
+                    return None
+                return [Role(**result) for result in results]
+
 
 class UserRoleManager(DBManager):
     def __init__(self):
@@ -287,5 +324,41 @@ class UserRoleManager(DBManager):
 
     def get_roles_for_user(self, user_id: int) -> Optional[List[Role]]:
         """Retrieves the list of roles for the specified user"""
-        pass
-        # user = self.userManager.get_by_id(user_id)
+
+        user = self.userManager.get_by_id(user_id)
+        if not user:
+            print(
+                f"UserRoleManager.get_roles_for_user - Unable to find user for id: {user_id}",
+                flush=True,
+            )
+            return None
+
+        id_list = self._get_roles_for_user(user.user_id)
+
+        return self.roleManager.get_by_ids(id_list)
+
+    def _get_roles_for_user(self, user_id: int) -> Optional[List[int]]:
+        """Retrieves the list of role IDs that are associated with the specified user_id"""
+
+        with self.get_connection() as conn:
+            with conn.cusror() as cursor:
+                sql = (
+                    "SELECT DISTINCT `role_id`"
+                    "FROM `ab_user_role_mtom`"
+                    "WHERE `user_id`=%s"
+                )
+                results = None
+                try:
+                    cursor.execute(sql, (user_id,))
+                    results = cursor.fetchmany()
+                except Exception as ex:
+                    print(
+                        "There was a DB error when trying to fetch all role_id's associated with "
+                        f"user_id= {user_id}. EX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                if not results:
+                    print(f"No role_id's found for user_id= {user_id}", flush=True)
+                    return None
+                return [int(result) for result in results]
