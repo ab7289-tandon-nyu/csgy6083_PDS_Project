@@ -27,22 +27,26 @@ PDS
             </div>
         </div>
         {% if policies %}
-            <div class="row">
-                <div class="col s12">
-                    {% with policies=policies %}{% include "policy/a_p_table.html" %}{% endwith %}
-                </div>
-            <div>
+            {% if a_pol_len > 0%}
+                <div class="row">
+                    <div class="col s12">
+                        {% with policies=policies %}{% include "policy/a_p_table.html" %}{% endwith %}
+                    </div>
+                <div>
+            {% endif %}
             <div class="row">
                 <div class="col s12 center-align">
                     <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Auto Policy</a>
                 </div>
             </div>
             <hr>
-            <div class="row">
-                <div class="col s12">
-                    {% with policies=policies %} {% include "policy/h_p_table.html" %} {% endwith %}
+            {% if h_pol_len > 0 %}
+                <div class="row">
+                    <div class="col s12">
+                        {% with policies=policies %} {% include "policy/h_p_table.html" %} {% endwith %}
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             <div class="row">
                 <div class="col s12 center-align">
                     <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Home Policy</a>
