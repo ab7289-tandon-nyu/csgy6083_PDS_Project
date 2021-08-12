@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for policy in policies if not policy.type == 'A'%}
+        {% for policy in policies if policy.p_type == 'H'%}
             <tr>
                 <td>{{ policy.policy_id }}</td>
                 <td>{{ policy.start_date }}</td>

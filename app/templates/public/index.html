@@ -26,13 +26,10 @@ PDS
                 <span>Welcome customer!</span>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 center-align">
-                <span>user type is : {{current_user.type }}</span>
-            </div>
-        </div>
         {% if policies %}
             {% with policies=policies %}{% include "customer/a_p_table.html" %}{% endwith %}
+            <hr>
+            {% with policies=policies %} {% include "customer/h_p_table.html" %} {% endwith %}
         {% else %}
             <div class="row">
                 <div class="col s12">

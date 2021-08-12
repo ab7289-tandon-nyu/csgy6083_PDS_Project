@@ -62,8 +62,8 @@ class PolicyManager(DBManager):
             with conn.cursor() as cursor:
                 results = None
                 sql_template = """
-                    SELECT `start_date`, `end_date`, `premium`, `p_type`
-                    `state`, `active`, `policy_id`
+                    SELECT `start_date`, `end_date`, `premium`,
+                    `p_type`, `state`, `active`, `policy_id`
                     FROM `ab_policy`
                     WHERE `user_id`={{ user_id }}
                     {% if type %}
