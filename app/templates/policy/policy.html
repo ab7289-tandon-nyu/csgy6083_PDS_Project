@@ -12,4 +12,39 @@
             Welcome to the policies page!
         </div>
     </div>
+    <div class="row">
+        <div class="col s12 center-align">
+            <div class="card-panel">
+                <div class="">
+                    <div class="row">
+                        <div class="col s12">
+                            <h4>Policy Details</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <span>Start Date: {{ p.start_date }}</span>
+                        </div>
+                        <div class="col s12 m4">
+                            <span>End Date: {{ p.end_date }}</span>
+                        </div>
+                        <div class="col s12 m4">
+                            <span>Premium Date: {{ p.premium }}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <span>Status: {{ p.state }}</span>
+                        </div>
+                        <div class="col s12 m4">
+                            <span>Active: {{ p.active }}</span>
+                        </div>
+                        <div class="col s12 m4">
+                            <span>Policy Owner: {{ p.user_id }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
