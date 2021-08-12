@@ -1,0 +1,23 @@
+<table id="home_table" class="highlight centered responsive-table">
+    <caption>Home Insurance Policies</caption>
+    <thead>
+        <tr>
+            <th>Policy ID</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Premium</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for policy in policies if not policy.type == 'A'%}
+            <tr>
+                <td>{{ policy.policy_id }}</td>
+                <td>{{ policy.start_date }}</td>
+                <td>{{ policy.end_date }}</td>
+                <td>{{ policy.preimum }}</td>
+                <td>{# <a href="{{ url_for('views.policy', policy_id=policy.policy_id) }}">Open</a> #}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

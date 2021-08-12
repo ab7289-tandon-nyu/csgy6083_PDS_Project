@@ -1,7 +1,10 @@
 from flask import Blueprint, flash, redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
 
 from app.extensions import login_manager
+from app.policy.managers import PolicyManager
+
+# from app.policy.models import Policy
 from app.public.forms import CustomerRegisterForm, LoginForm, RegisterForm
 from app.user.managers import CustomerManager, UserManager
 from app.user.models import Customer, User
@@ -30,7 +33,12 @@ def home():
     """public home page"""
     # TODO fill in details about customer based on type
     # such ash showing links to car / home policies
-    return render_template("public/index.html")
+    policies = None
+    if current_user and current_user.user_id:
+        p_manager = PolicyManager()
+        policies = p_manager.get_policies_for_user(current_user.user_id)
+
+    return render_template("public/index.html", policies=policies)
 
 
 @bp.route("/register", methods=["GET", "POST"])
