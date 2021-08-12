@@ -1,5 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}We Do Secure - Policies{% endblock %}
+
 {% block header %}
-    <h1>Policy</h1>
+    <h1>{% if p.p_type == 'A' %}Auto{% else %}Home{% endif %} Policy #{{ p.policy_id }}</h1>
 {% endblock %}
 
 {% block content %}

@@ -41,8 +41,9 @@ def home():
     if current_user and not current_user.is_anonymous:
         p_manager = PolicyManager()
         policies = p_manager.get_policies_for_user(current_user.user_id)
-        h_pol_len = sum(map(lambda x: x.p_type == "H", policies))
-        a_pol_len = sum(map(lambda x: x.p_type == "A", policies))
+        if policies and len(policies) > 0:
+            h_pol_len = sum(map(lambda x: x.p_type == "H", policies))
+            a_pol_len = sum(map(lambda x: x.p_type == "A", policies))
 
     return render_template(
         "public/index.html", policies=policies, h_pol_len=h_pol_len, a_pol_len=a_pol_len

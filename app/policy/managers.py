@@ -16,10 +16,10 @@ class PolicyManager(DBManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = (
-                    "SELECT `start_date`, `end_date`, `premium`, `type`, `state`, "
+                    "SELECT `start_date`, `end_date`, `premium`, `p_type`, `state`, "
                     "`active`, `policy_id`, `user_id`"
                     "FROM `ab_policy`"
-                    "WHERE `policy_id=%s"
+                    "WHERE `policy_id`=%s"
                 )
                 result = None
                 try:
