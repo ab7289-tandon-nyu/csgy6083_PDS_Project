@@ -15,8 +15,12 @@
                 <td>{{ policy.policy_id }}</td>
                 <td>{{ policy.start_date }}</td>
                 <td>{{ policy.end_date }}</td>
-                <td>{{ policy.preimum }}</td>
-                <td>{# <a href="{{ url_for('views.policy', policy_id=policy.policy_id) }}">Open</a> #}</td>
+                <td>$ {{ policy.premium }}</td>
+                <td>
+                    <a href="{{ url_for('policy.policy', policy_id=policy.policy_id) }}" class="btn waves-effect waves-light">
+                        <i class="material-icons">send<i>
+                    </a>
+                </td>
             </tr>
         {% endfor %}
     </tbody>

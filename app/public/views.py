@@ -34,7 +34,7 @@ def home():
     # TODO fill in details about customer based on type
     # such ash showing links to car / home policies
     policies = None
-    if current_user and current_user.user_id:
+    if current_user and not current_user.is_anonymous:
         p_manager = PolicyManager()
         policies = p_manager.get_policies_for_user(current_user.user_id)
 

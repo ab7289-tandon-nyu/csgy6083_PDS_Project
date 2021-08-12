@@ -37,6 +37,10 @@ def configure_bp(app):
 
     app.register_blueprint(views.bp)
 
+    from app.policy import views
+
+    app.register_blueprint(views.bp)
+
     return None
 
 
