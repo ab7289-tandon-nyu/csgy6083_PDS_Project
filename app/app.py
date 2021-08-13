@@ -41,6 +41,10 @@ def configure_bp(app):
 
     app.register_blueprint(views.bp)
 
+    from app.invoice import views
+
+    app.register_blueprint(views.bp)
+
     return None
 
 

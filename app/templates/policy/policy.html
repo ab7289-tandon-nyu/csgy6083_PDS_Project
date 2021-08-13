@@ -51,4 +51,13 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col s12">
+            {% if invoices and invoices|length > 0%}
+                {% with invoices=invoices, show_policy_link=False %}{% include 'invoice/invoice_table.html' %}{% endwith %}
+            {% else %}
+                <span>No Current invoices for this policy</span>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}

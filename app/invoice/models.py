@@ -25,7 +25,7 @@ class Invoice:
     def __init__(
         self,
         invoice_date: str,
-        invoice_amount: float,
+        amount: float,
         payment_date: str,
         total_paid: float,
         active: bool,
@@ -34,7 +34,7 @@ class Invoice:
         payments: Optional[List[Payment]] = None,
     ):
         self.invoice_date = invoice_date
-        self.invoice_amount = invoice_amount
+        self.amount = amount
         self.payment_date = payment_date
         self.total_paid = total_paid
         self.active = active

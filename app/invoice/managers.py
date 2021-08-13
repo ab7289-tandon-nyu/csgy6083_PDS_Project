@@ -65,7 +65,7 @@ class InvoiceManager(DBManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = (
-                    "SELECT `invoice_date`, `invoice_amount`, `payment_date`, `total_paid`,"
+                    "SELECT `invoice_date`, `amount`, `payment_date`, `total_paid`,"
                     " `active`, `invoice_id`, `policy_id`"
                     "FROM `ab_invoice`"
                     "WHERE  `invoice_id`=%s"
@@ -91,7 +91,7 @@ class InvoiceManager(DBManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = (
-                    "SELECT `invoice_date`, `invoice_amount`, `payment_date`, `total_paid`,"
+                    "SELECT `invoice_date`, `amount`, `payment_date`, `total_paid`,"
                     " `active`, `invoice_id`, `policy_id`"
                     "FROM `ab_invoice`"
                     "WHERE  `policy_id`=%s"

@@ -25,7 +25,7 @@ def unauthorized_callback():
     if they are unauthorized or if their session has become invalidated.
     without this the user just gets a 401 Unauthorized error, which isn't
     very helpful"""
-    return redirect(url_for("public.home"))
+    return redirect(url_for("public.login"))
 
 
 @bp.route("/", methods=["GET", "POST"])
