@@ -34,6 +34,7 @@ PDS
                     </div>
                 <div>
             {% endif %}
+            <!-- TODO this should be available to Employees Only-->
             <div class="row">
                 <div class="col s12 center-align">
                     <a href="{{ url_for('policy.policy_form', type='create', class='A') }}" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Auto Policy</a>
@@ -47,6 +48,7 @@ PDS
                     </div>
                 </div>
             {% endif %}
+            <!-- TODO this should be available to Employees Only-->
             <div class="row">
                 <div class="col s12 center-align">
                     <a href="{{ url_for('policy.policy_form', type='create', class='H') }}" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Home Policy</a>
