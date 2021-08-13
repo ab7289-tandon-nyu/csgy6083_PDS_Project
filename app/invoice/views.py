@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, render_template
 from flask_login import login_required
 
-from app.invoice.managers import Invoice, InvoiceManager
+from app.invoice.managers import Invoice, InvoiceManager, PaymentManager
 
 bp = Blueprint("invoice", __name__)
 
@@ -16,6 +16,9 @@ def invoice(invoice_id: int):
     payments = None
 
     validate_perm(invoice)
+
+    pay_manager = PaymentManager()
+    payments = pay_manager.get_by_invoice(invoice_id)
 
     return render_template("invoice/invoice.html", invoice=invoice, payments=payments)
 

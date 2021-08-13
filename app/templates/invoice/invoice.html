@@ -7,5 +7,55 @@
 {% endblock %}
 
 {% block content %}
-<span> welcome to the invoice page!
+<div class="row">
+    <div class="col s12 center-align">
+        <span>welcome to the invoice page!</span>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="card-panel">
+            <div class="row">
+                <div class="col s12 m8">
+                    <h4>Invoice Details</h4>
+                </div>
+                <!-- TODO make buttons visible only to employees-->
+                <div class="col s12 m4 right-align">
+                    <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">edit</i>Edit</a>
+                    <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">delete</i>Delete</a>
+                </div>
+            </div>
+            <div class="center-align">
+                <div class="row">
+                    <div class="col s12 m6">
+                        <span><b>Invoice Date:</b> {{ invoice.invoice_date  }}</span>
+                    </div>
+                    <div class="col s12 m6">
+                        <span><b>Payment Date:</b> {{ invoice.payment_date }}</span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m4">
+                        <span><b>Active:</b> {% if invoice.active == 1 %}True{% else %}False{% endif %}</span>
+                    </div>
+                    <div class="col s12 m4">
+                        <span><b>Amount:</b> ${{ invoice.amount }}</span>
+                    </div>
+                    <div class="col s12 m4">
+                        <span><b>Total Paid:</b> ${{ invoice.total_paid }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        {% if payments and payments|length > 0 %}
+            {% with payments=payments, show_payment_link=False %}{% include 'invoice/payment_table.html' %}{% endwith %}
+        {% else %}
+            <span>No current payments for this policy</span>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

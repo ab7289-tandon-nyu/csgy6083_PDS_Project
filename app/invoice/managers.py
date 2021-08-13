@@ -14,7 +14,7 @@ class PaymentManager(DBManager):
                 sql = (
                     "SELECT `pay_date`, `amount`, `pay_type`, `p_id`, `invoice_id`"
                     "FROM `ab_payment`"
-                    "WHERE `p_id`'%s"
+                    "WHERE `p_id`=%s"
                 )
                 result = None
                 try:
@@ -37,7 +37,7 @@ class PaymentManager(DBManager):
                 sql = (
                     "SELECT `pay_date`, `amount`, `pay_type`, `p_id`, `invoice_id`"
                     "FROM `ab_payment`"
-                    "WHERE `invoice_id`'%s"
+                    "WHERE `invoice_id`=%s"
                 )
                 results = None
                 try:
