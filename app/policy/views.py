@@ -10,7 +10,7 @@ from app.policy.models import Policy
 bp = Blueprint("policy", __name__)
 
 
-@bp.route("/policy/<int:policy_id>")
+@bp.route("/policy/<int:policy_id>", methods=["GET"])
 @login_required
 def policy(policy_id: int):
     manager = PolicyManager()
@@ -30,16 +30,28 @@ def policy(policy_id: int):
     )
 
 
-@bp.route("/policy/<int:policy_id>/form")
+@bp.route("/policy/form", methods=["GET", "POST"])
 @login_required
-def policy_form(policy_id: int):
+def policy_form():
+    """Route to create or update an insurance policy"""
+
     form_type = request.args.get("type", default="update", type=str)
+    policy_id = request.args.get("policy_id", default=None, type=int)
+    if not policy_id and form_type == "update":
+        abort(400, "parameter `policy_id` is missing")
+    form_class = request.args.get("class", type=str)
+    if not form_class:
+        abort(400, "parameter `class` is missing. Did you forget &class=<class>?")
+
+    # use the page dict to store properties that we want to display in the webpage
     page = {}
     page["type"] = form_type
+    page["class"] = form_class
     manager = PolicyManager()
     policy = manager.get_by_id(policy_id)
 
-    validate_perm(policy)
+    if form_type == "update":
+        validate_perm(policy)
 
     if form_type == "update":
         page["title"] = f"Update Policy {policy.policy_id}"

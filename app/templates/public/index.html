@@ -36,7 +36,7 @@ PDS
             {% endif %}
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Auto Policy</a>
+                    <a href="{{ url_for('policy.policy_form', type='create', class='A') }}" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Auto Policy</a>
                 </div>
             </div>
             <hr>
@@ -49,7 +49,7 @@ PDS
             {% endif %}
             <div class="row">
                 <div class="col s12 center-align">
-                    <a href="/" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Home Policy</a>
+                    <a href="{{ url_for('policy.policy_form', type='create', class='H') }}" class="waves-effect waves-light btn"><i class="material-icons right">add</i>Create New Home Policy</a>
                 </div>
             </div>
         {% else %}

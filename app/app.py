@@ -47,11 +47,16 @@ def configure_bp(app):
 def register_error_handlers(app):
     def render_error(error):
         """Renders the template corresponding to the error"""
-        error_code = getattr(error, "code", 500)
-        return render_template(f"{error_code}.html"), error_code
 
-    for error_code in [401, 404, 500]:
+        error_code = getattr(error, "code", 500)
+        print(f"Running error handler! {error_code}", flush=True)
+        # return render_template(f"{error_code}.html"), error_code
+        return render_template(f"{error_code}.html")
+
+    for error_code in [400, 401, 404, 500]:
+        # for error_code in [BadRequest, Unauthorized, NotFound, HTTPException]:
         app.errorhandler(error_code)(render_error)
+        # app.register_error_handler(error_code, render_error)
 
     return None
 
