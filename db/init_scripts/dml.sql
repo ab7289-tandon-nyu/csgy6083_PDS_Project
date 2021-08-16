@@ -268,15 +268,15 @@ VALUES
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(1, 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL 0 YEAR), 1000.00, 'C', 1, 1);
+	(1, 'H', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL 0 YEAR), 1000.00, 'C', 1, 1);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(2, 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL 0 YEAR), 1000.00, 'C', 1, 2);
+	(2, 'A', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL 0 YEAR), 1000.00, 'C', 1, 2);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(3, 'AH', ADDDATE(SYSDATE(), INTERVAL -5 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 3);
+	(3, 'H', ADDDATE(SYSDATE(), INTERVAL -5 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 3);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
@@ -284,11 +284,11 @@ VALUES
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(5, 'AH', ADDDATE(SYSDATE(), INTERVAL -10 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 4);
+	(5, 'H', ADDDATE(SYSDATE(), INTERVAL -10 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 4);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(6, 'AH', ADDDATE(SYSDATE(), INTERVAL -10 YEAR), ADDDATE(SYSDATE(), INTERVAL -5 YEAR), 1000.00, 'P', 0, 5);
+	(6, 'A', ADDDATE(SYSDATE(), INTERVAL -10 YEAR), ADDDATE(SYSDATE(), INTERVAL -5 YEAR), 1000.00, 'P', 0, 5);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
@@ -300,7 +300,7 @@ VALUES
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(9, 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 7);
+	(9, 'H', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 7);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
@@ -312,7 +312,7 @@ VALUES
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(12, 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 10);
+	(12, 'H', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 10);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
@@ -320,23 +320,23 @@ VALUES
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(14, 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 12);
+	(14, 'A', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 12);
 INSERT INTO ab_project.ab_policy
 	(policy_id, p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	(15, 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 13);
+	(15, 'H', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 13);
 INSERT INTO ab_project.ab_policy
 	(p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	( 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 14);
+	( 'A', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 14);
 INSERT INTO ab_project.ab_policy
 	(p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	( 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 15);
+	( 'H', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 15);
 INSERT INTO ab_project.ab_policy
 	(p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	( 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 16);
+	( 'A', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 16);
 INSERT INTO ab_project.ab_policy
 	(p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
@@ -344,11 +344,11 @@ VALUES
 INSERT INTO ab_project.ab_policy
 	(p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	( 'AH', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 17);
+	( 'H', ADDDATE(SYSDATE(), INTERVAL -1 YEAR), ADDDATE(SYSDATE(), INTERVAL -0 YEAR), 1000.00, 'C', 1, 17);
 INSERT INTO ab_project.ab_policy
 	(p_type, start_date, end_date, premium, state, active, user_id)
 VALUES
-	( 'AH', ADDDATE(SYSDATE(), INTERVAL -7 YEAR), ADDDATE(SYSDATE(), INTERVAL -2 YEAR), 1000.00, 'P', 0, 18);
+	( 'A', ADDDATE(SYSDATE(), INTERVAL -7 YEAR), ADDDATE(SYSDATE(), INTERVAL -2 YEAR), 1000.00, 'P', 0, 18);
 
 COMMIT;
 
