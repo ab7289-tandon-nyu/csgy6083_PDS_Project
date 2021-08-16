@@ -297,7 +297,7 @@ class RoleManager(DBManager):
                 results = None
                 try:
                     query = cursor.execute(query, bind_params)
-                    results = query.fetchmany()
+                    results = query.fetchall()
                 except Exception as ex:
                     print(
                         f"There was a DB error when trying to retrieve the roles in id_list: {id_list}."
@@ -371,7 +371,7 @@ class UserRoleManager(DBManager):
                 results = None
                 try:
                     cursor.execute(sql, (user_id,))
-                    results = cursor.fetchmany()
+                    results = cursor.fetchall()
                 except Exception as ex:
                     print(
                         "There was a DB error when trying to fetch all role_id's associated with "

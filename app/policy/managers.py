@@ -36,6 +36,57 @@ class PolicyManager(DBManager):
                     return None
                 return Policy(**result)
 
+    def create(self, policy: Policy) -> Optional[int]:
+        """Creates a new Policy record and returns its PK"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                last_insert_id = 0
+                policy_id = None
+                insert_sql = (
+                    "INSERT INTO `ab_policy` "
+                    "(`p_type`, `start_date`, `end_date`, `premium`, `state`, `active`, `user_id`)"
+                    " VALUES "
+                    "(%s, %s, %s, %s, %s, %s, %s);"
+                )
+                select_sql = "SELECT LAST_INSERT_ID() AS 'id';"
+                try:
+                    cursor.execute(select_sql)
+                    last_insert_id = cursor.fetchone().get("id")
+                    print(
+                        f"Retrieving initial last insert id: {last_insert_id}",
+                        flush=True,
+                    )
+                    cursor.execute(
+                        insert_sql,
+                        (
+                            policy.p_type,
+                            policy.start_date,
+                            policy.end_date,
+                            policy.premium,
+                            policy.state,
+                            policy.active,
+                            policy.user_id,
+                        ),
+                    )
+                    cursor.execute(select_sql)
+                    policy_id = cursor.fetchone().get("id")
+                    print(f"Retrieved after last insert id: {policy_id}", flush=True)
+
+                    if policy_id is None or policy_id is last_insert_id:
+                        print("Insert ID didn't increment, rolling back", flush=True)
+                        conn.rollback()
+                    else:
+                        conn.commit()
+
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to insert a new policy. EX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                return policy_id
+
     def delete(self, policy_id: int) -> bool:
         """Deletes a policy record with the specified ID"""
 
@@ -75,7 +126,7 @@ class PolicyManager(DBManager):
 
                 try:
                     cursor.execute(query, bind_params)
-                    results = cursor.fetchmany()
+                    results = cursor.fetchall()
                 except Exception as ex:
                     print(
                         f"There was an error retrieving the ab_policy records for user_id {user_id}. EX: {ex}",
@@ -90,7 +141,7 @@ class PolicyManager(DBManager):
 
 class HPolicyManager(PolicyManager):
     def __init__(self):
-        super(HPolicyManager, self).__init()
+        super(HPolicyManager, self).__init__()
 
     def check_id_valid(self, policy_id: int) -> bool:
         with self.get_connection() as conn:
@@ -124,6 +175,32 @@ class HPolicyManager(PolicyManager):
             ):  # the assignment operator := checks truthiness and assigns a value
                 return HomePolicy.from_parent(policy)
         return None
+
+    def create(self, policy: HomePolicy) -> Optional[int]:
+        """Creates a new Home Policy record"""
+
+        policy_id = super().create(policy)
+        if policy_id is None:
+            print(
+                "There was an error trying to create the parent policy for a new Home Policy",
+                flush=True,
+            )
+            return None
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "INSERT INTO `ab_home` (`policy_id`) VALUES (%s);"
+                try:
+                    cursor.execute(sql, (policy_id,))
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to insert policy_id {policy_id} in `ab_home`. EX: {ex}",
+                        flush=True,
+                    )
+                    # delete policy since it failed to insert
+                    super().delete(policy_id)
+                    return None
+                return int(policy_id)
 
 
 class APolicyManager(PolicyManager):
@@ -162,3 +239,29 @@ class APolicyManager(PolicyManager):
             ):  # the assignment operator := checks truthiness and assigns a value
                 return AutoPolicy.from_parent(policy)
         return None
+
+    def create(self, policy: HomePolicy) -> Optional[int]:
+        """Creates a new Home Policy record"""
+
+        policy_id = super().create(policy)
+        if policy_id is None:
+            print(
+                "There was an error trying to create the parent policy for a new Auto Policy",
+                flush=True,
+            )
+            return None
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "INSERT INTO `ab_auto` (`policy_id`) VALUES (%s);"
+                try:
+                    cursor.execute(sql, (policy_id,))
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to insert policy_id {policy_id} in `ab_auto`. EX: {ex}",
+                        flush=True,
+                    )
+                    # delete policy since it failed to insert
+                    super().delete(policy_id)
+                    return None
+                return policy_id

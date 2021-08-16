@@ -7,5 +7,52 @@
 {% endblock %}
 
 {% block content %}
-    <span>Hello world!</span>
+    <div class="row">
+        <form class="col s12" method="post">
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.p_type.label }}{{ form.p_type() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.start_date.label }}{{ form.start_date() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.end_date.label }}{{ form.end_date() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.premium.label }}{{ form.premium() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.state.label }}{{ form.state() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.active.label }}{{ form.active() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.user_name.label }}{{ form.user_name() }}
+                </div>
+            </div>
+            {{ form.hidden_tag() }}
+            <button class="btn waves-effect waves-light orange" type="submit" name="action">Create Policy
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/init_select.js') }}"></script>
 {% endblock %}

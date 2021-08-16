@@ -41,6 +41,7 @@ def home():
     if current_user and not current_user.is_anonymous:
         p_manager = PolicyManager()
         policies = p_manager.get_policies_for_user(current_user.user_id)
+        print(f"retrieved {len(policies)} for user {current_user.user_id}", flush=True)
         if policies and len(policies) > 0:
             h_pol_len = sum(map(lambda x: x.p_type == "H", policies))
             a_pol_len = sum(map(lambda x: x.p_type == "A", policies))

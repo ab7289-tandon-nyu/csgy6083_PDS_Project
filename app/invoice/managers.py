@@ -42,7 +42,7 @@ class PaymentManager(DBManager):
                 results = None
                 try:
                     cursor.execute(sql, (invoice_id,))
-                    results = cursor.fetchmany()
+                    results = cursor.fetchall()
                 except Exception as ex:
                     print(
                         f"There was a DB Error when fetching payments for invoice id {invoice_id}. EX: {ex}",
@@ -99,7 +99,7 @@ class InvoiceManager(DBManager):
                 results = None
                 try:
                     cursor.execute(sql, (policy_id,))
-                    results = cursor.fetchmany()
+                    results = cursor.fetchall()
                 except Exception as ex:
                     print(
                         f"There was a DB error when trying to retrieve invoices for policy id {policy_id}. EX: {ex}",
