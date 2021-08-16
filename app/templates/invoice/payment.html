@@ -27,10 +27,10 @@
                 </div>
                 <div class="row center-align">
                     <div class="col s12 m6">
-                        <span><b>Payment ID:</b> {{ payment.p_id }}</span>
+                        <span><b>Invoice ID:</b> <a href="{{ url_for('invoice.invoice', invoice_id=payment.invoice_id) }}">{{ payment.invoice_id }}</a></span>
                     </div>
                     <div class="col s12 m6">
-                        <span><b>Invoice ID:</b> <a href="{{ url_for('invoice.invoice', invoice_id=payment.invoice_id) }}">{{ payment.invoice_id }}</a></span>
+                        <span><b>Payment ID:</b> {{ payment.p_id }}</span>
                     </div>
                 </div>
                 <div class="row center-align">

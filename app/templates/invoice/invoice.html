@@ -27,10 +27,13 @@
             </div>
             <div class="center-align">
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m4">
+                        <span><b>Policy ID:</b> <a href="{{ url_for('policy.policy', policy_id=invoice.policy_id) }}">{{ invoice.policy_id }}</a></span>
+                    </div>
+                    <div class="col s12 m4">
                         <span><b>Invoice Date:</b> {{ invoice.invoice_date  }}</span>
                     </div>
-                    <div class="col s12 m6">
+                    <div class="col s12 m4">
                         <span><b>Payment Date:</b> {{ invoice.payment_date }}</span>
                     </div>
                 </div>
