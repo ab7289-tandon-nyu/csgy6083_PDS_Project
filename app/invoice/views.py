@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, render_template
 from flask_login import login_required
 
-from app.invoice.managers import Invoice, InvoiceManager, PaymentManager
+from app.invoice.managers import Invoice, InvoiceManager, Payment, PaymentManager
 
 bp = Blueprint("invoice", __name__)
 
@@ -15,7 +15,7 @@ def invoice(invoice_id: int):
 
     payments = None
 
-    validate_perm(invoice)
+    validate_invoice_perm(invoice)
 
     pay_manager = PaymentManager()
     payments = pay_manager.get_by_invoice(invoice_id)
@@ -23,7 +23,25 @@ def invoice(invoice_id: int):
     return render_template("invoice/invoice.html", invoice=invoice, payments=payments)
 
 
-def validate_perm(invoice: Invoice):
+@bp.route("/payment/<int:p_id>", methods=["GET"])
+@login_required
+def payment(p_id: int):
+
+    manager = PaymentManager()
+    payment = manager.get_by_id(p_id)
+
+    validate_payment_perm(payment)
+
+    return render_template("invoice/payment.html", payment=payment)
+
+
+def validate_invoice_perm(invoice: Invoice):
     if not invoice:
         abort(404)
     # TODO create a function to get the user associated with the invoice from the policy
+
+
+def validate_payment_perm(payment: Payment):
+    if not payment:
+        abort(404)
+    # TODO create a function to check if user is allowed to see payment
