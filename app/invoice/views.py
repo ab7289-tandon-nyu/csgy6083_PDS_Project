@@ -23,6 +23,22 @@ def invoice(invoice_id: int):
     return render_template("invoice/invoice.html", invoice=invoice, payments=payments)
 
 
+@bp.route("/invoice/<int:invoice_id>/payment/<int:p_id>", methods=["GET"])
+@login_required
+def payment_for_invoice(invoice_id: int, p_id: int):
+
+    i_manager = InvoiceManager()
+    p_manager = PaymentManager()
+
+    invoice = i_manager.get_by_id(invoice_id)
+    payment = p_manager.get_by_id(p_id)
+
+    validate_invoice_perm(invoice)
+    validate_payment_perm(payment)
+
+    return render_template("invoice/payment.html", invoice=invoice, payment=payment)
+
+
 @bp.route("/payment/<int:p_id>", methods=["GET"])
 @login_required
 def payment(p_id: int):

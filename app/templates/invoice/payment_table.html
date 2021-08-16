@@ -31,7 +31,7 @@
                 </td>
                 {% endif %}
                 <td>
-                    <a href="/" class="btn waves-effect waves-light">
+                    <a href="{{ url_for('invoice.payment', p_id=payment.p_id) }}" class="btn waves-effect waves-light">
                         <i class="material-icons">send<i>
                     </a>
                 </td>
