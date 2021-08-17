@@ -8,7 +8,7 @@
 
 {% block content %}
     <div class="row">
-        <form class="col s12" method="post">
+        <form class="col s12" method="post" action="{{ page.form_action }}">
             {{ form.csrf_token }}
             <div class="row">
                 <div class="input-field col s12">

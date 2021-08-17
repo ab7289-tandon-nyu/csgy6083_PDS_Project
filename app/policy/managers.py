@@ -87,6 +87,43 @@ class PolicyManager(DBManager):
                     return None
                 return policy_id
 
+    def update(self, policy: Policy) -> bool:
+        """Updates the policy record in the database"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = """
+                    UPDATE `ab_policy` SET
+                        `start_date`=%s,
+                        `end_date`=%s,
+                        `premium`=%s,
+                        `state`=%s,
+                        `active`=%s,
+                        `user_id`=%s
+                    WHERE `policy_id`=%s;
+                """
+                try:
+                    cursor.execute(
+                        sql,
+                        (
+                            policy.start_date,
+                            policy.end_date,
+                            policy.premium,
+                            policy.state,
+                            policy.active,
+                            policy.user_id,
+                            policy.policy_id,
+                        ),
+                    )
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to update policy {policy}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
+
     def delete(self, policy_id: int) -> bool:
         """Deletes a policy record with the specified ID"""
 
