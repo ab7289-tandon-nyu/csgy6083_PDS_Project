@@ -21,6 +21,7 @@ services:
             - MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db-password
             # - MYSQL_ROOT_PASSWORD=password
             - MYSQL_ROOT_HOST=host.docker.internal
+            # this allows us to connect to the DB from any host (fine for development)
             - MYSQL_ROOT_HOST=%
         ports:
             - 3306:3306
