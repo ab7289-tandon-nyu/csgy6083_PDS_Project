@@ -1,0 +1,35 @@
+{% extends 'base.html' %} {% block title %}{{page.title}}{% endblock %} {% block header %}
+<h1>{{ page.title }}</h1>
+{% endblock %} {% block content %}
+<div class="row">
+    <form class="col s12" method="post" action="{{ page.form_action }}">
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.pay_date.label }}{{ form.pay_date() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.amount.label }}{{ form.amount() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.pay_type.label }}{{ form.pay_type() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.invoice_id.label }}{{ form.invoice_id() }}
+            </div>
+        </div>
+        {{ form.hidden_tag() }}
+        <button class="btn waves-effect waves-light orange" type="submit" name="action">Create Payment
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+{% endblock %} {% block javascript %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/init_select.js') }}"></script>
+{% endblock %}

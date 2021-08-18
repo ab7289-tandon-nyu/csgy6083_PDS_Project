@@ -54,6 +54,98 @@ class PaymentManager(DBManager):
                     return None
                 return [Payment(**result) for result in results]
 
+    def create(self, payment: Payment) -> Optional[int]:
+        """creates a new payment record"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                p_id = None
+                insert_sql = (
+                    "INSERT INTO `ab_payment` "
+                    "(`pay_date`, `amount`, `pay_type`, `invoice_id`) "
+                    "VALUES "
+                    "(%s, %s, %s, %s);"
+                )
+                select_sql = "SELECT LAST_INSERT_ID() AS 'id';"
+                try:
+                    cursor.execute(
+                        insert_sql,
+                        (
+                            payment.pay_date,
+                            payment.amount,
+                            payment.pay_type,
+                            payment.invoice_id,
+                        ),
+                    )
+                    cursor.execute(select_sql)
+                    p_id = cursor.fetchone().get("id")
+
+                    if p_id is None or p_id == 0:
+                        print(
+                            "Insert ID didn't increment for Payment. Rolling back.",
+                            flush=True,
+                        )
+                        conn.rollback()
+                    else:
+                        conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when inserting a new Payment. EX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                return p_id
+
+    def update(self, payment: Payment) -> bool:
+        """Updates the payment with the specified ID"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = (
+                    "UPDATE `ab_payment` SET "
+                    "`pay_date`=%s, "
+                    "`amount`=%s, "
+                    "`pay_type`=%s, "
+                    "`invoice_id`=%s "
+                    "WHERE `p_id`=%s;"
+                )
+                try:
+                    cursor.execute(
+                        sql,
+                        (
+                            payment.pay_date,
+                            payment.amount,
+                            payment.pay_type,
+                            payment.invoice_id,
+                            payment.p_id,
+                        ),
+                    )
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB Error when updating Payment {payment.p_id}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
+
+    def delete(self, p_id: int) -> bool:
+        """Deletes the payment record with the specified ID"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "DELETE FROM `ab_payment` WHERE `p_id`=%s"
+                try:
+                    cursor.execute(sql, (p_id,))
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when deleting payment {p_id}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
+
 
 class InvoiceManager(DBManager):
     def __init__(self):

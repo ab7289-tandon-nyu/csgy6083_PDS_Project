@@ -1,7 +1,7 @@
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import login_required
 
-from app.invoice.forms import InvoiceForm
+from app.invoice.forms import InvoiceForm, PaymentForm
 from app.invoice.managers import Invoice, InvoiceManager, Payment, PaymentManager
 from app.utils import flash_errors
 
@@ -134,6 +134,85 @@ def payment(p_id: int):
     validate_payment_perm(payment)
 
     return render_template("invoice/payment.html", payment=payment)
+
+
+@bp.route("/payment/form", methods=["GET", "POST"])
+@login_required
+def payment_form():
+    """Route to create or update payment records"""
+
+    p_id = request.args.get("p_id", default=None, type=int)
+
+    form = None
+    if p_id is not None:
+        form = PaymentForm(request.form, obj=PaymentManager().get_by_id(p_id))
+    else:
+        form = PaymentForm(request.form)
+
+    # use the page dict to store properties for the page
+    page = {}
+    if request.method == "POST" and form.validate_on_submit():
+        payment = Payment(
+            form.pay_date.data,
+            form.amount.data,
+            form.pay_type.data,
+            p_id=form.p_id.data,
+            invoice_id=form.invoice_id.data,
+        )
+
+        if request.args.get("action") == "create":
+            p_id = PaymentManager().create(payment)
+        else:
+            PaymentManager().update(payment)
+            p_id = form.p_id.data
+
+        if p_id is None:
+            flash("Failure, please try again later", "warning")
+            return redirect(url_for("public.home"))
+        flash("Success!", "info")
+        return redirect(url_for("invoice.payment", p_id=p_id))
+
+    else:
+        if not form.validate_on_submit() and request.method != "GET":
+            flash_errors(form)
+
+        form_type = request.args.get("type", default="update", type=str)
+        if not p_id and form_type == "update":
+            abort(400, "Parameter `p_id` is missing.")
+
+        page["type"] = form_type
+        payment = PaymentManager().get_by_id(p_id)
+
+        if form_type == "update":
+            validate_payment_perm(payment)
+            page["title"] = f"Update Payment {payment.p_id}"
+            page["form_action"] = url_for("invoice.payment_form", action="update")
+        elif form_type == "create":
+            page["title"] = "Create a new Payment"
+            page["form_action"] = url_for("invoice.payment_form", action="create")
+
+        return render_template("invoice/payment_form.html", page=page, form=form)
+
+
+@bp.route("/payment/<int:p_id>/delete", methods=["GET"])
+@login_required
+def delete_payment(p_id: int):
+    """Deletes a payment with the specified ID"""
+
+    manager = PaymentManager()
+    payment = manager.get_by_id(p_id)
+
+    validate_payment_perm(payment)
+
+    deleted = manager.delete(p_id)
+    if deleted:
+        flash("Success!", "info")
+        return redirect(url_for("public.home"))
+    else:
+        flash(
+            "There was an error deleting the payment. Please try again later", "error"
+        )
+        return redirect(url_for("invoice.payment", p_id=p_id))
 
 
 def validate_invoice_perm(invoice: Invoice):
