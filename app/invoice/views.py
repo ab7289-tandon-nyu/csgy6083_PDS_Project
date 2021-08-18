@@ -1,7 +1,9 @@
-from flask import Blueprint, abort, render_template
+from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import login_required
 
+from app.invoice.forms import InvoiceForm
 from app.invoice.managers import Invoice, InvoiceManager, Payment, PaymentManager
+from app.utils import flash_errors
 
 bp = Blueprint("invoice", __name__)
 
@@ -21,6 +23,68 @@ def invoice(invoice_id: int):
     payments = pay_manager.get_by_invoice(invoice_id)
 
     return render_template("invoice/invoice.html", invoice=invoice, payments=payments)
+
+
+@bp.route("/invoice/form", methods=["GET", "POST"])
+@login_required
+def invoice_form():
+    """Route to create or update an invoice"""
+
+    invoice_id = request.args.get("invoice_id", default=None, type=int)
+
+    form = None
+    if invoice_id is not None:
+        invoice = InvoiceManager().get_by_id(invoice_id)
+        form = InvoiceForm(request.form, obj=invoice)
+    else:
+        form = InvoiceForm(request.form)
+
+    # use the page dict to store properties for the page
+    page = {}
+    if request.method == "POST" and form.validate_on_submit():
+        manager = InvoiceManager()
+        invoice = Invoice(
+            form.invoice_date.data,
+            form.amount.data,
+            form.payment_date.data,
+            form.total_paid.data,
+            form.active.data,
+            invoice_id=form.invoice_id.data,
+            policy_id=form.policy_id.data,
+        )
+
+        if request.args.get("action") == "create":
+            invoice_id = manager.create(invoice)
+        else:
+            manager.update(invoice)
+            invoice_id = form.invoice_id.data
+
+        if invoice_id is None:
+            flash("Failure, please try again later", "warning")
+            return redirect(url_for("public.home"))
+        flash("Success!", "info")
+        return redirect(url_for("invoice.invoice", invoice_id=invoice_id))
+
+    else:
+        if not form.validate_on_submit() and request.method != "GET":
+            flash_errors(form)
+
+        form_type = request.args.get("type", default="update", type=str)
+        if not invoice_id and form_type == "update":
+            abort(400, "parameter `invoice_id` is missing")
+
+        page["type"] = form_type
+        invoice = InvoiceManager().get_by_id(invoice_id)
+
+        if form_type == "update":
+            validate_invoice_perm(invoice)
+            page["title"] = f"Update Invoice {invoice.invoice_id}"
+            page["form_action"] = url_for("invoice.invoice_form", action="update")
+        elif form_type == "create":
+            page["title"] = "Create a new Invoice"
+            page["form_action"] = url_for("invoice.invoice_form", action="create")
+
+        return render_template("invoice/invoice_form.html", page=page, form=form)
 
 
 @bp.route("/invoice/<int:invoice_id>/payment/<int:p_id>", methods=["GET"])

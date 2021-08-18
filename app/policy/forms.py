@@ -64,5 +64,4 @@ class PolicyForm(FlaskForm):
         else:
             self.user_id.data = user.user_id
 
-        print(f"PolicyForm: policy_id = {self.policy_id.data}", flush=True)
         return True

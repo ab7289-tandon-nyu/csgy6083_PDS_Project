@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block header %}
+    <h1>{{ page.title }}</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <form class="col s12" method="post" action="{{ page.form_action }}">
+            {{ form.csrf_token }}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.invoice_date.label }}{{ form.invoice_date() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.amount.label }}{{ form.amount() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.payment_date.label }}{{ form.payment_date() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.total_paid.label }}{{ form.total_paid() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.active.label }}{{ form.active() }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.policy_id.label }}{{ form.policy_id() }}
+                </div>
+            </div>
+            {{ form.hidden_tag() }}
+            <button class="btn waves-effect waves-light orange" type="submit" name="action">Create Invoice
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/init_select.js') }}"></script>
+{% endblock %}

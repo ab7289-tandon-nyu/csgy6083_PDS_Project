@@ -63,7 +63,7 @@
     <hr>
     <div class="row center-align">
         <div class="col s12">
-            <a href="/" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Create Invoice</a>
+            <a href="{{ url_for('invoice.invoice_form', type='create') }}" class="waves-effect waves-light btn"><i class="material-icons left">add</i>Create Invoice</a>
         </div>
     </div>
 {% endblock %}

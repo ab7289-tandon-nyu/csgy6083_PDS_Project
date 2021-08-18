@@ -114,12 +114,91 @@ class InvoiceManager(DBManager):
                     return None
                 return [Invoice(**result) for result in results]
 
+    def create(self, invoice: Invoice) -> Optional[int]:
+        """creates a new invoice and returns its PK"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                invoice_id = None
+                insert_sql = (
+                    "INSERT INTO `ab_invoice` "
+                    "(`invoice_date`, `amount`, `payment_date`, `total_paid`, `active`, `policy_id`) "
+                    "VALUES "
+                    "(%s, %s, %s, %s, %s, %s);"
+                )
+                select_sql = "SELECT LAST_INSERT_ID() AS 'id';"
+                try:
+                    cursor.execute(
+                        insert_sql,
+                        (
+                            invoice.invoice_date,
+                            invoice.amount,
+                            invoice.payment_date,
+                            invoice.total_paid,
+                            invoice.active,
+                            invoice.policy_id,
+                        ),
+                    )
+                    cursor.execute(select_sql)
+                    invoice_id = cursor.fetchone().get("id")
+
+                    if invoice_id is None or invoice_id == 0:
+                        print(
+                            "Insert ID didn't increment for Invoice, rolling back",
+                            flush=True,
+                        )
+                        conn.rollback()
+                    else:
+                        conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB Error when trying to insert a new invoice. EX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                return invoice_id
+
+    def update(self, invoice: Invoice) -> bool:
+        """Updates the Invoice Record in the database"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = (
+                    "UPDATE `ab_invoice` SET "
+                    "`invoice_date`=%s, "
+                    "`amount`=%s, "
+                    "`payment_date`=%s, "
+                    "`total_paid`=%s, "
+                    "`active`=%s "
+                    "WHERE `invoice_id`=%s;"
+                )
+                try:
+                    cursor.execute(
+                        sql,
+                        (
+                            invoice.invoice_date,
+                            invoice.amount,
+                            invoice.payment_date,
+                            invoice.total_paid,
+                            invoice.active,
+                            invoice.invoice_id,
+                        ),
+                    )
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        f"There was a DB error when trying to update invoice {invoice.invoice_id}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
+
     def delete(self, invoice_id: int) -> bool:
         """deletes an invoice with the specified ID"""
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = "DELETE FROM `ab_invoice` WHERE `invoice_id`=%s"
+                sql = "DELETE FROM `ab_invoice` WHERE `invoice_id`=%s;"
                 try:
                     cursor.execute(sql, (invoice_id,))
                     conn.commit()

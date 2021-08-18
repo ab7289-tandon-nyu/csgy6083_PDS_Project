@@ -103,8 +103,6 @@ def policy_form():
 
         if form_type == "update":
             validate_perm(policy)
-
-        if form_type == "update":
             page["title"] = f"Update Policy {policy.policy_id}"
             page["form_action"] = url_for("policy.policy_form", action="update")
         elif form_type == "create":
