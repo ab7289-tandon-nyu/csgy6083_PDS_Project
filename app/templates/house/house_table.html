@@ -1,0 +1,53 @@
+
+<table id="house-table" class="highlight centered responsive-table scroll">
+    <caption>Houses</caption>
+    <thead>
+        <tr>
+            <th>House ID</th>
+            <th>Purchase Date</th>
+            <th>Purchase Value</th>
+            <th>Area</th>
+            <th>Type</th>
+            {% if show_policy_link %}
+            <th>Policy</th>
+            {% endif %}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for house in houses %}
+            <tr>
+                <td>{{ house.home_id }}</td>
+                <td>{{ house.purchase_date }}</td>
+                <td>$ {{ house.purchase_value }}</td>
+                <td>{{ house.area }} sq. ft.</td>
+                <td>
+                    {% if house.house_type == 'S' %}
+                        <span>Single Family</span>
+                    {% elif house.house_type == 'M'%}
+                        <span>Multi-family</span>
+                    {% elif house.house_type == 'C'%}
+                        <span>Condo</span>
+                    {% else %}
+                        <span>Town House</span>
+                    {% endif %}
+                </td>
+                {% if show_policy_link %}
+                <td>
+                    {# <a href="{{ url_for('house.house', house_id=house.house_id) }}" class="btn waves-effect waves-light"> #}
+                    {#    <i class="material-icons">send<i> #}
+                    {# </a> #}
+                    <a href="/" class="btn waves-effect waves-light">
+                        <i class="material-icons">send<i>
+                    </a>
+                </td>
+                {% endif %}
+                <td>
+                    <a href="/" class="btn waves-effect waves-light">
+                        <i class="material-icons">send<i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
