@@ -199,6 +199,37 @@ class DriverManager(DBManager):
                     return None
                 return Driver(**result)
 
+    def get_by_ids(self, licenses: List[str]) -> Optional[List[Driver]]:
+        """Returns a list of Drivers matching the supplied licenses"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                # see https://stackoverflow.com/questions/589284/imploding-a-list-for-use-in-a-python-mysqldb-in-clause
+                placeholders = ",".join(["%s"] * len(licenses))
+                sql = (
+                    "SELECT `fname`, `mname`, "
+                    "`lname`, `birthdate`, `license` "
+                    "FROM `ab_driver` "
+                    f"WHERE `license` IN ({placeholders})"
+                )
+                results = None
+                try:
+                    cursor.execute(sql, tuple(licenses))
+                    results = cursor.fetchall()
+                except Exception as ex:
+                    print(
+                        f"There was a DB Error when retrieving drivers: {licenses}.\nEX: {ex}",
+                        flush=True,
+                    )
+                    return None
+                if not results:
+                    print(
+                        f"No drivers found for following list of licenses: {licenses}",
+                        flush=True,
+                    )
+                    return None
+                return [Driver(**result) for result in results]
+
     def create(self, driver: Driver) -> Optional[str]:
         """Creates a new Driver record and returns its PK"""
 
