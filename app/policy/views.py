@@ -114,6 +114,30 @@ def policy_form():
     return render_template("policy/policy_form.html", page=page, form=form)
 
 
+@bp.route("/policy/<int:policy_id>/delete", methods=["GET"])
+@login_required
+def delete(policy_id: int):
+    """Deletes the policy with the specified ID"""
+
+    manager = PolicyManager()
+    policy = manager.get_by_id(policy_id)
+
+    validate_perm(policy)
+
+    if policy.p_type == "H":
+        manager = HPolicyManager()
+    elif policy.p_type == "A":
+        manager = APolicyManager()
+
+    deleted = manager.delete(policy_id)
+    if deleted:
+        flash("success!", "info")
+        return redirect(url_for("public.home"))
+    else:
+        flash("There was an error deleting the policy. Please try again later", "error")
+        return redirect(url_for("policy.policy", policy_id=policy_id))
+
+
 def validate_perm(policy: Policy):
     """Checks that the policy is valid and that the user is allowed to see it"""
 

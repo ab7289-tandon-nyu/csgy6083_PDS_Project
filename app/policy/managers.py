@@ -1,6 +1,7 @@
 from typing import List, Optional
 
 from jinjasql import JinjaSql
+from pymysql.cursors import DictCursor
 
 from app.db import DBManager
 from app.policy.models import AutoPolicy, HomePolicy, Policy
@@ -124,22 +125,32 @@ class PolicyManager(DBManager):
                     return False
                 return True
 
-    def delete(self, policy_id: int) -> bool:
+    def delete(self, policy_id: int, conn=None, cursor: DictCursor = None) -> bool:
         """Deletes a policy record with the specified ID"""
 
-        with self.get_connection() as conn:
-            with conn.cursor() as cursor:
-                sql = "DELETE FROM `ab_policy` WHERE `policy_id`=%s"
-                try:
-                    cursor.execute(sql, (policy_id,))
-                    conn.commit()
-                except Exception as ex:
-                    print(
-                        f"There was an error deleting the ab_policy record for id {policy_id}. EX: {ex}",
-                        flush=True,
-                    )
-                    return False
-                return True
+        if cursor is None and conn is None:
+            with self.get_connection() as conn:
+                with conn.cursor() as cursor:
+                    return self._do_delete(policy_id, conn, cursor)
+        else:
+            return self._do_delete(policy_id, conn, cursor, pass_through=True)
+
+    def _do_delete(self, policy_id, conn, cursor, pass_through: bool = False):
+        """Internal method to delete a policy, allows passing through of a connection
+        and cursor object from a parent"""
+
+        sql = "DELETE FROM `ab_policy` WHERE `policy_id`=%s;"
+        try:
+            cursor.execute(sql, (policy_id,))
+            if not pass_through:
+                conn.commit()
+        except Exception as ex:
+            print(
+                f"There was an error deleting the ab_policy record for id {policy_id}. EX: {ex}",
+                flush=True,
+            )
+            return False
+        return True
 
     def get_policies_for_user(
         self, user_id: int, p_type: str = None
@@ -239,6 +250,30 @@ class HPolicyManager(PolicyManager):
                     return None
                 return int(policy_id)
 
+    def delete(self, policy_id: int) -> bool:
+        """deletes a home policy record"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "DELETE FROM `ab_home` WHERE `policy_id`=%s"
+                try:
+                    cursor.execute(sql, (policy_id,))
+                    parent_deleted = super().delete(policy_id, conn, cursor)
+                    if parent_deleted:
+                        conn.commit()
+                    else:
+                        print(
+                            f"There was an error deleting the parent policy for: {policy_id}",
+                            flush=True,
+                        )
+                        conn.rollback()
+                except Exception as ex:
+                    print(
+                        f"There was a DB Error when attempting to delete Home Policy {policy_id}. EX: {ex}",
+                        flush=True,
+                    )
+                return True
+
 
 class APolicyManager(PolicyManager):
     def __init__(self):
@@ -302,3 +337,27 @@ class APolicyManager(PolicyManager):
                     super().delete(policy_id)
                     return None
                 return policy_id
+
+    def delete(self, policy_id: int) -> bool:
+        """deletes an auto policy record"""
+
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "DELETE FROM `ab_auto` WHERE `policy_id`=%s;"
+                try:
+                    cursor.execute(sql, (policy_id,))
+                    parent_deleted = super().delete(policy_id, conn, cursor)
+                    if parent_deleted:
+                        conn.commit()
+                    else:
+                        print(
+                            f"There was an error deleting the parent policy for: {policy_id}",
+                            flush=True,
+                        )
+                        conn.rollback()
+                except Exception as ex:
+                    print(
+                        f"There was a DB Error when attempting to delete Auto Policy {policy_id}. EX: {ex}",
+                        flush=True,
+                    )
+                return True
