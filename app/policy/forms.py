@@ -37,7 +37,8 @@ class PolicyForm(FlaskForm):
     user_name = StringField(
         "Customer", id="user_name", validators=[DataRequired(), Length(max=32)]
     )
-    user_id = HiddenField()
+    policy_id = HiddenField(default=-1)
+    user_id = HiddenField(default=-1)
 
     def __init__(self, *args, **kwargs):
         super(PolicyForm, self).__init__(*args, **kwargs)
@@ -54,8 +55,7 @@ class PolicyForm(FlaskForm):
             self.end_date.errors.append("The End Date cannot be before the Start Date")
             return False
 
-        user_manager = UserManager()
-        user = user_manager.get_by_username(self.user_name.data)
+        user = UserManager().get_by_username(self.user_name.data)
         if user is None:
             self.user_name.errors.append(
                 f"Unable to locate a customer with user_name: {self.user_name.data}"
@@ -63,4 +63,6 @@ class PolicyForm(FlaskForm):
             return False
         else:
             self.user_id.data = user.user_id
+
+        print(f"PolicyForm: policy_id = {self.policy_id.data}", flush=True)
         return True

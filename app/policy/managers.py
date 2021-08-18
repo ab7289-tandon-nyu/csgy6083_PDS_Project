@@ -102,6 +102,12 @@ class PolicyManager(DBManager):
                         `user_id`=%s
                     WHERE `policy_id`=%s;
                 """
+                print(
+                    f"Policy values to update:\nstart_date: {policy.start_date}\nend_date: {policy.end_date}"
+                    f"\npremium: {policy.premium}\nstate: {policy.state}\nuser_id: {policy.user_id}\n"
+                    f"For Policy: {policy.policy_id}",
+                    flush=True,
+                )
                 try:
                     cursor.execute(
                         sql,

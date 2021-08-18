@@ -37,7 +37,15 @@ def policy(policy_id: int):
 @login_required
 def policy_form():
     """Route to create or update an insurance policy"""
-    form = PolicyForm(request.form)
+
+    policy_id = request.args.get("policy_id", default=None, type=int)
+
+    form = None
+    if policy_id is not None:
+        policy = PolicyManager().get_by_id(policy_id)
+        form = PolicyForm(request.form, obj=policy)
+    else:
+        form = PolicyForm(request.form)
     # use the page dict to store properties that we want to display in the webpage
     page = {}
     if request.method == "POST" and form.validate_on_submit():
@@ -52,6 +60,7 @@ def policy_form():
                 state=form.state.data,
                 active=form.active.data,
                 user_id=form.user_id.data,
+                policy_id=form.policy_id.data,
             )
         else:
             # create Auto Policy Object
@@ -62,13 +71,15 @@ def policy_form():
                 state=form.state.data,
                 active=form.active.data,
                 user_id=form.user_id.data,
+                policy_id=form.policy_id.data,
             )
 
-        policy_id = None
+        # policy_id = None
         if request.args.get("action") == "create":
             policy_id = manager.create(policy)
         else:
-            pass
+            manager.update(policy)
+            policy_id = form.policy_id.data
         # TODO need to add a policy_id field to the policy form so we can pass it through
         if policy_id is None:
             flash("Failure, please try again later")
@@ -80,7 +91,6 @@ def policy_form():
             flash_errors(form)
 
         form_type = request.args.get("type", default="update", type=str)
-        policy_id = request.args.get("policy_id", default=None, type=int)
         if not policy_id and form_type == "update":
             abort(400, "parameter `policy_id` is missing")
         form_class = request.args.get("class", type=str)
@@ -97,6 +107,7 @@ def policy_form():
 
         if form_type == "update":
             page["title"] = f"Update Policy {policy.policy_id}"
+            # TODO could also add the policy_id here in the url_for()
             page["form_action"] = url_for("policy.policy_form", action="update")
         elif form_type == "create":
             page["title"] = "Create a new Policy"
