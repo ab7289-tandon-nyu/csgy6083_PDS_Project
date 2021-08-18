@@ -267,11 +267,13 @@ class HPolicyManager(PolicyManager):
                             flush=True,
                         )
                         conn.rollback()
+                        return False
                 except Exception as ex:
                     print(
                         f"There was a DB Error when attempting to delete Home Policy {policy_id}. EX: {ex}",
                         flush=True,
                     )
+                    return False
                 return True
 
 
@@ -355,9 +357,11 @@ class APolicyManager(PolicyManager):
                             flush=True,
                         )
                         conn.rollback()
+                        return False
                 except Exception as ex:
                     print(
                         f"There was a DB Error when attempting to delete Auto Policy {policy_id}. EX: {ex}",
                         flush=True,
                     )
+                    return False
                 return True
