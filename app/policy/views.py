@@ -74,13 +74,12 @@ def policy_form():
                 policy_id=form.policy_id.data,
             )
 
-        # policy_id = None
         if request.args.get("action") == "create":
             policy_id = manager.create(policy)
         else:
             manager.update(policy)
             policy_id = form.policy_id.data
-        # TODO need to add a policy_id field to the policy form so we can pass it through
+
         if policy_id is None:
             flash("Failure, please try again later")
             redirect(url_for("public.home"))
@@ -107,7 +106,6 @@ def policy_form():
 
         if form_type == "update":
             page["title"] = f"Update Policy {policy.policy_id}"
-            # TODO could also add the policy_id here in the url_for()
             page["form_action"] = url_for("policy.policy_form", action="update")
         elif form_type == "create":
             page["title"] = "Create a new Policy"
