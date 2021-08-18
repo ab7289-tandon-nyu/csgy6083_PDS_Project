@@ -87,6 +87,27 @@ def invoice_form():
         return render_template("invoice/invoice_form.html", page=page, form=form)
 
 
+@bp.route("/invoice/<int:invoice_id>/delete", methods=["GET"])
+@login_required
+def delete_invoice(invoice_id: int):
+    """Deletes the invoice with the specified ID"""
+
+    manager = InvoiceManager()
+    invoice = manager.get_by_id(invoice_id)
+
+    validate_invoice_perm(invoice)
+
+    deleted = manager.delete(invoice_id)
+    if deleted:
+        flash("Success!", "info")
+        return redirect(url_for("public.home"))
+    else:
+        flash(
+            "There was an error deleting the Invoice. Please try again later", "error"
+        )
+        return redirect(url_for("invoice.invoice", invoice_id=invoice_id))
+
+
 @bp.route("/invoice/<int:invoice_id>/payment/<int:p_id>", methods=["GET"])
 @login_required
 def payment_for_invoice(invoice_id: int, p_id: int):
