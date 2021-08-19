@@ -66,9 +66,26 @@
         </div>
     </div>
     <hr>
-    <div class="row">
-        <div class="col s12 vh20">
-            <span>Placeholder for house panel</span>
+    {% if p.p_type == 'H' %}
+        <div class="row">
+            <div class="col s12 vh20 center-align">
+                {% if houses and houses|length > 0 %}
+                    {% with houses=houses, show_house_link=False %}{% include 'house/house_table.html' %}{% endwith %}
+                {% else %}
+                    <span>No Houses found</span>
+                {% endif %}
+            </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="/" class="btn waves-effect waves-light"><i class="material-icons right">add</i>Add a House to Policy</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col s12 vh20">
+                <span>No Vehicles Found</span>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

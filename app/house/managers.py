@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 from app.db import DBManager
-from app.home.models import Home
+from app.house.models import Home
 
 
 class HomeManager(DBManager):
