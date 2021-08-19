@@ -2,7 +2,7 @@ from flask import Blueprint, abort, flash, redirect, render_template, request
 from flask.helpers import url_for
 from flask_login import current_user, login_required
 
-from app.house.managers import HomeManager
+from app.house.managers import HouseManager
 from app.invoice.managers import InvoiceManager
 from app.policy.forms import PolicyForm
 from app.policy.managers import APolicyManager, HPolicyManager, PolicyManager
@@ -27,7 +27,7 @@ def policy(policy_id: int):
     validate_perm(policy)
 
     if policy.p_type == "H":
-        houses = HomeManager().get_by_policy(policy.policy_id)
+        houses = HouseManager().get_by_policy(policy.policy_id)
 
     i_manager = InvoiceManager()
     invoices = i_manager.get_by_policy(policy_id)

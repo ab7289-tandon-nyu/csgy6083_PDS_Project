@@ -4,7 +4,7 @@ from app.db import DBManager
 from app.house.models import Home
 
 
-class HomeManager(DBManager):
+class HouseManager(DBManager):
     def get_by_id(self, home_id: int) -> Optional[Home]:
 
         with self.get_connection() as conn:
