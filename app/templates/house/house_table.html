@@ -43,7 +43,7 @@
                 </td>
                 {% endif %}
                 <td>
-                    <a href="/" class="btn waves-effect waves-light">
+                    <a href="{{ url_for('house.house', home_id=house.home_id) }}" class="btn waves-effect waves-light">
                         <i class="material-icons">send<i>
                     </a>
                 </td>

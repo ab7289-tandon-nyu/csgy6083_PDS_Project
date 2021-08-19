@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% block title %}{{page.title}}{% endblock %} {% block header %}
+<h1>{{ page.title }}</h1>
+{% endblock %} {% block content %}
+<div class="row">
+    <form class="col s12" method="post" action="{{ page.form_action }}">
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.purchase_date.label }}{{ form.purchase_date() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.purchase_value.label }}{{ form.purchase_value() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.area.label }}{{ form.area() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.house_type.label }}{{ form.house_type() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.auto_fire_notif.label }}{{ form.auto_fire_notif() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.home_security.label }}{{ form.home_security() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.pool.label }}{{ form.pool() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.basement.label }}{{ form.basement() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.policy_id.label }}{{ form.policy_id() }}
+            </div>
+        </div>
+        {{ form.hidden_tag() }}
+        <button class="btn waves-effect waves-light orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+{% endblock %} {% block javascript %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/init_select.js') }}"></script>
+{% endblock %}

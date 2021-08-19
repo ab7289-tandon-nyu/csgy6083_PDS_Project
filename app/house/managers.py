@@ -1,11 +1,11 @@
 from typing import List, Optional
 
 from app.db import DBManager
-from app.house.models import Home
+from app.house.models import House
 
 
 class HouseManager(DBManager):
-    def get_by_id(self, home_id: int) -> Optional[Home]:
+    def get_by_id(self, home_id: int) -> Optional[House]:
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
@@ -30,9 +30,9 @@ class HouseManager(DBManager):
                 if not result:
                     print(f"No home found for id: {home_id}", flush=True)
                     return None
-                return Home(**result)
+                return House(**result)
 
-    def get_by_policy(self, policy_id: int) -> Optional[List[Home]]:
+    def get_by_policy(self, policy_id: int) -> Optional[List[House]]:
         """Retrieves a list of homes associated with the specified policy"""
 
         with self.get_connection() as conn:
@@ -61,9 +61,9 @@ class HouseManager(DBManager):
                         flush=True,
                     )
                     return None
-                return [Home(**result) for result in results]
+                return [House(**result) for result in results]
 
-    def create(self, home: Home) -> Optional[int]:
+    def create(self, home: House) -> Optional[int]:
         """Creates a new home record and returns its PK"""
 
         with self.get_connection() as conn:
@@ -93,7 +93,7 @@ class HouseManager(DBManager):
                         ),
                     )
                     cursor.execute(select_sql)
-                    home_id = cursor.fetchone().get("id", default=None)
+                    home_id = cursor.fetchone().get("id")
 
                     if home_id is None or home_id == 0:
                         print(
@@ -111,7 +111,7 @@ class HouseManager(DBManager):
                     return None
                 return home_id
 
-    def update(self, home: Home) -> bool:
+    def update(self, home: House) -> bool:
         """Updates the Home record in the DB"""
 
         with self.get_connection() as conn:

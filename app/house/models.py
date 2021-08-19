@@ -1,4 +1,4 @@
-class Home:
+class House:
     """DTO Class for home records"""
 
     def __init__(
