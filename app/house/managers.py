@@ -14,7 +14,7 @@ class HouseManager(DBManager):
                     "`area`, `house_type`, `auto_fire_notif`, "
                     "`home_security`, `pool`, `basement`, "
                     "`home_id`, `policy_id` "
-                    "FROM `ab_home` "
+                    "FROM `ab_house` "
                     "WHERE `home_id`=%s"
                 )
                 result = None
@@ -42,7 +42,7 @@ class HouseManager(DBManager):
                     "`area`, `house_type`, `auto_fire_notif`, "
                     "`home_security`, `pool`, `basement`, "
                     "`home_id`, `policy_id` "
-                    "FROM `ab_home` "
+                    "FROM `ab_house` "
                     "WHERE `policy_id`=%s"
                 )
                 results = None
@@ -70,7 +70,7 @@ class HouseManager(DBManager):
             with conn.cursor() as cursor:
                 home_id = None
                 insert_sql = (
-                    "INSERT INTO `ab_home` "
+                    "INSERT INTO `ab_house` "
                     "(`purchase_date`, `purchase_value`, `area`, `house_type`, `auto_fire_notif`, "
                     "`home_security`, `pool`, `basement`, `policy_id`) "
                     "VALUES "
@@ -117,7 +117,7 @@ class HouseManager(DBManager):
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
                 sql = (
-                    "UPDATE `ab_home` SET "
+                    "UPDATE `ab_house` SET "
                     "`purchase_date`=%s, "
                     "`purchase_value`=%s, "
                     "`area`=%s, "
@@ -157,7 +157,7 @@ class HouseManager(DBManager):
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = "DELETE FROM `ab_home` WHERE `home_id`=%s;"
+                sql = "DELETE FROM `ab_house` WHERE `home_id`=%s;"
                 try:
                     cursor.execute(sql, (home_id,))
                     conn.commit()
