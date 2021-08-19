@@ -2,9 +2,9 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, u
 from flask_login import login_required
 
 from app.utils import flash_errors
-from app.vehicle.forms import VehicleForm
-from app.vehicle.managers import VehicleManager
-from app.vehicle.models import Vehicle
+from app.vehicle.forms import DriverForm, VehicleForm
+from app.vehicle.managers import DriverManager, VehicleManager
+from app.vehicle.models import Driver, Vehicle
 
 bp = Blueprint("vehicle", __name__)
 
@@ -68,6 +68,7 @@ def vehicle_form():
             validate_vehicle_perm(vehicle)
             page["title"] = f"Update Vehicle {vehicle.vin}"
             page["form_action"] = url_for("vehicle.vehicle_form", action="update")
+            form.set_udpate()
         elif form_type == "create":
             page["title"] = "Add a new Vehicle"
             page["form_action"] = url_for("vehicle.vehicle_form", action="create")
@@ -102,3 +103,99 @@ def delete_vehicle(vin: str):
 def validate_vehicle_perm(vehicle):
     if vehicle is None:
         abort(404, "Unable to find the specified vehicle")
+
+
+def validate_driver_perm(driver):
+    if driver is None:
+        abort(404, "Unable to locate the specified driver")
+
+
+@bp.route("/driver/<string:license>", methods=["GET"])
+@login_required
+def driver(license: str):
+
+    driver = DriverManager().get_by_id(license)
+
+    # TODO get vehicles as well for display
+
+    validate_driver_perm(driver)
+
+    return render_template("vehicle/driver.html", driver=driver)
+
+
+@bp.route("/driver/form", methods=["GET", "POST"])
+@login_required
+def driver_form():
+
+    license = request.args.get("license", default=None, type=str)
+    d_manager = DriverManager()
+
+    form = None
+    if license is not None:
+        form = DriverForm(request.form, obj=d_manager.get_by_id(license))
+    else:
+        form = DriverForm(request.form)
+
+    page = {}
+    if request.method == "POST" and form.validate_on_submit():
+        driver = Driver(
+            form.fname.data,
+            form.mname.data,
+            form.lname.data,
+            form.birthdate.data,
+            license=form.license.data,
+        )
+
+        if request.args.get("action") == "create":
+            license = d_manager.create(driver)
+        else:
+            d_manager.update(driver)
+            license = form.license.data
+
+        if license is None:
+            flash("Failure, please try again later", "warning")
+            return redirect(url_for("public.home"))
+        flash("Success!", "info")
+        return redirect(url_for("vehicle.driver", license=license))
+    else:
+        form_type = request.args.get("type", default="update", type=str)
+        if not license and form_type == "update":
+            abort(400, "parameter `license` is missing")
+
+        page["type"] = form_type
+        driver = d_manager.get_by_id(license)
+
+        if form_type == "update":
+            validate_driver_perm(driver)
+            page["title"] = f"Update Driver {driver.license}"
+            page["form_action"] = url_for("vehicle.driver_form", action="update")
+            form.set_is_update()
+        elif form_type == "create":
+            page["title"] = "Add a new Driver"
+            page["form_action"] = url_for("vehicle.driver_form", action="create")
+
+        if not form.validate_on_submit() and request.method != "GET":
+            flash_errors(form)
+
+        return render_template("vehicle/driver_form.html", page=page, form=form)
+
+
+@bp.route("/driver/<string:license>/delete", methods=["GET"])
+@login_required
+def delete_driver(license: str):
+
+    manager = DriverManager()
+    driver = manager.get_by_id(license)
+
+    validate_driver_perm(driver)
+
+    deleted = manager.delete(driver.license)
+    if deleted:
+        flash("Success!", "info")
+        return redirect(url_for("public.home"))
+    else:
+        flash(
+            "There was an error deleting the driver. Please contact your admin",
+            "error",
+        )
+        return redirect(url_for("vehicle.driver", license=license))

@@ -1,0 +1,38 @@
+{% extends 'base.html' %} {% block title %}{{page.title}}{% endblock %} {% block header %}
+<h1>{{ page.title }}</h1>
+{% endblock %} {% block content %}
+<div class="row">
+    <form class="col s12" method="post" action="{{ page.form_action }}">
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.license.label }}{{ form.license() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.fname.label }}{{ form.fname() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.mname.label }}{{ form.mname() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.lname.label }}{{ form.lname() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.birthdate.label }}{{ form.birthdate() }}
+            </div>
+        </div>
+        {{ form.hidden_tag() }}
+        <button class="btn waves-effect waves-light orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+{% endblock %}
