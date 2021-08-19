@@ -1,0 +1,43 @@
+
+<table id="vehicle-table" class="highlight centered responsive-table scroll">
+    <caption>Vehicles</caption>
+    <thead>
+        <tr>
+            <th>VIN</th>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>State</th>
+            {% if show_policy_link %}
+            <th>Policy</th>
+            {% endif %}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for vehicle in vehicles %}
+            <tr>
+                <td>{{ vehicle.vin }}</td>
+                <td>{{ vehicle.make }}</td>
+                <td>$ {{ vehicle.model }}</td>
+                <td>{{ vehicle.year }}</td>
+                <td>{{ vehicle.state }}</td>
+                {% if show_policy_link %}
+                <td>
+                    {# <a href="{{ url_for('invoice.invoice', invoice_id=invoice.invoice_id) }}" class="btn waves-effect waves-light"> #}
+                    {#    <i class="material-icons">send<i> #}
+                    {# </a> #}
+                    <a href="/" class="btn waves-effect waves-light">
+                        <i class="material-icons">send<i>
+                    </a>
+                </td>
+                {% endif %}
+                <td>
+                    <a href="{{ url_for('vehicle.vehicle', vin=vehicle.vin) }}" class="btn waves-effect waves-light">
+                        <i class="material-icons">send<i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

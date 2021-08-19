@@ -10,6 +10,7 @@ from app.policy.managers import APolicyManager, HPolicyManager, PolicyManager
 # from app.invoice.models import Invoice
 from app.policy.models import AutoPolicy, HomePolicy, Policy
 from app.utils import flash_errors
+from app.vehicle.managers import VehicleManager
 
 bp = Blueprint("policy", __name__)
 
@@ -21,19 +22,25 @@ def policy(policy_id: int):
     policy = manager.get_by_id(policy_id)
 
     houses = None
-    autos = None
+    vehicles = None
     invoices = None
 
     validate_perm(policy)
 
     if policy.p_type == "H":
         houses = HouseManager().get_by_policy(policy.policy_id)
+    elif policy.p_type == "A":
+        vehicles = VehicleManager().get_by_policy(policy.policy_id)
 
     i_manager = InvoiceManager()
     invoices = i_manager.get_by_policy(policy_id)
 
     return render_template(
-        "policy/policy.html", p=policy, invoices=invoices, houses=houses, autos=autos
+        "policy/policy.html",
+        p=policy,
+        invoices=invoices,
+        houses=houses,
+        vehicles=vehicles,
     )
 
 

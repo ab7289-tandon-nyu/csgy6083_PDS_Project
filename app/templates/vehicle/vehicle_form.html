@@ -1,0 +1,44 @@
+{% extends 'base.html' %} {% block title %}{{page.title}}{% endblock %} {% block header %}
+<h1>{{ page.title }}</h1>
+{% endblock %} {% block content %}
+<div class="row">
+    <form class="col s12" method="post" action="{{ page.form_action }}">
+        {{ form.csrf_token }}
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.vin.label }}{{ form.vin() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.make.label }}{{ form.make() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.model.label }}{{ form.model() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.year.label }}{{ form.year() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.state.label }}{{ form.state() }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ form.policy_id.label }}{{ form.policy_id() }}
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+    </form>
+</div>
+{% endblock %} {% block javascript %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/init_select.js') }}"></script>
+{% endblock %}

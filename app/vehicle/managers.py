@@ -160,8 +160,9 @@ class VehicleManager(DBManager):
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = "DELETE FROM `ab_vehicle` WHERE `vin`=%s;"
+                sql = "DELETE FROM `ab_vehicle` WHERE `vin`=%s"
                 try:
+                    print(f"Deleting vin: {vin}", flush=True)
                     cursor.execute(sql, (vin,))
                     conn.commit()
                 except Exception as ex:
@@ -170,6 +171,7 @@ class VehicleManager(DBManager):
                         flush=True,
                     )
                     return False
+                print("deleted succeeded", flush=True)
                 return True
 
 

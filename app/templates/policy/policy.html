@@ -70,7 +70,7 @@
         <div class="row">
             <div class="col s12 vh20 center-align">
                 {% if houses and houses|length > 0 %}
-                    {% with houses=houses, show_house_link=False %}{% include 'house/house_table.html' %}{% endwith %}
+                    {% with houses=houses, show_policy_link=False %}{% include 'house/house_table.html' %}{% endwith %}
                 {% else %}
                     <span>No Houses found</span>
                 {% endif %}
@@ -83,8 +83,17 @@
         </div>
     {% else %}
         <div class="row">
-            <div class="col s12 vh20">
-                <span>No Vehicles Found</span>
+            <div class="col s12 vh20 center-align">
+                {% if vehicles and vehicles|length > 0 %}
+                    {% with vehicles=vehicles, show_policy_link=False %}{% include 'vehicle/vehicle_table.html' %}{% endwith %}
+                {% else %}
+                    <span>No vehicles found</span>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 center-align">
+                <a href="{{ url_for('vehicle.vehicle_form', type='create') }}" class="btn waves-effect waves-light"><i class="material-icons right">add</i>Add a Vehicle to Policy</a>
             </div>
         </div>
     {% endif %}
