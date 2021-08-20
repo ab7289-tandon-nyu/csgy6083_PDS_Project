@@ -71,13 +71,14 @@ class DriverForm(FlaskForm):
             return False
 
         driver = DriverManager().get_by_id(self.license.data)
-
+        print(f"Driver form driver: {driver}", flush=True)
+        print(f"is_update: {self.is_update.data}", flush=True)
         if not self.is_update.data and driver is not None:
             self.license.errors.append(
                 f"There already exists a driver with license: {self.license.data}"
             )
             return False
-        elif self.is_update.data and driver is None:
+        elif self.is_update.data is True and driver is None:
             self.license.errors.append(
                 f"Unable to located driver for {self.license.data} to update."
             )

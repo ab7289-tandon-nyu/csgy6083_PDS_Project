@@ -7,7 +7,7 @@
             <li><span>Welcome, {{ current_user.user_name }}</span></li>
             <li><a href="{{ url_for('public.logout') }}">Log out</a></li>
             {% else %}
-            <li><a href="{{ url_for('public.register') }}">Register</a></li>
+            <li><a href="{{ url_for('public.register') }}">Employee Sign up</a></li>
             <li><a href="{{ url_for('public.login') }}">Log In</a></li>
             {% endif %}
         </ul>
@@ -17,7 +17,7 @@
             <li><span>Welcome, {{ current_user.user_name }}</span></li>
             <li><a href="{{ url_for('public.logout') }}">Log out</a></li>
             {% else %}
-            <li><a href="{{ url_for('public.register') }}">Register</a></li>
+            <li><a href="{{ url_for('public.register') }}">Employee Sign up</a></li>
             <li><a href="{{ url_for('public.login') }}">Log In</a></li>
             {% endif %}
         </ul>

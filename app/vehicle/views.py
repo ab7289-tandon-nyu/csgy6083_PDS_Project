@@ -3,7 +3,7 @@ from flask_login import login_required
 
 from app.utils import flash_errors
 from app.vehicle.forms import DriverForm, VehicleForm
-from app.vehicle.managers import DriverManager, VehicleManager
+from app.vehicle.managers import DriverManager, VDManager, VehicleManager
 from app.vehicle.models import Driver, Vehicle
 
 bp = Blueprint("vehicle", __name__)
@@ -15,11 +15,13 @@ def vehicle(vin: str):
 
     vehicle = VehicleManager().get_by_id(vin)
 
-    # TODO get drivers as well for display
+    drivers = None
 
     validate_vehicle_perm(vehicle)
 
-    return render_template("vehicle/vehicle.html", vehicle=vehicle)
+    drivers = VDManager().get_drivers_for_vehicle(vin)
+
+    return render_template("vehicle/vehicle.html", vehicle=vehicle, drivers=drivers)
 
 
 @bp.route("/vehicle/form", methods=["GET", "POST"])
@@ -116,11 +118,13 @@ def driver(license: str):
 
     driver = DriverManager().get_by_id(license)
 
-    # TODO get vehicles as well for display
+    vehicles = None
 
     validate_driver_perm(driver)
 
-    return render_template("vehicle/driver.html", driver=driver)
+    vehicles = VDManager().get_vehicles_for_driver(license)
+
+    return render_template("vehicle/driver.html", driver=driver, vehicles=vehicles)
 
 
 @bp.route("/driver/form", methods=["GET", "POST"])
@@ -137,6 +141,7 @@ def driver_form():
         form = DriverForm(request.form)
 
     page = {}
+    print(f"form is valid: {form.validate_on_submit()}", flush=True)
     if request.method == "POST" and form.validate_on_submit():
         driver = Driver(
             form.fname.data,
@@ -158,7 +163,7 @@ def driver_form():
         flash("Success!", "info")
         return redirect(url_for("vehicle.driver", license=license))
     else:
-        form_type = request.args.get("type", default="update", type=str)
+        form_type = request.args.get("type", default="create", type=str)
         if not license and form_type == "update":
             abort(400, "parameter `license` is missing")
 

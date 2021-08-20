@@ -69,7 +69,7 @@ def invoice_form():
         if not form.validate_on_submit() and request.method != "GET":
             flash_errors(form)
 
-        form_type = request.args.get("type", default="update", type=str)
+        form_type = request.args.get("type", default="create", type=str)
         if not invoice_id and form_type == "update":
             abort(400, "parameter `invoice_id` is missing")
 
@@ -176,7 +176,7 @@ def payment_form():
         if not form.validate_on_submit() and request.method != "GET":
             flash_errors(form)
 
-        form_type = request.args.get("type", default="update", type=str)
+        form_type = request.args.get("type", default="create", type=str)
         if not p_id and form_type == "update":
             abort(400, "Parameter `p_id` is missing.")
 

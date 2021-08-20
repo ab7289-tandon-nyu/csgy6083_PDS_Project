@@ -321,47 +321,106 @@ class VDManager(DBManager):
         self.d_manager = DriverManager()
 
     def get_vehicles_for_driver(self, license: str) -> Optional[List[Vehicle]]:
-        """Retrieves the list of Vehicles associated with a driver license"""
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = "SELECT `vin` WHERE `license`=%s;"
+                sql = (
+                    "SELECT "
+                    "   `v`.`make`, `v`.`model`, `v`.`year`, `v`.`state`, `v`.`policy_id`, `v`.`vin` "
+                    "FROM `ab_vehicle` v "
+                    "JOIN `ab_driver_vehicle` dv ON `v`.`vin` = `dv`.`vin` "
+                    "JOIN `ab_driver` d ON `dv`.`license` = `d`.`license` "
+                    "WHERE `d`.`license` = %s"
+                )
                 results = None
                 try:
                     cursor.execute(sql, (license,))
                     results = cursor.fetchall()
                 except Exception as ex:
                     print(
-                        f"There was an error when retrieving vehicles for license: {license}. EX: {ex}",
+                        f"There was a DB error when retrieving vehicles for driver {license}. EX: {ex}",
                         flush=True,
                     )
                     return None
-                if not results:
-                    print(f"No vehicles found for license: {license}", flush=True)
-                    return None
-                return self.v_manager.get_by_ids(
-                    list(map(lambda x: x.get("vin"), results))
-                )
+                if results is None:
+                    print(
+                        f"Didn't find any vehicles associated with license {license}",
+                        flush=True,
+                    )
+                return [Vehicle(**result) for result in results]
 
     def get_drivers_for_vehicle(self, vin: str) -> Optional[List[Driver]]:
-        """Retrieves the list of drivers associated with a Vehicle's VIN"""
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = "SELECT `license` WHERE `vin`=%s"
+                sql = (
+                    "SELECT "
+                    "   `d`.`fname`, `d`.`mname`, `d`.`lname`, `d`.`birthdate`, `d`.`license` "
+                    "FROM `ab_driver` d "
+                    "JOIN `ab_driver_vehicle` dv ON `d`.`license` = `dv`.`license` "
+                    "JOIN `ab_vehicle` v ON `dv`.`vin` = `v`.`vin` "
+                    "WHERE `v`.`vin` = %s"
+                )
                 results = None
                 try:
                     cursor.execute(sql, (vin,))
                     results = cursor.fetchall()
                 except Exception as ex:
                     print(
-                        f"There was a DB error when retrieving drivers for VIN: {vin}. EX: {ex}",
+                        f"There was a DB error when retrieving drivers for vehicle {vin}. EX: {ex}",
                         flush=True,
                     )
                     return None
-                if not results:
-                    print(f"No drivers foudn for vin: {vin}", flush=True)
+                if results is None:
+                    print(
+                        f"Did not return any drivers associated with vehicle {vin}",
+                        flush=True,
+                    )
                     return None
-                return self.d_manager.get_by_ids(
-                    list(map(lambda x: x.get("license"), results))
-                )
+                return [Driver(**result) for result in results]
+
+    # def get_vehicles_for_driver(self, license: str) -> Optional[List[Vehicle]]:
+    #     """Retrieves the list of Vehicles associated with a driver license"""
+
+    #     with self.get_connection() as conn:
+    #         with conn.cursor() as cursor:
+    #             sql = "SELECT `vin` WHERE `license`=%s;"
+    #             results = None
+    #             try:
+    #                 cursor.execute(sql, (license,))
+    #                 results = cursor.fetchall()
+    #             except Exception as ex:
+    #                 print(
+    #                     f"There was an error when retrieving vehicles for license: {license}. EX: {ex}",
+    #                     flush=True,
+    #                 )
+    #                 return None
+    #             if not results:
+    #                 print(f"No vehicles found for license: {license}", flush=True)
+    #                 return None
+    #             return self.v_manager.get_by_ids(
+    #                 list(map(lambda x: x.get("vin"), results))
+    #             )
+
+    # def get_drivers_for_vehicle(self, vin: str) -> Optional[List[Driver]]:
+    #     """Retrieves the list of drivers associated with a Vehicle's VIN"""
+
+    #     with self.get_connection() as conn:
+    #         with conn.cursor() as cursor:
+    #             sql = "SELECT `license` WHERE `vin`=%s"
+    #             results = None
+    #             try:
+    #                 cursor.execute(sql, (vin,))
+    #                 results = cursor.fetchall()
+    #             except Exception as ex:
+    #                 print(
+    #                     f"There was a DB error when retrieving drivers for VIN: {vin}. EX: {ex}",
+    #                     flush=True,
+    #                 )
+    #                 return None
+    #             if not results:
+    #                 print(f"No drivers foudn for vin: {vin}", flush=True)
+    #                 return None
+    #             return self.d_manager.get_by_ids(
+    #                 list(map(lambda x: x.get("license"), results))
+    #             )

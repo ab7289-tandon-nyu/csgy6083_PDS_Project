@@ -100,7 +100,7 @@ def policy_form():
         if not form.validate_on_submit() and request.method != "GET":
             flash_errors(form)
 
-        form_type = request.args.get("type", default="update", type=str)
+        form_type = request.args.get("type", default="create", type=str)
         if not policy_id and form_type == "update":
             abort(400, "parameter `policy_id` is missing")
         form_class = request.args.get("class", type=str)

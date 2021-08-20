@@ -55,6 +55,12 @@
     </div>
 </div>
 <div class="row">
-    {# TODO add some sort of list for drivers #}
+    <div class="col s12 vh20">
+        {% if drivers and drivers|length > 0 %}
+            {% with drivers=drivers %}{% include 'vehicle/driver_table.html' %}{% endwith %}
+        {% else %}
+            <span>No Drivers found for this vehicle.</span>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

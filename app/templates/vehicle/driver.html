@@ -42,6 +42,12 @@
     </div>
 </div>
 <div class="row">
-    {# TODO add some sort of list for vehicles #}
+    <div class="col s12 vh20">
+        {% if vehicles and vehicles|length > 0 %}
+            {% with vehicles=vehicles %}{% include 'vehicle/vehicle_table.html' %}{% endwith %}
+        {% else %}
+            <span>No Vehicles found for this Driver</span>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}
