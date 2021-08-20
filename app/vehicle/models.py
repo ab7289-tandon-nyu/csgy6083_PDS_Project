@@ -1,4 +1,10 @@
-class Vehicle:
+from app.db import DTOBase
+
+
+class Vehicle(DTOBase):
+
+    __id_field__ = "vin"
+
     def __init__(
         self,
         make: str,
@@ -16,7 +22,10 @@ class Vehicle:
         self.vin = vin
 
 
-class Driver:
+class Driver(DTOBase):
+
+    __id_field__ = "license"
+
     def __init__(
         self, fname: str, mname: str, lname: str, birthdate: str, license: str = None
     ):

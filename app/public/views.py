@@ -128,3 +128,14 @@ def logout():
     # current_app._get_current_object(), identity=AnonymousIdentity()
     # )
     return redirect(url_for("public.login"))
+
+
+@bp.route("/mtom")
+def mtom():
+
+    page = {}
+    page["title"] = "MTOM Form"
+    page["left_title"] = "MTOM Left"
+    page["right_title"] = "MOTM Right"
+
+    return render_template("util/mtom.html", page=page)

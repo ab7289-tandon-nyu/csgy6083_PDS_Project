@@ -29,3 +29,13 @@ class DBManager:
 
         #     if commit:
         #         conn.commit()
+
+
+class DTOBase:
+
+    __id_field__ = None
+
+    def get_id(self):
+        if not self.__id_field__ or self.__id_field__ is None:
+            raise AttributeError("Need to implement __id_field__!")
+        return getattr(self, self.__id_field__)

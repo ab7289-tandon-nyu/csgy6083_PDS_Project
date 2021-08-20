@@ -10,27 +10,35 @@
     <div class="row center-align vh50">
         <div class="col s12 m6" style="height: 100%;">
             <div class="row" style="height: 10%;">
-                <div class="col s12">
+                <div class="col s12 card-panel">
                     <span>{{ page.left_title }}</span>
                 </div>
             </div>
             <div class="row" style="height: 90%;">
-                <div class="col s12">
+                <div class="col s12 card-panel">
                     {# left list block goes here #}
                 </div>
             </div>
         </div>
         <div class="col s12 m6" style="height: 100%;">
             <div class="row" style="height: 10%;">
-                <div class="col s12">
+                <div class="col s12 card-panel">
                     <span>{{ page.right_title }}</span>
                 </div>
             </div>
             <div class="row" style="height: 90%;">
-                <div class="col s12">
+                <div class="col s12 card-panel">
                     {# right list block goes here #}
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row center-align">
+        <div class="col s12 m6">
+            <button class="btn waves-effect waves-light"><i class="material-icons right">arrow_back</i>Move left</button>
+        </div>
+        <div class="col s12 m6">
+            <button class="btn waves-effect waves-light"><i class="material-icons left">arrow_forward</i>Move right</button>
         </div>
     </div>
 {% endblock %}
