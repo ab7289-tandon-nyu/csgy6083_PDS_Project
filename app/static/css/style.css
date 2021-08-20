@@ -32,6 +32,10 @@ main {
     height: 20vh;
 }
 
+.vh50 {
+    height: 50vh;
+}
+
 /* end custom detail page componets */
 
 /* Scrollable table */

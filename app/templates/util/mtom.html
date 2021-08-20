@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}PDS{% endblock %}
+
+{% block header %}
+    <h1 style="height: 10vh;">{{ page.title }}</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="row center-align vh50">
+        <div class="col s12 m6" style="height: 100%;">
+            <div class="row" style="height: 10%;">
+                <div class="col s12">
+                    <span>{{ page.left_title }}</span>
+                </div>
+            </div>
+            <div class="row" style="height: 90%;">
+                <div class="col s12">
+                    {# left list block goes here #}
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m6" style="height: 100%;">
+            <div class="row" style="height: 10%;">
+                <div class="col s12">
+                    <span>{{ page.right_title }}</span>
+                </div>
+            </div>
+            <div class="row" style="height: 90%;">
+                <div class="col s12">
+                    {# right list block goes here #}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
