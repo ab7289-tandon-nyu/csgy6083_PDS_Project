@@ -9,6 +9,7 @@ from app.public.forms import CustomerRegisterForm, LoginForm, RegisterForm
 from app.user.managers import CustomerManager, UserManager
 from app.user.models import Customer, User
 from app.utils import flash_errors
+from app.vehicle.managers import VDManager
 
 bp = Blueprint("public", __name__, static_folder="../static")
 
@@ -137,5 +138,6 @@ def mtom():
     page["title"] = "MTOM Form"
     page["left_title"] = "MTOM Left"
     page["right_title"] = "MOTM Right"
+    page["left_list"] = VDManager().get_drivers_for_vehicle("013385760649101")
 
     return render_template("util/mtom.html", page=page)

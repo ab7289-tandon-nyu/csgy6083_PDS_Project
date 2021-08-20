@@ -1,0 +1,5 @@
+<ul class="mtom-list">
+    {% for item in items %}
+        {% with item=item %}{% include 'util/mtom_list_item.html' %}{% endwith %}
+    {% endfor %}
+</ul>

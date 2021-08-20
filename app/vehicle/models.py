@@ -4,6 +4,7 @@ from app.db import DTOBase
 class Vehicle(DTOBase):
 
     __id_field__ = "vin"
+    __display__ = "display_name"
 
     def __init__(
         self,
@@ -21,10 +22,15 @@ class Vehicle(DTOBase):
         self.policy_id = policy_id
         self.vin = vin
 
+    @property
+    def display_name(self):
+        return f"{self.vin} - {self.make} {self.model}"
+
 
 class Driver(DTOBase):
 
     __id_field__ = "license"
+    __display__ = "full_name"
 
     def __init__(
         self, fname: str, mname: str, lname: str, birthdate: str, license: str = None
@@ -34,6 +40,10 @@ class Driver(DTOBase):
         self.lname = lname
         self.birthdate = birthdate
         self.license = license
+
+    @property
+    def full_name(self):
+        return f"{self.fname} {self.lname}"
 
 
 class VehicleDriver:

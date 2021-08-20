@@ -34,8 +34,14 @@ class DBManager:
 class DTOBase:
 
     __id_field__ = None
+    __display__ = None
 
     def get_id(self):
         if not self.__id_field__ or self.__id_field__ is None:
             raise AttributeError("Need to implement __id_field__!")
         return getattr(self, self.__id_field__)
+
+    def get_display_value(self):
+        if not self.__display__ or self.__display__ is None:
+            raise AttributeError("Need to implement __display__!")
+        return getattr(self, self.__display__)
