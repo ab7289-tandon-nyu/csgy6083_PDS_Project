@@ -60,6 +60,7 @@ jobs:
           tags: pds/app:latest
 
   deploy:
+    needs: [ build, docker ]
     runs-on: ubuntu-latest
     steps:
       -
@@ -74,4 +75,4 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }}
           docker_compose_file: './docker-compose.yaml'
           app_name: 'pds-6084-final'
-          heroku_apps: '[{"imagename": "pds_app", "appname": "pds-6084-final", "apptype": "web"}, {"imagename": "pds_db", "appname": "pds-6084-final", "apptype": "db"}]'
+          heroku_apps: '[{"imagename": "pds_app", "appname": "pds-6084-final", "apptype": "web"}, {"imagename": "pds_db", "appname": "pds-6084-final", "apptype": "web"}]'
