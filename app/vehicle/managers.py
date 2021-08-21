@@ -319,8 +319,6 @@ class DriverManager(DBManager):
 class VDManager(DBManager):
     def __init__(self):
         super().__init__()
-        self.v_manager = VehicleManager()
-        self.d_manager = DriverManager()
 
     def get_vehicles_for_driver(
         self, license: str, complement: bool = False

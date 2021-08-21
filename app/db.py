@@ -10,28 +10,14 @@ class DBManager:
 
     def get_connection(self):
         """initiates the connection with the database"""
-        # with self.mysql.connect() as conn:
-        #     yield conn
         return self.mysql.connect()
-
-    def get_cursor(self, commit=False):
-        """yields a cursor from the connection"""
-        # self.conn = self.mysql.connect()
-        # self.cursor = self.conn.cursor()
-
-        # conn = next(self.get_connection())
-        conn = self.get_connection()
-        return conn.cursor()
-
-        # conn = next(self.get_connection())
-        # with conn.cursor() as cursor:
-        #     yield cursor
-
-        #     if commit:
-        #         conn.commit()
 
 
 class DTOBase:
+    """
+    Base Data Transfer Object class to implement base methods that
+    other Data objects might want
+    """
 
     __id_field__ = None
     __display__ = None

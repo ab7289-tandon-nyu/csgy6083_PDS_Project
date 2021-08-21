@@ -31,13 +31,13 @@ class RelAddForm(RelFormBase):
 
     def validate(self):
         initial_validation = super().validate()
-        print(f"Chosen value is: {self.to_add.data}", flush=True)
-        print(f"Form is valid: {initial_validation}", flush=True)
-        print(f"Form errors: {self.errors}", flush=True)
+        if not initial_validation:
+            return False
+
         if not self.to_add.data or self.to_add.data is None:
             self.to_add.errors.append("Please select a value")
             return False
-        return initial_validation
+        return True
 
     def set_choice_list(self, choice_list: List[Tuple[DTOBase, Any]]) -> None:
         self._choice_list = self._choice_list + self.to_choice_list(choice_list)
