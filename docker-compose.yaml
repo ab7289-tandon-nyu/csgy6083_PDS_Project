@@ -35,7 +35,15 @@ services:
         image: pds-app:latest
         container_name: pds_app
         environment:
-            port: 5000
+            - PORT=5000
+            - FLASK_ENV=development
+            - FLASK_APP=app
+            - SECRET_KEY=super-secret-key
+            - MYSQL_HOST=db
+            - MYSQL_USER=root
+            - MYSQL_PORT=3306
+            - MYSQL_DB=ab_project
+            - MYSQL_PASSWORD=password
         ports:
             - 5000:5000
         volumes:
