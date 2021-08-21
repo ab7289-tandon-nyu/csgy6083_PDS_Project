@@ -34,6 +34,8 @@ services:
         build: ./app
         image: pds-app:latest
         container_name: pds_app
+        environment:
+            port: 5000
         ports:
             - 5000:5000
         volumes:
