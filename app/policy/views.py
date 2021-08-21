@@ -103,22 +103,26 @@ def policy_form():
         form_type = request.args.get("type", default="create", type=str)
         if not policy_id and form_type == "update":
             abort(400, "parameter `policy_id` is missing")
-        form_class = request.args.get("class", type=str)
+        form_class = request.args.get("clazz", type=str)
         if not form_class:
             abort(400, "parameter `class` is missing. Did you forget &class=<class>?")
 
         page["type"] = form_type
-        page["class"] = form_class
+        page["clazz"] = form_class
         manager = PolicyManager()
         policy = manager.get_by_id(policy_id)
 
         if form_type == "update":
             validate_perm(policy)
             page["title"] = f"Update Policy {policy.policy_id}"
-            page["form_action"] = url_for("policy.policy_form", action="update")
+            page["form_action"] = url_for(
+                "policy.policy_form", action="update", clazz=form_class
+            )
         elif form_type == "create":
             page["title"] = "Create a new Policy"
-            page["form_action"] = url_for("policy.policy_form", action="create")
+            page["form_action"] = url_for(
+                "policy.policy_form", action="create", clazz=form_class
+            )
 
     return render_template("policy/policy_form.html", page=page, form=form)
 

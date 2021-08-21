@@ -59,7 +59,7 @@ def vehicle_form():
         flash("Success!", "info")
         return redirect(url_for("vehicle.vehicle", vin=vin))
     else:
-        form_type = request.args.get("type", default="update", type=str)
+        form_type = request.args.get("type", default="create", type=str)
         if not vin and form_type == "update":
             abort(400, "parameter `vin` is missing")
 

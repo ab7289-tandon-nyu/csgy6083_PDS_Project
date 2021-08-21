@@ -63,7 +63,7 @@ def house_form():
         if not form.validate_on_submit() and request.method != "GET":
             flash_errors(form)
 
-        form_type = request.args.get("type", default="update", type=str)
+        form_type = request.args.get("type", default="create", type=str)
         if not home_id and form_type == "update":
             abort(400, "parameter `home_id` is missing")
 
