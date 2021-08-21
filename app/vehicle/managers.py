@@ -1,5 +1,7 @@
 from typing import List, Optional
 
+from jinjasql import JinjaSql
+
 from app.db import DBManager
 from app.vehicle.models import Driver, Vehicle
 
@@ -320,21 +322,30 @@ class VDManager(DBManager):
         self.v_manager = VehicleManager()
         self.d_manager = DriverManager()
 
-    def get_vehicles_for_driver(self, license: str) -> Optional[List[Vehicle]]:
+    def get_vehicles_for_driver(
+        self, license: str, complement: bool = False
+    ) -> Optional[List[Vehicle]]:
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = (
-                    "SELECT "
-                    "   `v`.`make`, `v`.`model`, `v`.`year`, `v`.`state`, `v`.`policy_id`, `v`.`vin` "
-                    "FROM `ab_vehicle` v "
-                    "JOIN `ab_driver_vehicle` dv ON `v`.`vin` = `dv`.`vin` "
-                    "JOIN `ab_driver` d ON `dv`.`license` = `d`.`license` "
-                    "WHERE `d`.`license` = %s"
+                sql_template = """
+                    SELECT
+                       `v`.`make`, `v`.`model`, `v`.`year`, `v`.`state`, `v`.`policy_id`, `v`.`vin`
+                     FROM `ab_vehicle` v
+                     JOIN `ab_driver_vehicle` dv ON `v`.`vin` = `dv`.`vin`
+                     JOIN `ab_driver` d ON `dv`.`license` = `d`.`license`
+                    {% if complement %}
+                     WHERE `d`.`license` != {{ license }}
+                    {% else %}
+                     WHERE `d`.`license` = {{ license }}
+                    {% endif %}
+                """
+                query, bind_params = JinjaSql().prepare_query(
+                    sql_template, {"complement": complement, "license": license}
                 )
                 results = None
                 try:
-                    cursor.execute(sql, (license,))
+                    cursor.execute(query, bind_params)
                     results = cursor.fetchall()
                 except Exception as ex:
                     print(
@@ -349,21 +360,30 @@ class VDManager(DBManager):
                     )
                 return [Vehicle(**result) for result in results]
 
-    def get_drivers_for_vehicle(self, vin: str) -> Optional[List[Driver]]:
+    def get_drivers_for_vehicle(
+        self, vin: str, complement: bool = False
+    ) -> Optional[List[Driver]]:
 
         with self.get_connection() as conn:
             with conn.cursor() as cursor:
-                sql = (
-                    "SELECT "
-                    "   `d`.`fname`, `d`.`mname`, `d`.`lname`, `d`.`birthdate`, `d`.`license` "
-                    "FROM `ab_driver` d "
-                    "JOIN `ab_driver_vehicle` dv ON `d`.`license` = `dv`.`license` "
-                    "JOIN `ab_vehicle` v ON `dv`.`vin` = `v`.`vin` "
-                    "WHERE `v`.`vin` = %s"
+                sql_template = """
+                    SELECT
+                       `d`.`fname`, `d`.`mname`, `d`.`lname`, `d`.`birthdate`, `d`.`license`
+                     FROM `ab_driver` d
+                     JOIN `ab_driver_vehicle` dv ON `d`.`license` = `dv`.`license`
+                     JOIN `ab_vehicle` v ON `dv`.`vin` = `v`.`vin`
+                    {% if complement %}
+                     WHERE `v`.`vin` != {{ vin }}
+                    {% else %}
+                     WHERE `v`.`vin` = {{ vin }}
+                    {% endif %}
+                """
+                query, bind_params = JinjaSql().prepare_query(
+                    sql_template, {"complement": complement, "vin": vin}
                 )
                 results = None
                 try:
-                    cursor.execute(sql, (vin,))
+                    cursor.execute(query, bind_params)
                     results = cursor.fetchall()
                 except Exception as ex:
                     print(
@@ -379,48 +399,53 @@ class VDManager(DBManager):
                     return None
                 return [Driver(**result) for result in results]
 
-    # def get_vehicles_for_driver(self, license: str) -> Optional[List[Vehicle]]:
-    #     """Retrieves the list of Vehicles associated with a driver license"""
+    def add_relation(self, vin: str, license: str) -> bool:
+        """creates a new relation between the specified driver and vehicle"""
 
-    #     with self.get_connection() as conn:
-    #         with conn.cursor() as cursor:
-    #             sql = "SELECT `vin` WHERE `license`=%s;"
-    #             results = None
-    #             try:
-    #                 cursor.execute(sql, (license,))
-    #                 results = cursor.fetchall()
-    #             except Exception as ex:
-    #                 print(
-    #                     f"There was an error when retrieving vehicles for license: {license}. EX: {ex}",
-    #                     flush=True,
-    #                 )
-    #                 return None
-    #             if not results:
-    #                 print(f"No vehicles found for license: {license}", flush=True)
-    #                 return None
-    #             return self.v_manager.get_by_ids(
-    #                 list(map(lambda x: x.get("vin"), results))
-    #             )
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = (
+                    "INSERT INTO `ab_driver_vehicle` (`vin`, `license`) "
+                    "VALUES (%s, %s)"
+                )
+                try:
+                    cursor.execute(
+                        sql,
+                        (
+                            vin,
+                            license,
+                        ),
+                    )
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        "There was a DB Error when creating a relation between "
+                        f"vin {vin} and license {license}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True
 
-    # def get_drivers_for_vehicle(self, vin: str) -> Optional[List[Driver]]:
-    #     """Retrieves the list of drivers associated with a Vehicle's VIN"""
+    def delete_relation(self, vin: str, license: str) -> bool:
+        """Removes a relation between the specified driver and vehicle"""
 
-    #     with self.get_connection() as conn:
-    #         with conn.cursor() as cursor:
-    #             sql = "SELECT `license` WHERE `vin`=%s"
-    #             results = None
-    #             try:
-    #                 cursor.execute(sql, (vin,))
-    #                 results = cursor.fetchall()
-    #             except Exception as ex:
-    #                 print(
-    #                     f"There was a DB error when retrieving drivers for VIN: {vin}. EX: {ex}",
-    #                     flush=True,
-    #                 )
-    #                 return None
-    #             if not results:
-    #                 print(f"No drivers foudn for vin: {vin}", flush=True)
-    #                 return None
-    #             return self.d_manager.get_by_ids(
-    #                 list(map(lambda x: x.get("license"), results))
-    #             )
+        with self.get_connection() as conn:
+            with conn.cursor() as cursor:
+                sql = "DELETE FROM `ab_driver_vehicle` WHERE `vin`=%s AND `license`=%s"
+                try:
+                    cursor.execute(
+                        sql,
+                        (
+                            vin,
+                            license,
+                        ),
+                    )
+                    conn.commit()
+                except Exception as ex:
+                    print(
+                        "There was a DB error when trying to remove relation between "
+                        f"vin {vin} and license {license}. EX: {ex}",
+                        flush=True,
+                    )
+                    return False
+                return True

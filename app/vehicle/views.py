@@ -102,6 +102,40 @@ def delete_vehicle(vin: str):
         return redirect(url_for("vehicle.vehicle", vin=vin))
 
 
+@bp.route("/vehicle_driver/rel", methods=["GET"])
+@login_required
+def update_relation():
+    """Add / Remove relationships from the specific vehicle"""
+
+    license = request.args.get("license", default=None)
+    vin = request.args.get("vin", default=None)
+    action = request.args.get("action")
+    manager = VDManager()
+
+    if action == "create":
+        added = manager.add_relation(vin, license)
+        if added:
+            flash("Success!", "info")
+        else:
+            flash(
+                "There was an error creating the relation. Please try again later.",
+                "error",
+            )
+
+        redirect_url = request.args.get("next") or url_for("public.home")
+        return redirect(redirect_url)
+    elif action == "delete":
+        deleted = manager.delete_relation(vin, license)
+        if deleted:
+            flash("Success!", "info")
+        else:
+            flash("There was an error deleting the relation. Please try again later.")
+        redirect_url = request.args.get("next") or url_for("public.home")
+        return redirect(redirect_url)
+    else:
+        abort(400, f"Unrecognized action {action}")
+
+
 def validate_vehicle_perm(vehicle):
     if vehicle is None:
         abort(404, "Unable to find the specified vehicle")

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}PDS{% endblock %}
+
+{% block header %}
+    <h1>Remove a Relation</h1>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <form class="col s12" method="post" action="{{ action }}">
+            {{ form.csrf_token() }}
+            <div class="row">
+                <div class="input-field col s12">
+                    {{ form.to_del.label }}{{ form.to_del() }}
+                </div>
+            </div>
+            {{ form.hidden_tag() }}
+        <button class="btn waves-effect waves-light orange" type="submit" name="action">Submit
+            <i class="material-icons right">send</i>
+        </button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/init_select.js') }}"></script>
+{% endblock %}
