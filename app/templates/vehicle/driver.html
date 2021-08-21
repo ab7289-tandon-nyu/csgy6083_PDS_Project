@@ -50,4 +50,12 @@
         {% endif %}
     </div>
 </div>
+<div class="row center-align">
+    <div class="col s12 m6">
+        <a href="{{ url_for('rel.rel_form', type='create', base='driver', base_id=driver.license, child='vehicle') }}" class="btn waves-effect waves-light"><i class="material-icons left">add</i>Add Vehicle</a>
+    </div>
+    <div class="col s12 m6">
+        <a href="{{ url_for('rel.rel_form', type='delete', base='driver', base_id=driver.license, child='vehicle') }}" class="btn waves-effect waves-light"><i class="material-icons left">add</i>Remove Vehicle</a>
+    </div>
+</div>
 {% endblock %}
