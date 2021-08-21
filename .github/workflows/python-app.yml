@@ -75,4 +75,4 @@ jobs:
           api_key: ${{ secrets.HEROKU_API_KEY }}
           docker_compose_file: './docker-compose.yaml'
           app_name: 'pds-6084-final'
-          heroku_apps: '[{"imagename": "pds-app", "appname": "pds-6084-final", "apptype": "web"}, {"imagename": "pds-db", "appname": "pds-6084-final", "apptype": "web"}]'
+          heroku_apps: '[{"imagename": "pds-app", "appname": "pds-6084-final", "apptype": "web"}, {"imagename": "pds-db", "appname": "pds-6084-final", "apptype": "db"}]'
