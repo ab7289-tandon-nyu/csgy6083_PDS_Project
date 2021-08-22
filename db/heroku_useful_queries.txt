@@ -1,0 +1,23 @@
+
+# log into remote:
+
+mysql --user=i8zzt8820r5ohthp --host=ro2padgkirvcf55m.cbetxkdyhwsb.us-east-1.rds.amazonaws.com --password=a0f1cstv3ffcuo42
+
+# set maintenance mode:
+
+heroku maintenance:on -a pds-csgy6083-final-ab7289
+# upload sql
+
+heroku run -a pds-csgy6083-final-ab7289 mysql --host=us-cdbr-east-04.cleardb.com --user=i8zzt8820r5ohthp --password=a0f1cstv3ffcuo42 --reconnect l1ytx0br27o7wepw < db/heroku_init_scripts/create_db.sql
+heroku run -a pds-csgy6083-final-ab7289 mysql --host=us-cdbr-east-04.cleardb.com --user=i8zzt8820r5ohthp --password=a0f1cstv3ffcuo42 --reconnect l1ytx0br27o7wepw < db/heroku_init_scripts/dml.sql
+
+# set maintenance off
+heroku maintenance:off -a pds-csgy6083-final-ab7289
+
+# scale down web worker
+
+heroku ps:scale web=0 -a pds-csgy6083-final-ab7289
+
+# scale web worker back up
+
+heroku ps:scale web=1 -a pds-csgy6083-final-ab7289
