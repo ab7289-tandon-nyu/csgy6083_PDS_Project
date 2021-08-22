@@ -63,6 +63,7 @@ jobs:
   deploy:
     needs: [ build, docker ]
     runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
     steps:
       -
         name: Checkout
@@ -79,4 +80,6 @@ jobs:
         run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} --recursive web
       -
         name: Release
+        env:
+            HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
         run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web
