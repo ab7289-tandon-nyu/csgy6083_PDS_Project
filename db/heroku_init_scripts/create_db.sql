@@ -8,10 +8,10 @@
 -- SQLINES DEMO *** no DDL - MDSYS.SDO_GEOMETRY
 
 -- SQLINES DEMO *** no DDL - XMLTYPE
-DROP DATABASE IF EXISTS heroku_ea10cf5570a0e0e;
-CREATE DATABASE IF NOT EXISTS heroku_ea10cf5570a0e0e;
+-- DROP DATABASE IF EXISTS l1ytx0br27o7wepw;
+CREATE DATABASE IF NOT EXISTS l1ytx0br27o7wepw;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_auto;
@@ -27,7 +27,7 @@ ALTER TABLE ab_auto ADD CONSTRAINT ab_auto_pk PRIMARY KEY ( policy_id );
 
 ALTER TABLE ab_auto MODIFY COLUMN policy_id INT AUTO_INCREMENT UNIQUE;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_customer;
@@ -96,7 +96,7 @@ COMMENT ON COLUMN ab_customer.zip IS
 
 ALTER TABLE ab_customer ADD CONSTRAINT ab_customer_pk PRIMARY KEY ( user_id );
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_driver;
@@ -132,7 +132,7 @@ ALTER TABLE ab_driver ADD CONSTRAINT ab_driver_pk PRIMARY KEY ( license );
 
 ALTER TABLE ab_driver MODIFY COLUMN license VARCHAR(16) UNIQUE;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_driver_vehicle;
@@ -152,7 +152,7 @@ COMMENT ON COLUMN ab_driver_vehicle.vin IS
 ALTER TABLE ab_driver_vehicle ADD CONSTRAINT ab_driver_vehicle_pk PRIMARY KEY ( license,
                                                                                 vin );
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_home;
@@ -166,7 +166,7 @@ COMMENT ON COLUMN ab_home.policy_id IS
 
 ALTER TABLE ab_home ADD CONSTRAINT ab_home_pk PRIMARY KEY ( policy_id );
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_house;
 CREATE TABLE ab_house (
@@ -226,7 +226,7 @@ ALTER TABLE ab_house ADD CONSTRAINT ab_house_pk PRIMARY KEY ( home_id );
 
 ALTER TABLE ab_house MODIFY COLUMN home_id INT AUTO_INCREMENT UNIQUE;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_invoice;
@@ -272,7 +272,7 @@ ALTER TABLE ab_invoice ADD CONSTRAINT ab_invoice_pk PRIMARY KEY ( invoice_id );
 
 ALTER TABLE ab_invoice MODIFY COLUMN invoice_id INT AUTO_INCREMENT UNIQUE;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_payment;
@@ -308,7 +308,7 @@ ALTER TABLE ab_payment ADD CONSTRAINT ab_payment_pk PRIMARY KEY ( p_id );
 
 ALTER TABLE ab_payment MODIFY COLUMN p_id BIGINT AUTO_INCREMENT UNIQUE;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_policy;
@@ -362,7 +362,7 @@ ALTER TABLE ab_policy ADD CONSTRAINT ab_policy_pk PRIMARY KEY ( policy_id );
 
 ALTER TABLE ab_policy MODIFY COLUMN policy_id INT AUTO_INCREMENT UNIQUE;
 
-USE heroku_ea10cf5570a0e0e;
+USE l1ytx0br27o7wepw;
 
 -- SQLINES LICENSE FOR EVALUATION USE ONLY
 DROP TABLE IF EXISTS ab_role;
