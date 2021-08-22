@@ -31,7 +31,9 @@ services:
             - 3306
             - 33060
     app:
-        build: ./app
+        build:
+            context: ./app
+            dockerfile: Dockerfile.web
         image: pds-app:latest
         container_name: pds_app
         environment:
