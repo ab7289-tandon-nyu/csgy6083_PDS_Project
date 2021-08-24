@@ -1,8 +1,13 @@
 from typing import List, Optional
 
+from app.db import DTOBase
 
-class Payment:
+
+class Payment(DTOBase):
     """DTO class for Payment records"""
+
+    __id_field__ = "p_id"
+    __display__ = "display_name"
 
     def __init__(
         self,
@@ -18,9 +23,16 @@ class Payment:
         self.pay_type = pay_type
         self.invoice_id = invoice_id
 
+    @property
+    def display_name(self):
+        return f"{self.pay_type} #{self.p_id}"
 
-class Invoice:
+
+class Invoice(DTOBase):
     """DTO class for invoice records"""
+
+    __id_field__ = "invoice_id"
+    __display__ = "display_name"
 
     def __init__(
         self,
@@ -44,3 +56,7 @@ class Invoice:
             self.payments = payments
         else:
             self.payments = []
+
+    @property
+    def display_name(self):
+        return f"Invoice #{self.invoice_id}"
