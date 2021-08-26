@@ -1,5 +1,11 @@
-class House:
+from app.db import DTOBase
+
+
+class House(DTOBase):
     """DTO Class for home records"""
+
+    __id_field__ = "home_id"
+    __display__ = "display_name"
 
     def __init__(
         self,
@@ -24,3 +30,17 @@ class House:
         self.basement = basement
         self.home_id = home_id
         self.policy_id = policy_id
+
+    @property
+    def display_name(self):
+        return f"{self.get_type()} {self.home_id}"
+
+    def get_type(self):
+        if self.house_type == "S":
+            return "Single Family"
+        elif self.house_type == "M":
+            return "Multi-family"
+        elif self.house_type == "C":
+            return "Condominium"
+        else:
+            return "Town House"
